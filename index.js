@@ -1,4 +1,19 @@
-async function hashPassword(password) {
+import htmlContent from './index.html';
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const path = url.pathname;
+
+    // Tampilkan tampilan HTML jika membuka alamat utama
+    if (path === "/" || path === "") {
+      return new Response(htmlContent, {
+        headers: { "Content-Type": "text/html;charset=UTF-8" },
+      });
+    }
+
+   
+    async function hashPassword(password) {
   const data = new TextEncoder().encode(password);
 
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
