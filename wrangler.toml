@@ -1,0 +1,13 @@
+name = "blue-turtle-squad"
+main = "src/index.js"
+compatibility_date = "2026-08-26"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "blue-turtle-squad"
+database_id = "e3b07a42-ade5-4804-a924-6aafd533053d"
+
+[[d1_databases]]
+binding = "DB_WISATA"
+database_name = "wisata-bahari"
+database_id = "8290e4cc-ed33-465e-89f1-e1fda51d7e47"
