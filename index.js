@@ -1,32 +1,15 @@
 import htmlContent from './index.html';
 
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const path = url.pathname;
-
-    // Tampilkan tampilan HTML jika membuka alamat utama
-    if (path === "/" || path === "") {
-      return new Response(htmlContent, {
-        headers: { "Content-Type": "text/html;charset=UTF-8" },
-      });
-    }
-
-   
-    async function hashPassword(password) {
+// Helper Hash Password
+async function hashPassword(password) {
   const data = new TextEncoder().encode(password);
-
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-
   return Array.from(new Uint8Array(hashBuffer))
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
 }
 
-// =========================
-// HELPER RESPONSE + CORS
-// =========================
-
+// Helper Response + CORS
 function jsonResponse(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -44,10 +27,18 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
 
-    // =========================
-    // CORS PREFLIGHT
-    // =========================
+    // ========================================================
+    // TAMPILKAN FRONTEND (HTML)
+    // ========================================================
+    if (path === "/" || path === "") {
+      return new Response(htmlContent, {
+        headers: { "Content-Type": "text/html;charset=UTF-8" },
+      });
+    }
 
+    // ========================================================
+    // CORS PREFLIGHT
+    // ========================================================
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
@@ -59,21 +50,17 @@ export default {
       });
     }
 
-    // =========================
+    // ========================================================
     // API LOGIN
-    // =========================
-
+    // ========================================================
     if (path === "/api/login" && request.method === "POST") {
       try {
         const body = await request.json();
 
         if (!body.email || !body.password) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Email dan password wajib diisi.",
-            },
-            400,
+            { success: false, message: "Email dan password wajib diisi." },
+            400
           );
         }
 
@@ -83,11 +70,8 @@ export default {
 
         if (!user) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Email atau password salah",
-            },
-            401,
+            { success: false, message: "Email atau password salah" },
+            401
           );
         }
 
@@ -95,11 +79,8 @@ export default {
 
         if (passwordHash !== user.password_hash) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Email atau password salah",
-            },
-            401,
+            { success: false, message: "Email atau password salah" },
+            401
           );
         }
 
@@ -119,63 +100,52 @@ export default {
             message: "Terjadi kesalahan saat login.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
 
-    // =========================
+    // ========================================================
     // API REGISTER MASYARAKAT
-    // =========================
-
+    // ========================================================
     if (path === "/api/register" && request.method === "POST") {
       try {
         const body = await request.json();
 
         if (!body.nama || !body.email || !body.password) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Data pendaftaran belum lengkap",
-            },
-            400,
+            { success: false, message: "Data pendaftaran belum lengkap" },
+            400
           );
         }
 
         const email = body.email.toLowerCase();
 
-        // Cek email
         const existingUser = await env.DB.prepare(
-          "SELECT id FROM role WHERE email = ?",
+          "SELECT id FROM role WHERE email = ?"
         )
           .bind(email)
           .first();
 
         if (existingUser) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Email sudah terdaftar.",
-            },
-            409,
+            { success: false, message: "Email sudah terdaftar." },
+            409
           );
         }
 
-        // Hash password
         const passwordHash = await hashPassword(body.password);
 
-        // Simpan user sebagai masyarakat
         await env.DB.prepare(
-          `INSERT INTO role
-           (nama, email, password_hash, role, created_at)
-           VALUES (?, ?, ?, ?, ?)`,
+          `INSERT INTO role (nama, email, password_hash, role, created_at)
+           VALUES (?, ?, ?, ?, ?)`
         )
           .bind(
             body.nama,
             email,
             passwordHash,
             "masyarakat",
-            new Date().toISOString().split("T")[0],
+            new Date().toISOString().split("T")[0]
           )
           .run();
 
@@ -190,7 +160,7 @@ export default {
             message: "Gagal mendaftarkan akun.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
@@ -198,11 +168,10 @@ export default {
     // ========================================================
     // API PENDARATAN - GET
     // ========================================================
-
     if (path === "/api/pendaratan" && request.method === "GET") {
       try {
         const result = await env.DB.prepare(
-          "SELECT * FROM data_pendaratan ORDER BY kapan_pendaratan DESC",
+          "SELECT * FROM data_pendaratan ORDER BY kapan_pendaratan DESC"
         ).all();
 
         return jsonResponse({
@@ -216,16 +185,14 @@ export default {
             message: "Gagal mengambil data pendaratan.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
 
     // ========================================================
     // API PENDARATAN - POST
-    // Tambah data pendaratan
     // ========================================================
-
     if (path === "/api/pendaratan" && request.method === "POST") {
       try {
         const body = await request.json();
@@ -239,44 +206,30 @@ export default {
           !body.kapan_penetasan
         ) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Data pendaratan belum lengkap.",
-            },
-            400,
+            { success: false, message: "Data pendaratan belum lengkap." },
+            400
           );
         }
 
         const kodeSarang = body.kode_sarang.trim().toUpperCase();
 
-        // Cek kode sarang
         const existing = await env.DB.prepare(
-          "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?",
+          "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?"
         )
           .bind(kodeSarang)
           .first();
 
         if (existing) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Kode sarang sudah terdaftar.",
-            },
-            409,
+            { success: false, message: "Kode sarang sudah terdaftar." },
+            409
           );
         }
 
         await env.DB.prepare(
           `INSERT INTO data_pendaratan
-           (
-             kode_sarang,
-             jenis_penyu,
-             kapan_pendaratan,
-             lokasi,
-             jumlah_telur,
-             kapan_penetasan
-           )
-           VALUES (?, ?, ?, ?, ?, ?)`,
+           (kode_sarang, jenis_penyu, kapan_pendaratan, lokasi, jumlah_telur, kapan_penetasan)
+           VALUES (?, ?, ?, ?, ?, ?)`
         )
           .bind(
             kodeSarang,
@@ -284,7 +237,7 @@ export default {
             body.kapan_pendaratan,
             body.lokasi,
             Number(body.jumlah_telur),
-            body.kapan_penetasan,
+            body.kapan_penetasan
           )
           .run();
 
@@ -299,20 +252,18 @@ export default {
             message: "Gagal menambahkan data pendaratan.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
 
     // ========================================================
     // API PENDARATAN - PUT
-    // Edit data pendaratan
     // ========================================================
-
     if (path.startsWith("/api/pendaratan/") && request.method === "PUT") {
       try {
         const kodeLama = decodeURIComponent(
-          path.replace("/api/pendaratan/", ""),
+          path.replace("/api/pendaratan/", "")
         );
 
         const body = await request.json();
@@ -326,62 +277,45 @@ export default {
           !body.kapan_penetasan
         ) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Data pendaratan belum lengkap.",
-            },
-            400,
+            { success: false, message: "Data pendaratan belum lengkap." },
+            400
           );
         }
 
         const kodeBaru = body.kode_sarang.trim().toUpperCase();
 
-        // Cek data lama
         const existing = await env.DB.prepare(
-          "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?",
+          "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?"
         )
           .bind(kodeLama)
           .first();
 
         if (!existing) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Data pendaratan tidak ditemukan.",
-            },
-            404,
+            { success: false, message: "Data pendaratan tidak ditemukan." },
+            404
           );
         }
 
-        // Kalau kode sarang diganti, cek apakah kode baru sudah dipakai
         if (kodeBaru !== kodeLama) {
           const duplicate = await env.DB.prepare(
-            "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?",
+            "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?"
           )
             .bind(kodeBaru)
             .first();
 
           if (duplicate) {
             return jsonResponse(
-              {
-                success: false,
-                message: "Kode sarang baru sudah digunakan.",
-              },
-              409,
+              { success: false, message: "Kode sarang baru sudah digunakan." },
+              409
             );
           }
         }
 
         await env.DB.prepare(
           `UPDATE data_pendaratan
-           SET
-             kode_sarang = ?,
-             jenis_penyu = ?,
-             kapan_pendaratan = ?,
-             lokasi = ?,
-             jumlah_telur = ?,
-             kapan_penetasan = ?
-           WHERE kode_sarang = ?`,
+           SET kode_sarang = ?, jenis_penyu = ?, kapan_pendaratan = ?, lokasi = ?, jumlah_telur = ?, kapan_penetasan = ?
+           WHERE kode_sarang = ?`
         )
           .bind(
             kodeBaru,
@@ -390,7 +324,7 @@ export default {
             body.lokasi,
             Number(body.jumlah_telur),
             body.kapan_penetasan,
-            kodeLama,
+            kodeLama
           )
           .run();
 
@@ -405,46 +339,39 @@ export default {
             message: "Gagal memperbarui data pendaratan.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
 
     // ========================================================
     // API PENDARATAN - DELETE
-    // Hapus data pendaratan
     // ========================================================
-
     if (path.startsWith("/api/pendaratan/") && request.method === "DELETE") {
       try {
         const kodeSarang = decodeURIComponent(
-          path.replace("/api/pendaratan/", ""),
+          path.replace("/api/pendaratan/", "")
         );
 
         const existing = await env.DB.prepare(
-          "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?",
+          "SELECT kode_sarang FROM data_pendaratan WHERE kode_sarang = ?"
         )
           .bind(kodeSarang)
           .first();
 
         if (!existing) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Data pendaratan tidak ditemukan.",
-            },
-            404,
+            { success: false, message: "Data pendaratan tidak ditemukan." },
+            404
           );
         }
 
-        // Hapus data adopsi yang terkait terlebih dahulu
         await env.DB.prepare("DELETE FROM data_adopsi WHERE kode_sarang = ?")
           .bind(kodeSarang)
           .run();
 
-        // Hapus data pendaratan
         await env.DB.prepare(
-          "DELETE FROM data_pendaratan WHERE kode_sarang = ?",
+          "DELETE FROM data_pendaratan WHERE kode_sarang = ?"
         )
           .bind(kodeSarang)
           .run();
@@ -460,25 +387,21 @@ export default {
             message: "Gagal menghapus data pendaratan.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
 
     // ========================================================
-    // API ADOPSI - GET
+    // API ADOPSI - GET & POST
     // ========================================================
-
     if (path === "/api/adopsi" && request.method === "GET") {
       try {
         const result = await env.DB.prepare(
-          "SELECT * FROM data_adopsi ORDER BY kode_sarang",
+          "SELECT * FROM data_adopsi ORDER BY kode_sarang"
         ).all();
 
-        return jsonResponse({
-          success: true,
-          data: result.results,
-        });
+        return jsonResponse({ success: true, data: result.results });
       } catch (error) {
         return jsonResponse(
           {
@@ -486,14 +409,10 @@ export default {
             message: "Gagal mengambil data adopsi.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
-
-    // ========================================================
-    // API ADOPSI - POST
-    // ========================================================
 
     if (path === "/api/adopsi" && request.method === "POST") {
       try {
@@ -508,60 +427,41 @@ export default {
           !body.nama_adopter
         ) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Data adopsi belum lengkap",
-            },
-            400,
+            { success: false, message: "Data adopsi belum lengkap" },
+            400
           );
         }
 
-        // Pastikan sarang tersedia
         const pendaratan = await env.DB.prepare(
-          "SELECT * FROM data_pendaratan WHERE kode_sarang = ?",
+          "SELECT * FROM data_pendaratan WHERE kode_sarang = ?"
         )
           .bind(body.kode_sarang)
           .first();
 
         if (!pendaratan) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Sarang tidak ditemukan.",
-            },
-            404,
+            { success: false, message: "Sarang tidak ditemukan." },
+            404
           );
         }
 
-        // Cek apakah sudah diadopsi
         const existingAdopsi = await env.DB.prepare(
-          "SELECT kode_sarang FROM data_adopsi WHERE kode_sarang = ?",
+          "SELECT kode_sarang FROM data_adopsi WHERE kode_sarang = ?"
         )
           .bind(body.kode_sarang)
           .first();
 
         if (existingAdopsi) {
           return jsonResponse(
-            {
-              success: false,
-              message: "Sarang tersebut sudah diadopsi.",
-            },
-            409,
+            { success: false, message: "Sarang tersebut sudah diadopsi." },
+            409
           );
         }
 
         await env.DB.prepare(
           `INSERT INTO data_adopsi
-           (
-             kode_sarang,
-             jenis_penyu,
-             jumlah_telur,
-             lokasi,
-             berapa_sarang,
-             nama_adopter,
-             bukti_pembayaran
-           )
-           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+           (kode_sarang, jenis_penyu, jumlah_telur, lokasi, berapa_sarang, nama_adopter, bukti_pembayaran)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`
         )
           .bind(
             body.kode_sarang,
@@ -570,7 +470,7 @@ export default {
             body.lokasi,
             Number(body.berapa_sarang),
             body.nama_adopter,
-            body.bukti_pembayaran || null,
+            body.bukti_pembayaran || null
           )
           .run();
 
@@ -585,7 +485,7 @@ export default {
             message: "Gagal menambahkan data adopsi.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
@@ -593,17 +493,13 @@ export default {
     // ========================================================
     // API USER - GET
     // ========================================================
-
     if (path === "/api/users" && request.method === "GET") {
       try {
         const result = await env.DB.prepare(
-          "SELECT id, nama, email, role, created_at FROM role ORDER BY id DESC",
+          "SELECT id, nama, email, role, created_at FROM role ORDER BY id DESC"
         ).all();
 
-        return jsonResponse({
-          success: true,
-          data: result.results,
-        });
+        return jsonResponse({ success: true, data: result.results });
       } catch (error) {
         return jsonResponse(
           {
@@ -611,21 +507,17 @@ export default {
             message: "Gagal mengambil data pengguna.",
             error: error.message,
           },
-          500,
+          500
         );
       }
     }
 
-    // =========================
-    // DEFAULT
-    // =========================
-
+    // ========================================================
+    // DEFAULT 404
+    // ========================================================
     return jsonResponse(
-      {
-        success: false,
-        message: "Endpoint tidak ditemukan.",
-      },
-      404,
+      { success: false, message: "Endpoint tidak ditemukan." },
+      404
     );
   },
 };
