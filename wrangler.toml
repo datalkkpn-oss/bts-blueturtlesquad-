@@ -5,9 +5,9 @@ compatibility_date = "2026-08-26"
 [[d1_databases]]
 binding = "DB"
 database_name = "blue-turtle-squad"
-database_id = "e3b07a42-ade5-4804-a924-6aafd533053d"
+database_id = "72c5d7db-a094-479a-b8d9-3c7b8e8e9003"
 
 [[d1_databases]]
 binding = "DB_WISATA"
 database_name = "wisata-bahari"
-database_id = "8290e4cc-ed33-465e-89f1-e1fda51d7e47"
+database_id = "982c0f85-0558-42ee-9dc9-d5e2cdc9c914"
