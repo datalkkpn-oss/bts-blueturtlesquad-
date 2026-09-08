@@ -4146,10 +4146,10 @@
         try {
           const [pendaratanRes, adopsiRes] = await Promise.all([
             fetch(
-              "https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan",
+              "https://blue-turtle-squad.datalkkpn.workers.dev/api/pendaratan",
             ),
             fetch(
-              "https://blue-turtle-squad.marissacitra5.workers.dev/api/adopsi",
+              "https://blue-turtle-squad.datalkkpn.workers.dev/api/adopsi",
             ),
           ]);
 
@@ -5432,7 +5432,7 @@
         populateAdopsiSarangSelect();
 
         try {
-          fetch("https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan/bulk", {
+          fetch("https://blue-turtle-squad.datalkkpn.workers.dev/api/pendaratan/bulk", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(parsedImportData),
