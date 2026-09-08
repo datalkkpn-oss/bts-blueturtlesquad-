@@ -5371,7 +5371,7 @@
 
         try {
           const res = await fetch(
-            `https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan/${encodeURIComponent(kode)}`,
+            `${API_URL}/api/pendaratan/${encodeURIComponent(kode)}`,
             { method: "DELETE" },
           );
           const result = await res.json();
@@ -5447,7 +5447,7 @@
 
           try {
             const res = await fetch(
-              `https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan/${encodeURIComponent(oldCode)}`,
+              `${API_URL}/api/pendaratan/${encodeURIComponent(oldCode)}`,
               {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -5525,7 +5525,7 @@
 
           try {
             const res = await fetch(
-              "https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan",
+              `${API_URL}/api/pendaratan`,
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -6670,7 +6670,7 @@
 
         try {
           fetch(
-            "https://blue-turtle-squad.datalkkpn.workers.dev/api/pendaratan/bulk",
+            `${API_URL}/api/pendaratan/bulk`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
