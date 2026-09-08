@@ -25,7 +25,7 @@
       crossorigin=""
     />
     <script>
-      const API_URL = "https://blue-turtle-squad.marissacitra5.workers.dev";
+      const API_URL = "https://bts-blueturtlesquad.datalkkpn.workers.dev";
     </script>
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -48,12 +48,12 @@
         --brown-card: rgba(65, 48, 32, 0.65);
         --brown-card-hover: rgba(85, 62, 40, 0.8);
         --brown-pill: rgba(110, 85, 60, 0.85);
-        
+
         --gold-main: #ffd03b;
         --gold-glow: rgba(255, 208, 59, 0.3);
         --mint-btn: #a2ded0;
         --mint-primary: #42bfa9;
-        
+
         --radius-pill: 9999px;
         --radius-card: 20px;
         --radius-app: 26px;
@@ -69,10 +69,22 @@
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
         background-color: #0f131d;
-        background-image: 
-          radial-gradient(circle at 10% 15%, rgba(41, 182, 246, 0.08), transparent 35%),
-          radial-gradient(circle at 90% 85%, rgba(255, 208, 59, 0.06), transparent 40%),
-          radial-gradient(circle at 50% 50%, rgba(66, 191, 169, 0.04), transparent 50%),
+        background-image:
+          radial-gradient(
+            circle at 10% 15%,
+            rgba(41, 182, 246, 0.08),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at 90% 85%,
+            rgba(255, 208, 59, 0.06),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(66, 191, 169, 0.04),
+            transparent 50%
+          ),
           linear-gradient(180deg, #131724 0%, #0b0e16 100%);
         background-attachment: fixed;
         color: #ffffff;
@@ -82,7 +94,11 @@
         overflow-x: hidden;
       }
 
-      h1, h2, h3, h4, .brand-title {
+      h1,
+      h2,
+      h3,
+      h4,
+      .brand-title {
         font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
       }
 
@@ -91,7 +107,10 @@
         text-decoration: none;
       }
 
-      button, input, select, textarea {
+      button,
+      input,
+      select,
+      textarea {
         font-family: inherit;
         outline: none;
         border: none;
@@ -431,8 +450,14 @@
       }
 
       @keyframes pageFadeIn {
-        from { opacity: 0; transform: translateY(3px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* ========================================================
@@ -447,7 +472,11 @@
       }
 
       .stat-card {
-        background: linear-gradient(135deg, rgba(70, 52, 36, 0.6) 0%, rgba(38, 30, 22, 0.75) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(70, 52, 36, 0.6) 0%,
+          rgba(38, 30, 22, 0.75) 100%
+        );
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
         border-radius: 20px;
@@ -456,14 +485,21 @@
         align-items: center;
         gap: 16px;
         border: 1.5px solid rgba(255, 208, 59, 0.28);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        box-shadow:
+          0 10px 25px rgba(0, 0, 0, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition:
+          transform 0.2s,
+          border-color 0.2s,
+          box-shadow 0.2s;
       }
 
       .stat-card:hover {
         transform: translateY(-3px);
         border-color: var(--gold-main);
-        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45), 0 0 16px rgba(255, 208, 59, 0.22);
+        box-shadow:
+          0 14px 32px rgba(0, 0, 0, 0.45),
+          0 0 16px rgba(255, 208, 59, 0.22);
       }
 
       .stat-icon {
@@ -772,8 +808,12 @@
         font-size: 0.74rem;
         font-weight: 800;
       }
-      .status-adopsi.sudah { color: #42bfa9; }
-      .status-adopsi.belum { color: rgba(255, 255, 255, 0.6); }
+      .status-adopsi.sudah {
+        color: #42bfa9;
+      }
+      .status-adopsi.belum {
+        color: rgba(255, 255, 255, 0.6);
+      }
 
       /* ========================================================
          PAGE 4: PROGRAM ADOPSI (PDF Page 5)
@@ -900,9 +940,15 @@
         height: 100%;
         border-radius: var(--radius-pill);
       }
-      .prog-fill.red { background: #ff5252; }
-      .prog-fill.yellow { background: var(--gold-main); }
-      .prog-fill.green { background: #42bfa9; }
+      .prog-fill.red {
+        background: #ff5252;
+      }
+      .prog-fill.yellow {
+        background: var(--gold-main);
+      }
+      .prog-fill.green {
+        background: #42bfa9;
+      }
 
       /* ========================================================
          PAGE 5: PROGRAM KOLABORASI (PDF Page 6)
@@ -1069,7 +1115,6 @@
         display: flex !important;
       }
 
-      
       /* Category Buttons in Modal (Matching PDF Page 9) */
       .role-grid-buttons {
         display: flex;
@@ -1108,7 +1153,6 @@
         display: flex !important;
       }
 
-      
       /* Google Sheet Import & Phase Upload Styling */
       .upload-phase-box {
         background: rgba(255, 255, 255, 0.05);
@@ -1133,7 +1177,9 @@
         text-align: center;
         background: rgba(255, 255, 255, 0.03);
         cursor: pointer;
-        transition: background 0.2s, border-color 0.2s;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
       }
       .import-drop-zone:hover {
         background: rgba(255, 208, 59, 0.06);
@@ -1358,8 +1404,14 @@
       }
 
       @keyframes toastSlide {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
       }
 
       /* Stepper Tahapan (Matching PDF Page 13) */
@@ -1443,9 +1495,15 @@
       }
 
       @keyframes pulseActive {
-        0% { box-shadow: 0 0 0 0 rgba(255, 208, 59, 0.6); }
-        70% { box-shadow: 0 0 0 10px rgba(255, 208, 59, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(255, 208, 59, 0); }
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 208, 59, 0.6);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(255, 208, 59, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 208, 59, 0);
+        }
       }
 
       .step-node span {
@@ -1480,9 +1538,15 @@
       }
 
       @keyframes pulseDot {
-        0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-        70% { box-shadow: 0 0 0 7px rgba(245, 158, 11, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        0% {
+          box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 7px rgba(245, 158, 11, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+        }
       }
 
       /* Locked Documentation Notice */
@@ -1534,7 +1598,9 @@
         border-radius: 12px;
         padding: 10px 12px;
         cursor: pointer;
-        transition: border-color 0.2s, background 0.2s;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
       }
 
       .tahap-radio-btn:hover {
@@ -1654,9 +1720,16 @@
 
       /* Responsive */
       @media (max-width: 900px) {
-        body { padding: 0; }
-        .app-shell { grid-template-columns: 1fr; border-radius: 0; }
-        .btn-hamburger { display: inline-flex; }
+        body {
+          padding: 0;
+        }
+        .app-shell {
+          grid-template-columns: 1fr;
+          border-radius: 0;
+        }
+        .btn-hamburger {
+          display: inline-flex;
+        }
 
         /* Sidebar jadi laci (drawer) yang meluncur dari kiri */
         .sidebar {
@@ -1680,37 +1753,86 @@
           padding: 18px 16px 40px;
         }
 
-        .topbar { align-items: center; }
-        .topbar-left h1 { font-size: 1.25rem; }
-        .topbar-left p { font-size: 0.78rem; }
-        .profile-header-name { max-width: 110px; }
+        .topbar {
+          align-items: center;
+        }
+        .topbar-left h1 {
+          font-size: 1.25rem;
+        }
+        .topbar-left p {
+          font-size: 0.78rem;
+        }
+        .profile-header-name {
+          max-width: 110px;
+        }
 
-        .stats-row { grid-template-columns: repeat(2, 1fr); }
-        .charts-row, .adopt-cards-grid, .info-row-2col, .tour-grid, .invest-grid, .tahap-radio-group { grid-template-columns: 1fr; }
-        .quick-grid { grid-template-columns: repeat(2, 1fr); }
-        .tumbuh-gold-header, .tumbuh-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .stats-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .charts-row,
+        .adopt-cards-grid,
+        .info-row-2col,
+        .tour-grid,
+        .invest-grid,
+        .tahap-radio-group {
+          grid-template-columns: 1fr;
+        }
+        .quick-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .tumbuh-gold-header,
+        .tumbuh-row {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
 
-        .modal-card-dark, .modal-card-lightblue, .modal-card-deepblue {
+        .modal-card-dark,
+        .modal-card-lightblue,
+        .modal-card-deepblue {
           padding: 22px 18px;
         }
       }
 
       @media (max-width: 640px) {
-        .main-wrap { padding: 16px 14px 36px; }
-        .stats-row, .quick-grid, .phase-cards-grid, .form-row-2col { grid-template-columns: 1fr; }
+        .main-wrap {
+          padding: 16px 14px 36px;
+        }
+        .stats-row,
+        .quick-grid,
+        .phase-cards-grid,
+        .form-row-2col {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 480px) {
-        .map-box { height: 260px; }
-        .topbar-left h1 { font-size: 1.08rem; }
-        .topbar-left p { font-size: 0.72rem; }
-        .profile-header-name { max-width: 82px; }
-        .modal-overlay { padding: 10px; }
-        .modal-card-dark, .modal-card-lightblue, .modal-card-deepblue {
+        .map-box {
+          height: 260px;
+        }
+        .topbar-left h1 {
+          font-size: 1.08rem;
+        }
+        .topbar-left p {
+          font-size: 0.72rem;
+        }
+        .profile-header-name {
+          max-width: 82px;
+        }
+        .modal-overlay {
+          padding: 10px;
+        }
+        .modal-card-dark,
+        .modal-card-lightblue,
+        .modal-card-deepblue {
           padding: 18px 14px;
         }
-        .modal-header-yellow h2 { font-size: 1.08rem; }
-        .btn { padding: 10px 16px; font-size: 0.82rem; }
+        .modal-header-yellow h2 {
+          font-size: 1.08rem;
+        }
+        .btn {
+          padding: 10px 16px;
+          font-size: 0.82rem;
+        }
       }
     </style>
   </head>
@@ -1790,13 +1912,19 @@
         <div class="sidebar-footer">
           <div class="role-info-card">
             <small id="sideRoleTag">TAMU / PENGUNJUNG</small>
-            <p id="sideRoleDesc">Silakan Masuk atau Daftar untuk akses fitur penuh.</p>
+            <p id="sideRoleDesc">
+              Silakan Masuk atau Daftar untuk akses fitur penuh.
+            </p>
           </div>
         </div>
       </aside>
 
       <!-- OVERLAY GELAP SAAT SIDEBAR DIBUKA DI LAYAR PONSEL -->
-      <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+      <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+        onclick="closeSidebar()"
+      ></div>
 
       <!-- MAIN WRAPPER -->
       <main class="main-wrap">
@@ -1804,7 +1932,11 @@
         <header class="topbar">
           <div class="topbar-left">
             <div class="topbar-left-row">
-              <button class="btn-hamburger" onclick="toggleSidebar()" aria-label="Buka menu navigasi">
+              <button
+                class="btn-hamburger"
+                onclick="toggleSidebar()"
+                aria-label="Buka menu navigasi"
+              >
                 <i data-lucide="menu"></i>
               </button>
               <div>
@@ -1828,8 +1960,13 @@
                 <span class="profile-header-name" id="topUserName"
                   >Tamu / Belum Masuk</span
                 >
-                <span class="profile-header-role" id="topUserRole" style="display:inline-flex; align-items:center; gap:4px;">
-                  <i data-lucide="log-in" style="width:12px; height:12px;"></i> Masuk / Daftar
+                <span
+                  class="profile-header-role"
+                  id="topUserRole"
+                  style="display: inline-flex; align-items: center; gap: 4px"
+                >
+                  <i data-lucide="log-in" style="width: 12px; height: 12px"></i>
+                  Masuk / Daftar
                 </span>
               </div>
             </div>
@@ -1910,7 +2047,9 @@
            ======================================================== -->
         <section id="page-informasi" class="page-view">
           <div class="info-page-wrap">
-            <h2 class="info-main-title">Kenapa Blue Turtle Squad (BTS) Dibentuk?</h2>
+            <h2 class="info-main-title">
+              Kenapa Blue Turtle Squad (BTS) Dibentuk?
+            </h2>
 
             <!-- Card 1: Kondisi Saat Ini (Full Width Top) -->
             <div class="info-card">
@@ -1928,9 +2067,9 @@
               <div class="info-card">
                 <div class="info-pill-badge">Tantangan yang Dihadapi</div>
                 <p>
-                  Pengelolaan belum optimal, partisipasi masyarakat masih rendah,
-                  serta belum ada sistem yang menyatukan seluruh pihak dalam satu
-                  wadah.
+                  Pengelolaan belum optimal, partisipasi masyarakat masih
+                  rendah, serta belum ada sistem yang menyatukan seluruh pihak
+                  dalam satu wadah.
                 </p>
               </div>
 
@@ -1938,8 +2077,8 @@
                 <div class="info-pill-badge">Solusi yang Dihadirkan</div>
                 <p>
                   Blue Turtle Squad (BTS) hadir sebagai platform digital yang
-                  menghubungkan pengelola, masyarakat, dan mitra dalam satu sistem
-                  kolaborasi.
+                  menghubungkan pengelola, masyarakat, dan mitra dalam satu
+                  sistem kolaborasi.
                 </p>
               </div>
             </div>
@@ -1998,7 +2137,11 @@
           </div>
 
           <!-- Action Buttons (Impor & Tambah) - Khusus Petugas (Pendata, Admin, Super Admin) -->
-          <div class="action-btns-row" id="rowPetugasPendaratanActions" style="display: none;">
+          <div
+            class="action-btns-row"
+            id="rowPetugasPendaratanActions"
+            style="display: none"
+          >
             <button class="btn btn-dark-pill" id="btnImporSample">
               <i data-lucide="sheet"></i>
               <span>Impor +</span>
@@ -2136,13 +2279,47 @@
           </h2>
 
           <!-- Notice Petugas on Page Adopsi -->
-          <div id="noticePetugasAdopsi" style="display:none; background: rgba(255,208,59,0.14); border: 1.5px solid var(--gold-main); border-radius: 14px; padding: 12px 18px; margin-bottom: 16px; font-size: 0.84rem; color: #ffffff;">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <i data-lucide="shield-check" style="color: var(--gold-main); width: 22px; height: 22px; flex-shrink: 0;"></i>
-                <span><strong>Panel Petugas:</strong> Anda dapat mengklik tombol <strong>Upload Fase</strong> di setiap baris sarang untuk mengisi/mengunggah foto & penjelasan Fase 1, 2, dan 3.</span>
+          <div
+            id="noticePetugasAdopsi"
+            style="
+              display: none;
+              background: rgba(255, 208, 59, 0.14);
+              border: 1.5px solid var(--gold-main);
+              border-radius: 14px;
+              padding: 12px 18px;
+              margin-bottom: 16px;
+              font-size: 0.84rem;
+              color: #ffffff;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 10px">
+                <i
+                  data-lucide="shield-check"
+                  style="
+                    color: var(--gold-main);
+                    width: 22px;
+                    height: 22px;
+                    flex-shrink: 0;
+                  "
+                ></i>
+                <span
+                  ><strong>Panel Petugas:</strong> Anda dapat mengklik tombol
+                  <strong>Upload Fase</strong> di setiap baris sarang untuk
+                  mengisi/mengunggah foto & penjelasan Fase 1, 2, dan 3.</span
+                >
               </div>
-              <span class="badge-pill badge-sisik" style="font-size: 0.72rem;">Akses Petugas Aktif</span>
+              <span class="badge-pill badge-sisik" style="font-size: 0.72rem"
+                >Akses Petugas Aktif</span
+              >
             </div>
           </div>
 
@@ -2165,8 +2342,17 @@
            PAGE 5: PROGRAM KOLABORASI (Matching PDF Page 6)
            ======================================================== -->
         <section id="page-kolaborasi" class="page-view">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h2 style="font-size: 1.6rem; font-weight: 900;">Mitra Yang Aktif</h2>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+            "
+          >
+            <h2 style="font-size: 1.6rem; font-weight: 900">
+              Mitra Yang Aktif
+            </h2>
             <button class="btn btn-gold-fill" onclick="openModal('modalMitra')">
               <span>Gabung Jadi Mitra</span>
             </button>
@@ -2174,27 +2360,73 @@
 
           <!-- Pemerintahan (PDF Page 6) -->
           <div style="margin-bottom: 34px">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 14px;
+              "
+            >
               <div class="info-pill-badge">Pemerintahan</div>
-              <a href="#" style="color: var(--gold-main); font-size: 0.88rem; font-weight: 700;">
+              <a
+                href="#"
+                style="
+                  color: var(--gold-main);
+                  font-size: 0.88rem;
+                  font-weight: 700;
+                "
+              >
                 selengkapnya →
               </a>
             </div>
             <div class="partner-list-row">
               <div class="partner-circle" title="Primo Indo Ikan">
-                <i data-lucide="fish" style="width: 34px; height: 34px; color: #0288d1; margin-bottom: 6px;"></i>
+                <i
+                  data-lucide="fish"
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    color: #0288d1;
+                    margin-bottom: 6px;
+                  "
+                ></i>
                 <span>PRIMO INDO IKAN</span>
               </div>
               <div class="partner-circle" title="Lorem Ipsum">
-                <i data-lucide="shield" style="width: 34px; height: 34px; color: #10b981; margin-bottom: 6px;"></i>
+                <i
+                  data-lucide="shield"
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    color: #10b981;
+                    margin-bottom: 6px;
+                  "
+                ></i>
                 <span>LOREM IPSUM</span>
               </div>
               <div class="partner-circle" title="PT Lautan Indo Prima">
-                <i data-lucide="ship" style="width: 34px; height: 34px; color: #0d9488; margin-bottom: 6px;"></i>
+                <i
+                  data-lucide="ship"
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    color: #0d9488;
+                    margin-bottom: 6px;
+                  "
+                ></i>
                 <span>PT. LAUTAN INDO PRIMA</span>
               </div>
               <div class="partner-circle" title="BKSDA">
-                <i data-lucide="trees" style="width: 34px; height: 34px; color: #059669; margin-bottom: 6px;"></i>
+                <i
+                  data-lucide="trees"
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    color: #059669;
+                    margin-bottom: 6px;
+                  "
+                ></i>
                 <span>BKSDA</span>
               </div>
             </div>
@@ -2202,23 +2434,61 @@
 
           <!-- Swasta (PDF Page 6) -->
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 14px;
+              "
+            >
               <div class="info-pill-badge">Swasta</div>
-              <a href="#" style="color: var(--gold-main); font-size: 0.88rem; font-weight: 700;">
+              <a
+                href="#"
+                style="
+                  color: var(--gold-main);
+                  font-size: 0.88rem;
+                  font-weight: 700;
+                "
+              >
                 selengkapnya →
               </a>
             </div>
             <div class="partner-list-row">
               <div class="partner-circle" title="One Fish">
-                <i data-lucide="anchor" style="width: 34px; height: 34px; color: #e11d48; margin-bottom: 6px;"></i>
+                <i
+                  data-lucide="anchor"
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    color: #e11d48;
+                    margin-bottom: 6px;
+                  "
+                ></i>
                 <span>ONE FISH</span>
               </div>
               <div class="partner-circle" title="CV Tuna Jaya Manado">
-                <i data-lucide="waves" style="width: 34px; height: 34px; color: #2563eb; margin-bottom: 6px;"></i>
+                <i
+                  data-lucide="waves"
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    color: #2563eb;
+                    margin-bottom: 6px;
+                  "
+                ></i>
                 <span>CV TUNA JAYA</span>
               </div>
               <div class="partner-circle" title="Mina Dwi Sempurna">
-                <i data-lucide="compass" style="width: 34px; height: 34px; color: #ea580c; margin-bottom: 6px;"></i>
+                <i
+                  data-lucide="compass"
+                  style="
+                    width: 34px;
+                    height: 34px;
+                    color: #ea580c;
+                    margin-bottom: 6px;
+                  "
+                ></i>
                 <span>MINA DWI SEMPURNA</span>
               </div>
             </div>
@@ -2226,8 +2496,17 @@
 
           <!-- Berita & Kegiatan Mitra -->
           <div class="table-card-wrapper" style="margin-top: 30px">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <h3 style="font-size: 1.15rem; font-weight: 900;">Berita & Kegiatan Mitra</h3>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 16px;
+              "
+            >
+              <h3 style="font-size: 1.15rem; font-weight: 900">
+                Berita & Kegiatan Mitra
+              </h3>
               <button
                 class="btn btn-gold-fill"
                 id="btnTambahBerita"
@@ -2262,8 +2541,8 @@
               <div>
                 <h3>Paket Konservasi Mangkai</h3>
                 <p>
-                  Observasi sarang penyu alami, jelajah pantai, edukasi
-                  bersama ranger loka, dan snorkeling di terumbu karang.
+                  Observasi sarang penyu alami, jelajah pantai, edukasi bersama
+                  ranger loka, dan snorkeling di terumbu karang.
                 </p>
               </div>
               <div
@@ -2295,8 +2574,8 @@
                 <h3>Paket Relawan & Pelepasan Tukik</h3>
                 <p>
                   Pengalaman patroli malam mencari jejak pendaratan,
-                  penyelamatan sarang rawan abrasi, dan pelepasan tukik ke
-                  laut lepas.
+                  penyelamatan sarang rawan abrasi, dan pelepasan tukik ke laut
+                  lepas.
                 </p>
               </div>
               <div
@@ -2316,50 +2595,109 @@
           <div class="invest-grid">
             <div class="invest-card">
               <h3>Fasilitas Penetasan Semi-Alami</h3>
-              <p>Pembangunan inkubator pasir terlindung predator di pantai Mangkai.</p>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 8px;">
+              <p>
+                Pembangunan inkubator pasir terlindung predator di pantai
+                Mangkai.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 0.8rem;
+                  margin-top: 8px;
+                "
+              >
                 <span>Terkumpul: <strong>Rp 18.500.000</strong></span>
                 <span>Target: <strong>Rp 25.000.000</strong></span>
               </div>
-              <div class="prog-track"><div class="prog-fill green" style="width: 74%"></div></div>
+              <div class="prog-track">
+                <div class="prog-fill green" style="width: 74%"></div>
+              </div>
             </div>
 
             <div class="invest-card">
               <h3>Smart IoT Sensor & CCTV Sarang</h3>
-              <p>Sensor suhu tanah tenaga surya untuk rasio penetasan optimal.</p>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 8px;">
+              <p>
+                Sensor suhu tanah tenaga surya untuk rasio penetasan optimal.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 0.8rem;
+                  margin-top: 8px;
+                "
+              >
                 <span>Terkumpul: <strong>Rp 12.000.000</strong></span>
                 <span>Target: <strong>Rp 18.000.000</strong></span>
               </div>
-              <div class="prog-track"><div class="prog-fill yellow" style="width: 66%"></div></div>
+              <div class="prog-track">
+                <div class="prog-fill yellow" style="width: 66%"></div>
+              </div>
             </div>
 
             <div class="invest-card">
               <h3>Speedboat Patroli Konservasi</h3>
-              <p>Kapal patroli cepat pengawasan terumbu karang dan pulau terluar.</p>
-              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 8px;">
+              <p>
+                Kapal patroli cepat pengawasan terumbu karang dan pulau terluar.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 0.8rem;
+                  margin-top: 8px;
+                "
+              >
                 <span>Terkumpul: <strong>Rp 42.000.000</strong></span>
                 <span>Target: <strong>Rp 65.000.000</strong></span>
               </div>
-              <div class="prog-track"><div class="prog-fill yellow" style="width: 64%"></div></div>
+              <div class="prog-track">
+                <div class="prog-fill yellow" style="width: 64%"></div>
+              </div>
             </div>
           </div>
 
           <div class="invest-wide-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <h3 style="font-size: 1.25rem; font-weight: 900;">Dana Lestari Ranger Pesisir</h3>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 12px;
+              "
+            >
+              <h3 style="font-size: 1.25rem; font-weight: 900">
+                Dana Lestari Ranger Pesisir
+              </h3>
               <button class="btn btn-gold-fill" onclick="openInvestModal()">
                 Ajukan Investasi / Donasi
               </button>
             </div>
-            <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 12px;">
-              Insentif rutin bagi relawan pemuda lokal penjaga sarang peneluran malam hari.
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+              "
+            >
+              Insentif rutin bagi relawan pemuda lokal penjaga sarang peneluran
+              malam hari.
             </p>
-            <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.82rem;
+                margin-bottom: 6px;
+              "
+            >
               <span>Terkumpul: <strong>Rp 35.000.000</strong></span>
               <span>Target: <strong>Rp 50.000.000</strong></span>
             </div>
-            <div class="prog-track"><div class="prog-fill green" style="width: 70%"></div></div>
+            <div class="prog-track">
+              <div class="prog-fill green" style="width: 70%"></div>
+            </div>
           </div>
         </section>
 
@@ -2403,22 +2741,43 @@
 
             <div class="report-card">
               <h3>Program Kolaborasi</h3>
-              <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6;">
-                Total 24 mitra institusi aktif bekerjasama dalam pengawasan kawasan konservasi terpadu Anambas.
+              <p
+                style="
+                  color: rgba(255, 255, 255, 0.85);
+                  font-size: 0.95rem;
+                  line-height: 1.6;
+                "
+              >
+                Total 24 mitra institusi aktif bekerjasama dalam pengawasan
+                kawasan konservasi terpadu Anambas.
               </p>
             </div>
 
             <div class="report-card">
               <h3>Program Wisata Bahari</h3>
-              <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6;">
-                Tercatat 142 wisatawan edukasi telah mengunjungi Pulau Mangkai dan mengikuti program konservasi.
+              <p
+                style="
+                  color: rgba(255, 255, 255, 0.85);
+                  font-size: 0.95rem;
+                  line-height: 1.6;
+                "
+              >
+                Tercatat 142 wisatawan edukasi telah mengunjungi Pulau Mangkai
+                dan mengikuti program konservasi.
               </p>
             </div>
 
             <div class="report-card">
               <h3>Program Investasi</h3>
-              <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6;">
-                Realisasi pendanaan mencapai Rp. 107.500.000 (68% dari total target sarana konservasi).
+              <p
+                style="
+                  color: rgba(255, 255, 255, 0.85);
+                  font-size: 0.95rem;
+                  line-height: 1.6;
+                "
+              >
+                Realisasi pendanaan mencapai Rp. 107.500.000 (68% dari total
+                target sarana konservasi).
               </p>
             </div>
           </div>
@@ -2429,9 +2788,21 @@
            ======================================================== -->
         <section id="page-pengguna" class="page-view">
           <div class="table-card-wrapper">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-              <h2 style="font-size: 1.4rem; font-weight: 900;">Kelola Pengguna</h2>
-              <button class="btn btn-gold-fill" onclick="openModal('modalTambahUser')">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 18px;
+              "
+            >
+              <h2 style="font-size: 1.4rem; font-weight: 900">
+                Kelola Pengguna
+              </h2>
+              <button
+                class="btn btn-gold-fill"
+                onclick="openModal('modalTambahUser')"
+              >
                 + Tambah Pengguna
               </button>
             </div>
@@ -2464,7 +2835,10 @@
     <div class="modal-overlay" id="modalTambahPendaratan">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalTambahPendaratan')">
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalTambahPendaratan')"
+          >
             &times;
           </button>
           <h2>TAMBAH PENDARATAN PENYU</h2>
@@ -2549,7 +2923,10 @@
     <div class="modal-overlay" id="modalKategoriAkun">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalKategoriAkun')">
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalKategoriAkun')"
+          >
             &times;
           </button>
           <h2>Pilih Kategori Akun</h2>
@@ -2582,11 +2959,11 @@
           </div>
         </div>
 
-        <div style="display: flex; gap: 14px; margin-top: 14px;">
+        <div style="display: flex; gap: 14px; margin-top: 14px">
           <button
             type="button"
             class="btn btn-mint-outline"
-            style="flex: 1; padding: 13px; font-size: 0.92rem;"
+            style="flex: 1; padding: 13px; font-size: 0.92rem"
             onclick="switchAccountRole(selectedCategory)"
           >
             MASUK
@@ -2594,17 +2971,21 @@
           <button
             type="button"
             class="btn btn-dark-pill"
-            style="flex: 1; padding: 13px; font-size: 0.92rem;"
+            style="flex: 1; padding: 13px; font-size: 0.92rem"
             onclick="openAuthModal('register')"
           >
             DAFTAR
           </button>
         </div>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div style="text-align: center; margin-top: 12px">
           <a
             href="#"
-            style="color: rgba(255,255,255,0.7); font-size: 0.8rem; text-decoration: underline;"
+            style="
+              color: rgba(255, 255, 255, 0.7);
+              font-size: 0.8rem;
+              text-decoration: underline;
+            "
             onclick="openAuthModal('login')"
           >
             Masuk dengan Email &amp; Password Lain
@@ -2621,7 +3002,10 @@
         <div class="modal-header-yellow">
           <button
             class="btn-modal-back"
-            onclick="closeModal('modalLogin'); openModal('modalKategoriAkun');"
+            onclick="
+              closeModal('modalLogin');
+              openModal('modalKategoriAkun');
+            "
           >
             &lt;
           </button>
@@ -2669,7 +3053,11 @@
           <div style="text-align: center; margin-top: 16px">
             <a
               href="#"
-              style="color: var(--gold-main); font-size: 0.86rem; font-weight: 800"
+              style="
+                color: var(--gold-main);
+                font-size: 0.86rem;
+                font-weight: 800;
+              "
               onclick="openAuthModal('register')"
             >
               Belum punya akun? DAFTAR
@@ -2687,7 +3075,10 @@
         <div class="modal-header-yellow">
           <button
             class="btn-modal-back"
-            onclick="closeModal('modalRegister'); openModal('modalKategoriAkun');"
+            onclick="
+              closeModal('modalRegister');
+              openModal('modalKategoriAkun');
+            "
           >
             &lt;
           </button>
@@ -2755,7 +3146,11 @@
           <div style="text-align: center; margin-top: 16px">
             <a
               href="#"
-              style="color: var(--gold-main); font-size: 0.86rem; font-weight: 800"
+              style="
+                color: var(--gold-main);
+                font-size: 0.86rem;
+                font-weight: 800;
+              "
               onclick="openAuthModal('login')"
             >
               Sudah punya akun? MASUK
@@ -2786,7 +3181,12 @@
           >
             &times;
           </button>
-          <h2 style="color: var(--gold-main); text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
+          <h2
+            style="
+              color: var(--gold-main);
+              text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            "
+          >
             Silahkan Isi Form Adopsi Ya!
           </h2>
         </div>
@@ -2821,7 +3221,7 @@
           <div class="form-row">
             <label>
               Id Sarang
-              <small style="color: #2b3b47; font-weight: 600;">
+              <small style="color: #2b3b47; font-weight: 600">
                 (Wajib di isi dan Otomatis Wajib Pilih dari Jumlah Sarang)
               </small>
             </label>
@@ -2836,18 +3236,50 @@
           </div>
 
           <!-- LANGKAH 1: BUTTON BUKA GOOGLE FORM -->
-          <div style="background: rgba(255, 208, 59, 0.25); border: 2px solid var(--gold-main); border-radius: 16px; padding: 16px; margin: 20px 0 16px; text-align: center;">
-            <div style="font-weight: 900; font-size: 0.95rem; color: #171a20; margin-bottom: 6px;">
+          <div
+            style="
+              background: rgba(255, 208, 59, 0.25);
+              border: 2px solid var(--gold-main);
+              border-radius: 16px;
+              padding: 16px;
+              margin: 20px 0 16px;
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                font-weight: 900;
+                font-size: 0.95rem;
+                color: #171a20;
+                margin-bottom: 6px;
+              "
+            >
               Langkah 1: Pembayaran via Google Form
             </div>
-            <p style="font-size: 0.8rem; color: #171a20; font-weight: 700; margin-bottom: 12px; line-height: 1.4;">
-              Silakan klik tombol di bawah untuk membuka Google Form Pembayaran Resmi BTS. Kolom upload bukti pembayaran akan <strong>muncul otomatis</strong> setelah tombol ini diklik.
+            <p
+              style="
+                font-size: 0.8rem;
+                color: #171a20;
+                font-weight: 700;
+                margin-bottom: 12px;
+                line-height: 1.4;
+              "
+            >
+              Silakan klik tombol di bawah untuk membuka Google Form Pembayaran
+              Resmi BTS. Kolom upload bukti pembayaran akan
+              <strong>muncul otomatis</strong> setelah tombol ini diklik.
             </p>
             <button
               type="button"
               id="btnBukaGoogleFormBayar"
               class="btn btn-gold-fill"
-              style="width: 100%; padding: 13px; font-weight: 900; font-size: 0.94rem; box-shadow: 0 4px 15px rgba(255,208,59,0.4);"
+              style="
+                width: 100%;
+                padding: 13px;
+                font-weight: 900;
+                font-size: 0.94rem;
+                box-shadow: 0 4px 15px rgba(255, 208, 59, 0.4);
+              "
               onclick="bukaGoogleFormDanTampilkanUpload()"
             >
               <i data-lucide="external-link"></i>
@@ -2856,24 +3288,57 @@
           </div>
 
           <!-- LANGKAH 2: UPLOAD BUKTI PEMBAYARAN (MUNCUL OTOMATIS SETELAH KLIK TOMBOL GFORM) -->
-          <div id="sectionUploadBuktiAdopsi" style="display: none; animation: fadeIn 0.3s ease;">
-            <div style="background: rgba(66, 191, 169, 0.3); border: 1.5px solid var(--mint-primary); border-radius: 14px; padding: 12px 16px; margin-bottom: 14px;">
-              <div style="display: flex; align-items: center; gap: 8px; color: #064e3b; font-weight: 800; font-size: 0.85rem;">
-                <i data-lucide="check-circle" style="color: var(--mint-primary); width: 20px; height: 20px; flex-shrink: 0;"></i>
-                <span>Google Form telah dibuka! Silakan lampirkan bukti transfer di bawah ini:</span>
+          <div
+            id="sectionUploadBuktiAdopsi"
+            style="display: none; animation: fadeIn 0.3s ease"
+          >
+            <div
+              style="
+                background: rgba(66, 191, 169, 0.3);
+                border: 1.5px solid var(--mint-primary);
+                border-radius: 14px;
+                padding: 12px 16px;
+                margin-bottom: 14px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  color: #064e3b;
+                  font-weight: 800;
+                  font-size: 0.85rem;
+                "
+              >
+                <i
+                  data-lucide="check-circle"
+                  style="
+                    color: var(--mint-primary);
+                    width: 20px;
+                    height: 20px;
+                    flex-shrink: 0;
+                  "
+                ></i>
+                <span
+                  >Google Form telah dibuka! Silakan lampirkan bukti transfer di
+                  bawah ini:</span
+                >
               </div>
             </div>
 
             <div class="form-row">
               <label>
                 Bukti Pembayaran / Struk Transfer
-                <small style="color: #2b3b47; font-weight: 700;">(PNG, JPEG, PDF, WORD)</small>
+                <small style="color: #2b3b47; font-weight: 700"
+                  >(PNG, JPEG, PDF, WORD)</small
+                >
               </label>
               <input
                 type="file"
                 id="inpAdopsiBukti"
                 class="pill-input-field"
-                style="background: #627d92; color: #fff;"
+                style="background: #627d92; color: #fff"
                 accept="image/*,.pdf,.doc,.docx"
               />
             </div>
@@ -2882,7 +3347,13 @@
               <button
                 type="submit"
                 class="btn btn-mint-fill"
-                style="flex: 1.3; padding: 13px; font-weight: 900; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(66,191,169,0.4);"
+                style="
+                  flex: 1.3;
+                  padding: 13px;
+                  font-weight: 900;
+                  font-size: 0.95rem;
+                  box-shadow: 0 4px 15px rgba(66, 191, 169, 0.4);
+                "
               >
                 <i data-lucide="check"></i>
                 <span>Ajukan Untuk Bayar</span>
@@ -2890,7 +3361,12 @@
               <button
                 type="button"
                 class="btn btn-dark-pill"
-                style="flex: 1; padding: 13px; font-weight: 800; font-size: 0.9rem;"
+                style="
+                  flex: 1;
+                  padding: 13px;
+                  font-weight: 800;
+                  font-size: 0.9rem;
+                "
                 onclick="openTahapanDetail()"
               >
                 Pantau Tahapan
@@ -2935,20 +3411,64 @@
         </div>
 
         <!-- Banner Khusus Petugas: Admin, Super Admin, Pendata -->
-        <div id="petugasTahapanBanner" style="display:none; background: rgba(255,208,59,0.14); border: 1.5px solid var(--gold-main); border-radius: 16px; padding: 14px 18px; margin-bottom: 20px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-            <div style="display:flex; align-items:center; gap:10px;">
-              <i data-lucide="shield-check" style="color:var(--gold-main); width:24px; height:24px; flex-shrink:0;"></i>
+        <div
+          id="petugasTahapanBanner"
+          style="
+            display: none;
+            background: rgba(255, 208, 59, 0.14);
+            border: 1.5px solid var(--gold-main);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 12px;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 10px">
+              <i
+                data-lucide="shield-check"
+                style="
+                  color: var(--gold-main);
+                  width: 24px;
+                  height: 24px;
+                  flex-shrink: 0;
+                "
+              ></i>
               <div>
-                <div style="color:var(--gold-main); font-size:0.92rem; font-weight:900;">
+                <div
+                  style="
+                    color: var(--gold-main);
+                    font-size: 0.92rem;
+                    font-weight: 900;
+                  "
+                >
                   PANEL PETUGAS (<span id="txtPetugasRole">Super Admin</span>)
                 </div>
-                <div style="color:rgba(255,255,255,0.85); font-size:0.78rem; margin-top:2px;">
-                  Anda dapat mengubah tahapan stepper garis proses dan mengunggah foto/catatan Fase 1, 2, 3 sarang ini.
+                <div
+                  style="
+                    color: rgba(255, 255, 255, 0.85);
+                    font-size: 0.78rem;
+                    margin-top: 2px;
+                  "
+                >
+                  Anda dapat mengubah tahapan stepper garis proses dan
+                  mengunggah foto/catatan Fase 1, 2, 3 sarang ini.
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-gold-fill" style="padding:8px 18px; font-size:0.82rem; font-weight:800;" onclick="openModalUploadDokumentasi(activeTahapanCode)">
+            <button
+              type="button"
+              class="btn btn-gold-fill"
+              style="padding: 8px 18px; font-size: 0.82rem; font-weight: 800"
+              onclick="openModalUploadDokumentasi(activeTahapanCode)"
+            >
               <i data-lucide="upload-cloud"></i>
               <span>Input / Upload Fase 1, 2, 3</span>
             </button>
@@ -2956,14 +3476,46 @@
         </div>
 
         <!-- Info Adopter & Sarang -->
-        <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.06); border-radius:14px; padding:10px 18px; margin-bottom:18px;">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 10px 18px;
+            margin-bottom: 18px;
+          "
+        >
           <div>
-            <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); display:block;">Pengadopsi</span>
-            <strong id="tahapanAdopterName" style="color:var(--gold-main); font-size:0.95rem;">-</strong>
+            <span
+              style="
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.6);
+                display: block;
+              "
+              >Pengadopsi</span
+            >
+            <strong
+              id="tahapanAdopterName"
+              style="color: var(--gold-main); font-size: 0.95rem"
+              >-</strong
+            >
           </div>
-          <div style="text-align:right;">
-            <span style="font-size:0.75rem; color:rgba(255,255,255,0.6); display:block;">Sarang</span>
-            <strong id="tahapanKodeSarang" style="color:#ffffff; font-size:0.95rem;">-</strong>
+          <div style="text-align: right">
+            <span
+              style="
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.6);
+                display: block;
+              "
+              >Sarang</span
+            >
+            <strong
+              id="tahapanKodeSarang"
+              style="color: #ffffff; font-size: 0.95rem"
+              >-</strong
+            >
           </div>
         </div>
 
@@ -2974,11 +3526,15 @@
             <div class="stepper-line-fill" id="stepperLineFill"></div>
 
             <div class="step-node" id="stepNode1">
-              <div class="step-icon-circle"><i data-lucide="user-plus"></i></div>
+              <div class="step-icon-circle">
+                <i data-lucide="user-plus"></i>
+              </div>
               <span>Mengisi Formulir</span>
             </div>
             <div class="step-node" id="stepNode2">
-              <div class="step-icon-circle"><i data-lucide="user-check"></i></div>
+              <div class="step-icon-circle">
+                <i data-lucide="user-check"></i>
+              </div>
               <span>Verifikasi Admin</span>
             </div>
             <div class="step-node" id="stepNode3">
@@ -2986,78 +3542,141 @@
               <span>Penyiapan Sertifikat</span>
             </div>
             <div class="step-node" id="stepNode4">
-              <div class="step-icon-circle"><i data-lucide="shield-check"></i></div>
+              <div class="step-icon-circle">
+                <i data-lucide="shield-check"></i>
+              </div>
               <span>Progres Adopsi</span>
             </div>
           </div>
 
           <div class="stepper-status-pill">
             <div class="status-pulsing-dot"></div>
-            <span id="stepperStatusText">Status: Sedang Diverifikasi oleh Admin</span>
+            <span id="stepperStatusText"
+              >Status: Sedang Diverifikasi oleh Admin</span
+            >
           </div>
         </div>
 
         <!-- PANEL KHUSUS ADMIN: Tentukan Tahapan Adopsi (Visible only for admin/super_admin) -->
-        <div class="admin-tahap-panel" id="adminTahapanControl" style="display:none;">
+        <div
+          class="admin-tahap-panel"
+          id="adminTahapanControl"
+          style="display: none"
+        >
           <div class="admin-panel-title">
             <i data-lucide="shield-check"></i>
             <span>Panel Kontrol Admin: Tentukan Tahapan Adopsi</span>
           </div>
-          <p style="font-size:0.78rem; color:rgba(255,255,255,0.8); margin-bottom:8px;">
-            Sebagai Admin, Anda dapat memajukan tahapan garis proses di atas. Sertifikat akan terbuka di <strong>Tahap 3</strong>, dan Dokumentasi sarang akan terbuka di <strong>Tahap 4 (Progres Adopsi)</strong>.
+          <p
+            style="
+              font-size: 0.78rem;
+              color: rgba(255, 255, 255, 0.8);
+              margin-bottom: 8px;
+            "
+          >
+            Sebagai Admin, Anda dapat memajukan tahapan garis proses di atas.
+            Sertifikat akan terbuka di <strong>Tahap 3</strong>, dan Dokumentasi
+            sarang akan terbuka di <strong>Tahap 4 (Progres Adopsi)</strong>.
           </p>
           <div class="tahap-radio-group">
             <label class="tahap-radio-btn">
-              <input type="radio" name="adminPilihTahap" value="1" onchange="previewAdminTahap(1)">
+              <input
+                type="radio"
+                name="adminPilihTahap"
+                value="1"
+                onchange="previewAdminTahap(1)"
+              />
               <div>
                 <strong>Tahap 1: Formulir</strong>
                 <span>Formulir masuk, menunggu verifikasi</span>
               </div>
             </label>
             <label class="tahap-radio-btn">
-              <input type="radio" name="adminPilihTahap" value="2" onchange="previewAdminTahap(2)">
+              <input
+                type="radio"
+                name="adminPilihTahap"
+                value="2"
+                onchange="previewAdminTahap(2)"
+              />
               <div>
                 <strong>Tahap 2: Verifikasi</strong>
                 <span>Sedang diproses oleh admin/petugas</span>
               </div>
             </label>
             <label class="tahap-radio-btn">
-              <input type="radio" name="adminPilihTahap" value="3" onchange="previewAdminTahap(3)">
+              <input
+                type="radio"
+                name="adminPilihTahap"
+                value="3"
+                onchange="previewAdminTahap(3)"
+              />
               <div>
                 <strong>Tahap 3: Sertifikat</strong>
                 <span>Sertifikat resmi terbit & siap diunduh</span>
               </div>
             </label>
             <label class="tahap-radio-btn">
-              <input type="radio" name="adminPilihTahap" value="4" onchange="previewAdminTahap(4)">
+              <input
+                type="radio"
+                name="adminPilihTahap"
+                value="4"
+                onchange="previewAdminTahap(4)"
+              />
               <div>
                 <strong>Tahap 4: Progres Adopsi</strong>
                 <span>Dokumentasi lengkap terbuka untuk adopter</span>
               </div>
             </label>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:0.78rem; color:rgba(255,255,255,0.8);">Progres (%):</span>
-              <select id="adminSelectProgress" class="pill-input-field" style="width:110px; padding:6px 14px; font-size:0.8rem; background:rgba(0,0,0,0.35);">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 12px;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 8px">
+              <span style="font-size: 0.78rem; color: rgba(255, 255, 255, 0.8)"
+                >Progres (%):</span
+              >
+              <select
+                id="adminSelectProgress"
+                class="pill-input-field"
+                style="
+                  width: 110px;
+                  padding: 6px 14px;
+                  font-size: 0.8rem;
+                  background: rgba(0, 0, 0, 0.35);
+                "
+              >
                 <option value="25">25%</option>
                 <option value="50">50%</option>
                 <option value="75">75%</option>
                 <option value="100">100%</option>
               </select>
             </div>
-            <button type="button" class="btn btn-gold-fill" style="padding:8px 22px; font-size:0.82rem;" onclick="simpanTahapAdmin()">
+            <button
+              type="button"
+              class="btn btn-gold-fill"
+              style="padding: 8px 22px; font-size: 0.82rem"
+              onclick="simpanTahapAdmin()"
+            >
               Simpan Tahapan
             </button>
           </div>
         </div>
 
         <!-- Tombol Unduh Sertifikat (Aktif di Tahap 3 & 4) -->
-        <div style="margin-bottom: 22px; text-align: center;">
-          <div id="boxSertifikatActive" style="display:none;">
+        <div style="margin-bottom: 22px; text-align: center">
+          <div id="boxSertifikatActive" style="display: none">
             <button
               class="btn btn-gold-fill"
-              style="padding: 12px 28px; font-size: 0.92rem; box-shadow: 0 0 20px rgba(255,208,59,0.35);"
+              style="
+                padding: 12px 28px;
+                font-size: 0.92rem;
+                box-shadow: 0 0 20px rgba(255, 208, 59, 0.35);
+              "
               onclick="bukaModalSertifikat()"
             >
               <i data-lucide="award"></i>
@@ -3067,7 +3686,12 @@
           <div id="boxSertifikatLocked">
             <button
               class="btn btn-dark-pill"
-              style="opacity: 0.6; cursor: not-allowed; padding: 10px 22px; font-size: 0.84rem;"
+              style="
+                opacity: 0.6;
+                cursor: not-allowed;
+                padding: 10px 22px;
+                font-size: 0.84rem;
+              "
               disabled
             >
               <i data-lucide="lock"></i>
@@ -3089,30 +3713,85 @@
 
         <!-- KONDISI 1: Terkunci jika belum masuk ke Progres Adopsi (Tahap 1, 2, 3) -->
         <div id="boxDokumentasiLocked" class="doc-locked-card">
-          <i data-lucide="lock" style="width: 44px; height: 44px; color: var(--gold-main); margin-bottom: 10px;"></i>
-          <h4 style="font-size: 1.05rem; font-weight: 900; color: #ffffff;">Dokumentasi Perkembangan Belum Terbuka</h4>
-          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); max-width: 480px; margin: 8px auto 0; line-height: 1.5;">
-            Sarang <strong id="lockedKodeSarang" style="color: var(--gold-main);">-</strong> saat ini masih dalam proses: 
-            <span id="lockedStatusTahap" style="color: var(--mint-btn); font-weight: 800;">Verifikasi</span>.<br>
-            Dokumentasi foto dan catatan perkembangan sarang (Fase 1, 2, dan 3) akan <strong>otomatis muncul</strong> di sini setelah disetujui Admin dan masuk ke tahap <strong>Progres Adopsi</strong>.
+          <i
+            data-lucide="lock"
+            style="
+              width: 44px;
+              height: 44px;
+              color: var(--gold-main);
+              margin-bottom: 10px;
+            "
+          ></i>
+          <h4 style="font-size: 1.05rem; font-weight: 900; color: #ffffff">
+            Dokumentasi Perkembangan Belum Terbuka
+          </h4>
+          <p
+            style="
+              font-size: 0.85rem;
+              color: rgba(255, 255, 255, 0.75);
+              max-width: 480px;
+              margin: 8px auto 0;
+              line-height: 1.5;
+            "
+          >
+            Sarang
+            <strong id="lockedKodeSarang" style="color: var(--gold-main)"
+              >-</strong
+            >
+            saat ini masih dalam proses:
+            <span
+              id="lockedStatusTahap"
+              style="color: var(--mint-btn); font-weight: 800"
+              >Verifikasi</span
+            >.<br />
+            Dokumentasi foto dan catatan perkembangan sarang (Fase 1, 2, dan 3)
+            akan <strong>otomatis muncul</strong> di sini setelah disetujui
+            Admin dan masuk ke tahap <strong>Progres Adopsi</strong>.
           </p>
         </div>
 
         <!-- KONDISI 2: Terbuka saat masuk ke Progres Adopsi (Tahap 4) -->
-        <div id="boxDokumentasiCards" class="phase-cards-grid" style="display:none;">
+        <div
+          id="boxDokumentasiCards"
+          class="phase-cards-grid"
+          style="display: none"
+        >
           <div class="phase-item-card">
             <div class="phase-head">Fase 1: Sarang & Telur</div>
             <div class="phase-img">
-              <img id="cardFase1Img"
+              <img
+                id="cardFase1Img"
                 src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80"
                 alt="Fase 1"
               />
             </div>
             <div class="phase-body">
-              <small id="cardFase1Tgl" style="color:var(--mint-primary); font-weight:800; display:block; margin-bottom:4px;">01 Agustus 2026</small>
+              <small
+                id="cardFase1Tgl"
+                style="
+                  color: var(--mint-primary);
+                  font-weight: 800;
+                  display: block;
+                  margin-bottom: 4px;
+                "
+                >01 Agustus 2026</small
+              >
               <strong>Penjelasan:</strong><br />
-              <span id="cardFase1Ket">Sarang diamankan di fasilitas semi-alami Mangkai Selatan. Telur dipindahkan dengan cermat dalam waktu &lt;2 jam.</span>
-              <button type="button" class="btn btn-dark-pill btnPetugasOnly" style="margin-top:10px; width:100%; font-size:0.74rem; padding:6px 10px;" onclick="openModalUploadDokumentasi(activeTahapanCode)">
+              <span id="cardFase1Ket"
+                >Sarang diamankan di fasilitas semi-alami Mangkai Selatan. Telur
+                dipindahkan dengan cermat dalam waktu &lt;2 jam.</span
+              >
+              <button
+                type="button"
+                class="btn btn-dark-pill btnPetugasOnly"
+                style="
+                  margin-top: 10px;
+                  width: 100%;
+                  font-size: 0.74rem;
+                  padding: 6px 10px;
+                "
+                onclick="openModalUploadDokumentasi(activeTahapanCode)"
+              >
                 <i data-lucide="edit-3"></i> Edit Foto & Catatan Fase 1
               </button>
             </div>
@@ -3121,16 +3800,39 @@
           <div class="phase-item-card">
             <div class="phase-head">Fase 2: Masa Inkubasi</div>
             <div class="phase-img">
-              <img id="cardFase2Img"
+              <img
+                id="cardFase2Img"
                 src="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=400&q=80"
                 alt="Fase 2"
               />
             </div>
             <div class="phase-body">
-              <small id="cardFase2Info" style="color:#0288d1; font-weight:800; display:block; margin-bottom:4px;">Hari ke-30 &bull; Suhu 28-30°C</small>
+              <small
+                id="cardFase2Info"
+                style="
+                  color: #0288d1;
+                  font-weight: 800;
+                  display: block;
+                  margin-bottom: 4px;
+                "
+                >Hari ke-30 &bull; Suhu 28-30°C</small
+              >
               <strong>Penjelasan:</strong><br />
-              <span id="cardFase2Ket">Masa inkubasi hari ke-30, suhu pasir terjaga stabil 28-30°C. Kondisi sarang aman dari predator.</span>
-              <button type="button" class="btn btn-dark-pill btnPetugasOnly" style="margin-top:10px; width:100%; font-size:0.74rem; padding:6px 10px;" onclick="openModalUploadDokumentasi(activeTahapanCode)">
+              <span id="cardFase2Ket"
+                >Masa inkubasi hari ke-30, suhu pasir terjaga stabil 28-30°C.
+                Kondisi sarang aman dari predator.</span
+              >
+              <button
+                type="button"
+                class="btn btn-dark-pill btnPetugasOnly"
+                style="
+                  margin-top: 10px;
+                  width: 100%;
+                  font-size: 0.74rem;
+                  padding: 6px 10px;
+                "
+                onclick="openModalUploadDokumentasi(activeTahapanCode)"
+              >
                 <i data-lucide="edit-3"></i> Edit Foto & Catatan Fase 2
               </button>
             </div>
@@ -3139,16 +3841,39 @@
           <div class="phase-item-card">
             <div class="phase-head">Fase 3: Pelepasan Tukik</div>
             <div class="phase-img">
-              <img id="cardFase3Img"
+              <img
+                id="cardFase3Img"
                 src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=400&q=80"
                 alt="Fase 3"
               />
             </div>
             <div class="phase-body">
-              <small id="cardFase3Info" style="color:#10b981; font-weight:800; display:block; margin-bottom:4px;">30 Agustus 2026 &bull; 88 Ekor</small>
+              <small
+                id="cardFase3Info"
+                style="
+                  color: #10b981;
+                  font-weight: 800;
+                  display: block;
+                  margin-bottom: 4px;
+                "
+                >30 Agustus 2026 &bull; 88 Ekor</small
+              >
               <strong>Penjelasan:</strong><br />
-              <span id="cardFase3Ket">Tukik menetas sehat 100% dan pelepasan bersama tim BTS ke habitat laut lepas Kepulauan Anambas.</span>
-              <button type="button" class="btn btn-dark-pill btnPetugasOnly" style="margin-top:10px; width:100%; font-size:0.74rem; padding:6px 10px;" onclick="openModalUploadDokumentasi(activeTahapanCode)">
+              <span id="cardFase3Ket"
+                >Tukik menetas sehat 100% dan pelepasan bersama tim BTS ke
+                habitat laut lepas Kepulauan Anambas.</span
+              >
+              <button
+                type="button"
+                class="btn btn-dark-pill btnPetugasOnly"
+                style="
+                  margin-top: 10px;
+                  width: 100%;
+                  font-size: 0.74rem;
+                  padding: 6px 10px;
+                "
+                onclick="openModalUploadDokumentasi(activeTahapanCode)"
+              >
                 <i data-lucide="edit-3"></i> Edit Foto & Catatan Fase 3
               </button>
             </div>
@@ -3156,13 +3881,19 @@
         </div>
 
         <!-- Tombol Khusus Petugas untuk Edit Dokumentasi di Modal -->
-        <div id="boxEditDocAction" style="margin-top: 14px; text-align: center; display: none;">
-          <button type="button" class="btn btn-mint-fill" onclick="openModalUploadDokumentasi(activeTahapanCode)">
+        <div
+          id="boxEditDocAction"
+          style="margin-top: 14px; text-align: center; display: none"
+        >
+          <button
+            type="button"
+            class="btn btn-mint-fill"
+            onclick="openModalUploadDokumentasi(activeTahapanCode)"
+          >
             <i data-lucide="edit-3"></i>
             <span>Upload / Edit Dokumentasi Fase Ini</span>
           </button>
         </div>
-
       </div>
     </div>
 
@@ -3170,80 +3901,301 @@
        MODAL 13: SERTIFIKAT ADOPSI RESMI PENYU (NEW)
        ======================================================== -->
     <div class="modal-overlay" id="modalSertifikatView">
-      <div class="modal-card-dark" style="max-width: 740px; padding: 0; overflow: hidden; border: 3px solid var(--gold-main); border-radius: 24px; box-shadow: 0 25px 70px rgba(0,0,0,0.8), 0 0 40px rgba(255,208,59,0.3);">
-        <div style="background: #ffffff; color: #111827; padding: 36px 40px; position: relative; font-family: 'Plus Jakarta Sans', sans-serif;">
+      <div
+        class="modal-card-dark"
+        style="
+          max-width: 740px;
+          padding: 0;
+          overflow: hidden;
+          border: 3px solid var(--gold-main);
+          border-radius: 24px;
+          box-shadow:
+            0 25px 70px rgba(0, 0, 0, 0.8),
+            0 0 40px rgba(255, 208, 59, 0.3);
+        "
+      >
+        <div
+          style="
+            background: #ffffff;
+            color: #111827;
+            padding: 36px 40px;
+            position: relative;
+            font-family: &quot;Plus Jakarta Sans&quot;, sans-serif;
+          "
+        >
           <!-- Ornate Certificate Inner Frame -->
-          <div style="border: 2px solid #b45309; padding: 25px 30px; position: relative; border-radius: 12px; background: #fffdfa;">
-            <button class="btn-modal-close" style="color: #6b7280; top: 10px; right: 10px;" onclick="closeModal('modalSertifikatView')">&times;</button>
-            
-            <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px;">
-              <img src="WhatsApp Image 2026-09-02 at 09.09.29 (1).jpeg" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #b45309;" alt="Logo BTS" />
-              <div style="text-align: center;">
-                <div style="font-size: 0.72rem; font-weight: 800; letter-spacing: 0.15em; color: #92400e; text-transform: uppercase;">Republik Indonesia &bull; Kepulauan Anambas</div>
-                <div style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 900; color: #1e3a8a; letter-spacing: 0.04em; margin-top: 2px;">BLUE TURTLE SQUAD (BTS)</div>
-                <div style="font-size: 0.7rem; color: #4b5563; font-weight: 600;">Inisiatif Kolaboratif Konservasi Penyu Laut Anambas</div>
+          <div
+            style="
+              border: 2px solid #b45309;
+              padding: 25px 30px;
+              position: relative;
+              border-radius: 12px;
+              background: #fffdfa;
+            "
+          >
+            <button
+              class="btn-modal-close"
+              style="color: #6b7280; top: 10px; right: 10px"
+              onclick="closeModal('modalSertifikatView')"
+            >
+              &times;
+            </button>
+
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                margin-bottom: 12px;
+              "
+            >
+              <img
+                src="WhatsApp Image 2026-09-02 at 09.09.29 (1).jpeg"
+                style="
+                  width: 70px;
+                  height: 70px;
+                  border-radius: 50%;
+                  border: 2px solid #b45309;
+                "
+                alt="Logo BTS"
+              />
+              <div style="text-align: center">
+                <div
+                  style="
+                    font-size: 0.72rem;
+                    font-weight: 800;
+                    letter-spacing: 0.15em;
+                    color: #92400e;
+                    text-transform: uppercase;
+                  "
+                >
+                  Republik Indonesia &bull; Kepulauan Anambas
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Outfit&quot;, sans-serif;
+                    font-size: 1.35rem;
+                    font-weight: 900;
+                    color: #1e3a8a;
+                    letter-spacing: 0.04em;
+                    margin-top: 2px;
+                  "
+                >
+                  BLUE TURTLE SQUAD (BTS)
+                </div>
+                <div
+                  style="font-size: 0.7rem; color: #4b5563; font-weight: 600"
+                >
+                  Inisiatif Kolaboratif Konservasi Penyu Laut Anambas
+                </div>
               </div>
             </div>
-            
-            <div style="text-align: center; margin: 18px 0 12px;">
-              <div style="font-size: 1.45rem; font-weight: 900; color: #b45309; font-family: 'Outfit', sans-serif; letter-spacing: 0.08em; text-transform: uppercase;">
+
+            <div style="text-align: center; margin: 18px 0 12px">
+              <div
+                style="
+                  font-size: 1.45rem;
+                  font-weight: 900;
+                  color: #b45309;
+                  font-family: &quot;Outfit&quot;, sans-serif;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                "
+              >
                 SERTIFIKAT PENGHARGAAN ADOPSI
               </div>
-              <div style="font-size: 0.78rem; font-style: italic; color: #6b7280; letter-spacing: 0.04em;">
+              <div
+                style="
+                  font-size: 0.78rem;
+                  font-style: italic;
+                  color: #6b7280;
+                  letter-spacing: 0.04em;
+                "
+              >
                 Certificate of Sea Turtle Nest Adoption
               </div>
-              <div style="font-size: 0.72rem; color: #9ca3af; margin-top: 4px;" id="certNoText">
+              <div
+                style="font-size: 0.72rem; color: #9ca3af; margin-top: 4px"
+                id="certNoText"
+              >
                 Nomor: BTS/CERT/2026/ANB-001
               </div>
             </div>
 
-            <div style="text-align: center; font-size: 0.85rem; color: #374151; margin: 14px 0 8px;">
-              Dengan penuh rasa bangga dan apresiasi setinggi-tingginya, sertifikat ini dianugerahkan kepada:
+            <div
+              style="
+                text-align: center;
+                font-size: 0.85rem;
+                color: #374151;
+                margin: 14px 0 8px;
+              "
+            >
+              Dengan penuh rasa bangga dan apresiasi setinggi-tingginya,
+              sertifikat ini dianugerahkan kepada:
             </div>
 
-            <div style="text-align: center; margin: 10px 0 14px;">
-              <div id="certAdopterName" style="font-family: 'Outfit', sans-serif; font-size: 1.7rem; font-weight: 900; color: #1e3a8a; border-bottom: 2px solid #b45309; display: inline-block; padding: 0 24px 6px;">
+            <div style="text-align: center; margin: 10px 0 14px">
+              <div
+                id="certAdopterName"
+                style="
+                  font-family: &quot;Outfit&quot;, sans-serif;
+                  font-size: 1.7rem;
+                  font-weight: 900;
+                  color: #1e3a8a;
+                  border-bottom: 2px solid #b45309;
+                  display: inline-block;
+                  padding: 0 24px 6px;
+                "
+              >
                 Siti Aminah
               </div>
             </div>
 
-            <div style="text-align: center; font-size: 0.84rem; color: #374151; line-height: 1.6; max-width: 520px; margin: 0 auto 20px;">
-              Atas dedikasi, partisipasi aktif, dan kontribusi nyata dalam program adopsi sarang penyu untuk menjaga kelestarian ekosistem laut Kepulauan Anambas pada sarang:
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px; margin-top: 10px; display: flex; justify-content: space-around;">
-                <div><small style="color:#64748b; display:block;">Kode Sarang</small><strong id="certKodeSarang" style="color:#1e293b;">SRG-001</strong></div>
-                <div><small style="color:#64748b; display:block;">Jenis Penyu</small><strong id="certJenisPenyu" style="color:#0284c7;">Penyu Sisik</strong></div>
-                <div><small style="color:#64748b; display:block;">Lokasi Pantai</small><strong id="certLokasi" style="color:#1e293b; text-transform:capitalize;">Mangkai Selatan</strong></div>
-                <div><small style="color:#64748b; display:block;">Jumlah Telur</small><strong id="certJumlahTelur" style="color:#16a34a;">90 Butir</strong></div>
+            <div
+              style="
+                text-align: center;
+                font-size: 0.84rem;
+                color: #374151;
+                line-height: 1.6;
+                max-width: 520px;
+                margin: 0 auto 20px;
+              "
+            >
+              Atas dedikasi, partisipasi aktif, dan kontribusi nyata dalam
+              program adopsi sarang penyu untuk menjaga kelestarian ekosistem
+              laut Kepulauan Anambas pada sarang:
+              <div
+                style="
+                  background: #f8fafc;
+                  border: 1px solid #e2e8f0;
+                  border-radius: 10px;
+                  padding: 10px;
+                  margin-top: 10px;
+                  display: flex;
+                  justify-content: space-around;
+                "
+              >
+                <div>
+                  <small style="color: #64748b; display: block"
+                    >Kode Sarang</small
+                  ><strong id="certKodeSarang" style="color: #1e293b"
+                    >SRG-001</strong
+                  >
+                </div>
+                <div>
+                  <small style="color: #64748b; display: block"
+                    >Jenis Penyu</small
+                  ><strong id="certJenisPenyu" style="color: #0284c7"
+                    >Penyu Sisik</strong
+                  >
+                </div>
+                <div>
+                  <small style="color: #64748b; display: block"
+                    >Lokasi Pantai</small
+                  ><strong
+                    id="certLokasi"
+                    style="color: #1e293b; text-transform: capitalize"
+                    >Mangkai Selatan</strong
+                  >
+                </div>
+                <div>
+                  <small style="color: #64748b; display: block"
+                    >Jumlah Telur</small
+                  ><strong id="certJumlahTelur" style="color: #16a34a"
+                    >90 Butir</strong
+                  >
+                </div>
               </div>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 22px; padding: 0 10px;">
-              <div style="text-align: center;">
-                <div style="font-size: 0.72rem; color: #64748b;">Anambas, <span id="certTanggal">28 Agustus 2026</span></div>
-                <div style="font-size: 0.78rem; font-weight: 800; color: #1e293b; margin-top: 36px; border-top: 1px solid #94a3b8; padding-top: 4px;">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-top: 22px;
+                padding: 0 10px;
+              "
+            >
+              <div style="text-align: center">
+                <div style="font-size: 0.72rem; color: #64748b">
+                  Anambas, <span id="certTanggal">28 Agustus 2026</span>
+                </div>
+                <div
+                  style="
+                    font-size: 0.78rem;
+                    font-weight: 800;
+                    color: #1e293b;
+                    margin-top: 36px;
+                    border-top: 1px solid #94a3b8;
+                    padding-top: 4px;
+                  "
+                >
                   Ketua Blue Turtle Squad
                 </div>
               </div>
-              <div style="text-align: center;">
-                <div style="width: 66px; height: 66px; border-radius: 50%; border: 2px dashed #b45309; display: flex; align-items: center; justify-content: center; margin: 0 auto; color: #b45309; font-size: 0.65rem; font-weight: 800; transform: rotate(-10deg);">
+              <div style="text-align: center">
+                <div
+                  style="
+                    width: 66px;
+                    height: 66px;
+                    border-radius: 50%;
+                    border: 2px dashed #b45309;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto;
+                    color: #b45309;
+                    font-size: 0.65rem;
+                    font-weight: 800;
+                    transform: rotate(-10deg);
+                  "
+                >
                   STEMPEL<br />RESMI BTS
                 </div>
               </div>
-              <div style="text-align: center;">
-                <div style="font-size: 0.72rem; color: #64748b;">Koordinator Konservasi</div>
-                <div style="font-size: 0.78rem; font-weight: 800; color: #1e293b; margin-top: 36px; border-top: 1px solid #94a3b8; padding-top: 4px;">
+              <div style="text-align: center">
+                <div style="font-size: 0.72rem; color: #64748b">
+                  Koordinator Konservasi
+                </div>
+                <div
+                  style="
+                    font-size: 0.78rem;
+                    font-weight: 800;
+                    color: #1e293b;
+                    margin-top: 36px;
+                    border-top: 1px solid #94a3b8;
+                    padding-top: 4px;
+                  "
+                >
                   Balai Pesisir Anambas
                 </div>
               </div>
             </div>
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 14px; margin-top: 18px;">
-            <button class="btn btn-gold-fill" onclick="window.print()" style="padding: 10px 24px;">
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 14px;
+              margin-top: 18px;
+            "
+          >
+            <button
+              class="btn btn-gold-fill"
+              onclick="window.print()"
+              style="padding: 10px 24px"
+            >
               <i data-lucide="printer"></i>
               <span>Cetak / Simpan PDF</span>
             </button>
-            <button class="btn btn-dark-pill" onclick="closeModal('modalSertifikatView')" style="padding: 10px 24px;">
+            <button
+              class="btn btn-dark-pill"
+              onclick="closeModal('modalSertifikatView')"
+              style="padding: 10px 24px"
+            >
               Tutup
             </button>
           </div>
@@ -3282,13 +4234,19 @@
             Nama Lengkap
           </div>
           <div
-            style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); margin-top: 4px;"
+            style="
+              font-size: 0.85rem;
+              color: rgba(255, 255, 255, 0.7);
+              margin-top: 4px;
+            "
             id="profileModalEmail"
           >
             email@example.com
           </div>
           <div style="margin-top: 12px">
-            <span class="badge-pill badge-sisik" id="profileModalRole">SUPER ADMIN</span>
+            <span class="badge-pill badge-sisik" id="profileModalRole"
+              >SUPER ADMIN</span
+            >
           </div>
         </div>
 
@@ -3296,7 +4254,7 @@
           <button
             class="btn btn-gold-fill"
             style="width: 100%"
-            onclick="openModalKategoriAkun();"
+            onclick="openModalKategoriAkun()"
           >
             <i data-lucide="refresh-cw"></i>
             <span>Ganti Akun</span>
@@ -3317,14 +4275,26 @@
     <div class="modal-overlay" id="modalTour">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalTour')">&times;</button>
+          <button class="btn-modal-close" onclick="closeModal('modalTour')">
+            &times;
+          </button>
           <h2>Hubungi Guide Wisata</h2>
         </div>
 
-        <form onsubmit="event.preventDefault(); submitTour();">
+        <form
+          onsubmit="
+            event.preventDefault();
+            submitTour();
+          "
+        >
           <div class="form-row">
             <label>Paket Wisata Pilihan</label>
-            <input type="text" id="tourName" class="pill-input-field" readonly />
+            <input
+              type="text"
+              id="tourName"
+              class="pill-input-field"
+              readonly
+            />
           </div>
           <div class="form-row">
             <label>Nama Anda</label>
@@ -3348,9 +4318,18 @@
           </div>
           <div class="form-row">
             <label>Rencana Tanggal Kunjungan</label>
-            <input type="date" id="tourDate" class="pill-input-field" required />
+            <input
+              type="date"
+              id="tourDate"
+              class="pill-input-field"
+              required
+            />
           </div>
-          <button type="submit" class="btn btn-gold-fill" style="width: 100%; margin-top: 14px">
+          <button
+            type="submit"
+            class="btn btn-gold-fill"
+            style="width: 100%; margin-top: 14px"
+          >
             KIRIM RESERVASI
           </button>
         </form>
@@ -3361,11 +4340,18 @@
     <div class="modal-overlay" id="modalMitra">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalMitra')">&times;</button>
+          <button class="btn-modal-close" onclick="closeModal('modalMitra')">
+            &times;
+          </button>
           <h2>Gabung Jadi Mitra</h2>
         </div>
 
-        <form onsubmit="event.preventDefault(); submitMitraForm();">
+        <form
+          onsubmit="
+            event.preventDefault();
+            submitMitraForm();
+          "
+        >
           <div class="form-row">
             <label>Nama Perusahaan / Komunitas</label>
             <input
@@ -3394,7 +4380,11 @@
               required
             />
           </div>
-          <button type="submit" class="btn btn-gold-fill" style="width: 100%; margin-top: 14px">
+          <button
+            type="submit"
+            class="btn btn-gold-fill"
+            style="width: 100%; margin-top: 14px"
+          >
             AJUKAN KEMITRAAN
           </button>
         </form>
@@ -3405,11 +4395,21 @@
     <div class="modal-overlay" id="modalTambahUser">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalTambahUser')">&times;</button>
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalTambahUser')"
+          >
+            &times;
+          </button>
           <h2>Tambah Pengguna Baru</h2>
         </div>
 
-        <form onsubmit="event.preventDefault(); submitNewUser();">
+        <form
+          onsubmit="
+            event.preventDefault();
+            submitNewUser();
+          "
+        >
           <div class="form-row">
             <label>Nama Lengkap</label>
             <input
@@ -3449,7 +4449,11 @@
               required
             />
           </div>
-          <button type="submit" class="btn btn-gold-fill" style="width: 100%; margin-top: 14px">
+          <button
+            type="submit"
+            class="btn btn-gold-fill"
+            style="width: 100%; margin-top: 14px"
+          >
             BUAT PENGGUNA
           </button>
         </form>
@@ -3460,14 +4464,24 @@
     <div class="modal-overlay" id="modalBeritaForm">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalBeritaForm')">&times;</button>
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalBeritaForm')"
+          >
+            &times;
+          </button>
           <h2 id="judulModalBerita">TAMBAH BERITA</h2>
         </div>
         <form id="formBerita">
           <input type="hidden" id="beritaId" />
           <div class="form-row">
             <label>Judul Berita</label>
-            <input type="text" id="beritaJudul" class="pill-input-field" required />
+            <input
+              type="text"
+              id="beritaJudul"
+              class="pill-input-field"
+              required
+            />
           </div>
           <div class="form-row">
             <label>Isi Berita</label>
@@ -3478,7 +4492,11 @@
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn btn-gold-fill" style="width: 100%; margin-top: 14px">
+          <button
+            type="submit"
+            class="btn btn-gold-fill"
+            style="width: 100%; margin-top: 14px"
+          >
             SIMPAN BERITA
           </button>
         </form>
@@ -3489,14 +4507,24 @@
     <div class="modal-overlay" id="modalEditPendaratan">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalEditPendaratan')">&times;</button>
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalEditPendaratan')"
+          >
+            &times;
+          </button>
           <h2>EDIT PENDARATAN</h2>
         </div>
         <form id="formEditPendaratan">
           <input type="hidden" id="editKodeLama" />
           <div class="form-row">
             <label>Kode Sarang</label>
-            <input type="text" id="editKodeSarang" class="pill-input-field" required />
+            <input
+              type="text"
+              id="editKodeSarang"
+              class="pill-input-field"
+              required
+            />
           </div>
           <div class="form-row">
             <label>Jenis Penyu</label>
@@ -3507,7 +4535,12 @@
           </div>
           <div class="form-row">
             <label>Kapan Pendaratan</label>
-            <input type="date" id="editKapanPendaratan" class="pill-input-field" required />
+            <input
+              type="date"
+              id="editKapanPendaratan"
+              class="pill-input-field"
+              required
+            />
           </div>
           <div class="form-row">
             <label>Lokasi</label>
@@ -3518,13 +4551,28 @@
           </div>
           <div class="form-row">
             <label>Jumlah Telur</label>
-            <input type="number" id="editJumlahTelur" class="pill-input-field" min="1" required />
+            <input
+              type="number"
+              id="editJumlahTelur"
+              class="pill-input-field"
+              min="1"
+              required
+            />
           </div>
           <div class="form-row">
             <label>Tanggal Menetas</label>
-            <input type="date" id="editKapanPenetasan" class="pill-input-field" required />
+            <input
+              type="date"
+              id="editKapanPenetasan"
+              class="pill-input-field"
+              required
+            />
           </div>
-          <button type="submit" class="btn btn-gold-fill" style="width: 100%; margin-top: 14px">
+          <button
+            type="submit"
+            class="btn btn-gold-fill"
+            style="width: 100%; margin-top: 14px"
+          >
             SIMPAN PERUBAHAN
           </button>
         </form>
@@ -3687,9 +4735,13 @@
       let dataAdopsi =
         JSON.parse(localStorage.getItem("bts_adopsi")) || SEED_ADOPSI;
 
-      
       // Pastikan ada data adopsi untuk Siti Aminah (Masyarakat) agar bisa langsung dipantau
-      if (!dataAdopsi.some((a) => a.nama_adopter && a.nama_adopter.toLowerCase().includes("siti"))) {
+      if (
+        !dataAdopsi.some(
+          (a) =>
+            a.nama_adopter && a.nama_adopter.toLowerCase().includes("siti"),
+        )
+      ) {
         dataAdopsi.push({
           kode_sarang: "SRG-003",
           jenis_penyu: "Penyu Sisik",
@@ -3705,19 +4757,22 @@
               foto: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80",
               tanggal: "01 Agustus 2026",
               status: "Kondisi 85 butir telur utuh & sehat",
-              catatan: "Sarang diamankan di fasilitas semi-alami Mangkai Selatan.",
+              catatan:
+                "Sarang diamankan di fasilitas semi-alami Mangkai Selatan.",
             },
             fase2: {
               foto: "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=600&q=80",
               hari: "Hari ke-30",
               suhu: "28-30°C",
-              catatan: "Masa inkubasi hari ke-30, suhu pasir terjaga stabil dan aman dari predator.",
+              catatan:
+                "Masa inkubasi hari ke-30, suhu pasir terjaga stabil dan aman dari predator.",
             },
             fase3: {
               foto: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=600&q=80",
               tanggal: "30 Agustus 2026",
               tukik: "84 Ekor",
-              catatan: "84 ekor tukik berhasil menetas sehat dan dilepaskan bersama tim BTS ke laut lepas.",
+              catatan:
+                "84 ekor tukik berhasil menetas sehat dan dilepaskan bersama tim BTS ke laut lepas.",
             },
           },
         });
@@ -3843,7 +4898,8 @@
           if (role) role.textContent = "PENGGUNA";
           if (menuAdmin) menuAdmin.style.display = "none";
           if (sideTag) sideTag.textContent = "PENGGUNA";
-          if (sideDesc) sideDesc.textContent = "Silakan login untuk mengakses akun.";
+          if (sideDesc)
+            sideDesc.textContent = "Silakan login untuk mengakses akun.";
           if (profName) profName.textContent = "Belum Login";
           if (profEmail) profEmail.textContent = "-";
           if (profRole) {
@@ -3851,9 +4907,13 @@
             profRole.className = "badge-pill badge-dark";
           }
         }
-        const pendaratanActions = document.getElementById("rowPetugasPendaratanActions");
+        const pendaratanActions = document.getElementById(
+          "rowPetugasPendaratanActions",
+        );
         if (pendaratanActions) {
-          const canAddOrImport = currentUser && ["admin", "super_admin", "pendata"].includes(currentUser.role);
+          const canAddOrImport =
+            currentUser &&
+            ["admin", "super_admin", "pendata"].includes(currentUser.role);
           pendaratanActions.style.display = canAddOrImport ? "flex" : "none";
         }
         if (typeof renderPendaratan === "function") renderPendaratan();
@@ -3882,14 +4942,18 @@
         localStorage.removeItem("bts_current_user");
         closeModal("modalProfileMenu");
         syncUI();
-        showToast("Anda berhasil keluar akun (Logout). Status akun sekarang Tamu.");
+        showToast(
+          "Anda berhasil keluar akun (Logout). Status akun sekarang Tamu.",
+        );
       }
 
       function openModalKategoriAkun() {
         closeModal("modalProfileMenu");
         const curRole = currentUser ? currentUser.role : "masyarakat";
         const cat =
-          curRole === "super_admin" || curRole === "admin" || curRole === "pendata"
+          curRole === "super_admin" ||
+          curRole === "admin" ||
+          curRole === "pendata"
             ? "super_admin"
             : curRole === "mitra"
               ? "mitra"
@@ -4102,11 +5166,7 @@
           new Chart(ctxDonut, {
             type: "doughnut",
             data: {
-              labels: [
-                "Anambas (40%)",
-                "Padang (40%)",
-                "Lainnya (20%)",
-              ],
+              labels: ["Anambas (40%)", "Padang (40%)", "Lainnya (20%)"],
               datasets: [
                 {
                   data: [40, 40, 20],
@@ -4145,12 +5205,8 @@
       async function loadPendaratanFromAPI() {
         try {
           const [pendaratanRes, adopsiRes] = await Promise.all([
-            fetch(
-              "https://blue-turtle-squad.datalkkpn.workers.dev/api/pendaratan",
-            ),
-            fetch(
-              "https://blue-turtle-squad.datalkkpn.workers.dev/api/adopsi",
-            ),
+            fetch(`${API_URL}/api/pendaratan`),
+            fetch(`${API_URL}/api/adopsi`),
           ]);
 
           const pendaratanResult = await pendaratanRes.json();
@@ -4174,9 +5230,13 @@
 
       function renderPendaratan() {
         // Hanya munculkan tombol Tambah + dan Impor + untuk Pendata, Admin, Super Admin
-        const pendaratanActions = document.getElementById("rowPetugasPendaratanActions");
+        const pendaratanActions = document.getElementById(
+          "rowPetugasPendaratanActions",
+        );
         if (pendaratanActions) {
-          const canAddOrImport = currentUser && ["admin", "super_admin", "pendata"].includes(currentUser.role);
+          const canAddOrImport =
+            currentUser &&
+            ["admin", "super_admin", "pendata"].includes(currentUser.role);
           pendaratanActions.style.display = canAddOrImport ? "flex" : "none";
         }
 
@@ -4208,18 +5268,27 @@
             ? "badge-sisik"
             : "badge-hijau";
 
-          const adopsi = dataAdopsi.find((a) => a.kode_sarang === p.kode_sarang);
-          const adopted = (p.status_adopsi && p.status_adopsi.toLowerCase().includes("sudah")) || !!adopsi || !!p.nama_adopter;
-          const namaAdopter = (adopsi && adopsi.nama_adopter) || p.nama_adopter || "";
+          const adopsi = dataAdopsi.find(
+            (a) => a.kode_sarang === p.kode_sarang,
+          );
+          const adopted =
+            (p.status_adopsi &&
+              p.status_adopsi.toLowerCase().includes("sudah")) ||
+            !!adopsi ||
+            !!p.nama_adopter;
+          const namaAdopter =
+            (adopsi && adopsi.nama_adopter) || p.nama_adopter || "";
 
-          const isPetugas = currentUser && ["admin", "super_admin", "pendata"].includes(currentUser.role);
+          const isPetugas =
+            currentUser &&
+            ["admin", "super_admin", "pendata"].includes(currentUser.role);
 
           let actionTdHtml = "";
 
           if (isPetugas) {
             // Khusus Petugas (Admin/Super Admin/Pendata): Status Badge + Tombol Edit/Hapus
             const statusBadge = adopted
-              ? `<span class="badge-pill badge-hijau" style="font-size:0.72rem; font-weight:800; display:inline-block; padding:3px 10px;">Sudah Diadopsi<br><small style="color:rgba(255,255,255,0.85); font-weight:700;">(${namaAdopter || 'Adopter'})</small></span>`
+              ? `<span class="badge-pill badge-hijau" style="font-size:0.72rem; font-weight:800; display:inline-block; padding:3px 10px;">Sudah Diadopsi<br><small style="color:rgba(255,255,255,0.85); font-weight:700;">(${namaAdopter || "Adopter"})</small></span>`
               : `<span class="badge-pill badge-sisik" style="font-size:0.72rem; display:inline-block; padding:3px 10px;">Belum Diadopsi</span>`;
 
             let petButtons = "";
@@ -4265,7 +5334,7 @@
                     Sudah Diadopsi
                   </span>
                   <div style="font-size:0.78rem; color:rgba(255,255,255,0.95); font-weight:700;">
-                    oleh <strong style="color:var(--gold-main); font-size:0.84rem; text-shadow:0 1px 3px rgba(0,0,0,0.4);">${namaAdopter || 'Adopter BTS'}</strong>
+                    oleh <strong style="color:var(--gold-main); font-size:0.84rem; text-shadow:0 1px 3px rgba(0,0,0,0.4);">${namaAdopter || "Adopter BTS"}</strong>
                   </div>
                 </div>
               `;
@@ -4293,22 +5362,40 @@
         if (window.lucide) lucide.createIcons();
       }
 
-      function deletePendaratan(kode) {
+      async function deletePendaratan(kode) {
         if (!canDeletePendaratan()) {
           alert("Anda tidak memiliki izin menghapus data pendaratan.");
           return;
         }
         if (!confirm(`Hapus data sarang ${kode}?`)) return;
-        dataPendaratan = dataPendaratan.filter((p) => p.kode_sarang !== kode);
-        localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
-        renderPendaratan();
-        populateAdopsiSarangSelect();
-        showToast(`Data ${kode} berhasil dihapus.`);
+
+        try {
+          const res = await fetch(
+            `https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan/${encodeURIComponent(kode)}`,
+            { method: "DELETE" },
+          );
+          const result = await res.json();
+
+          if (!result.success) {
+            alert(result.message || "Gagal menghapus data di server.");
+            return;
+          }
+
+          dataPendaratan = dataPendaratan.filter((p) => p.kode_sarang !== kode);
+          localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
+          renderPendaratan();
+          populateAdopsiSarangSelect();
+          showToast(`Data ${kode} berhasil dihapus.`);
+        } catch (error) {
+          alert("Gagal menghubungi server: " + error.message);
+        }
       }
 
       function editPendaratan(kode) {
         if (!canManageAll()) {
-          alert("Hanya Admin dan Super Admin yang dapat mengedit data pendaratan.");
+          alert(
+            "Hanya Admin dan Super Admin yang dapat mengedit data pendaratan.",
+          );
           return;
         }
         const p = dataPendaratan.find((x) => x.kode_sarang === kode);
@@ -4326,7 +5413,7 @@
 
       document
         .getElementById("formEditPendaratan")
-        .addEventListener("submit", (e) => {
+        .addEventListener("submit", async (e) => {
           e.preventDefault();
           if (!canManageAll()) return;
           const oldCode = document.getElementById("editKodeLama").value;
@@ -4344,23 +5431,48 @@
           }
           const p = dataPendaratan.find((x) => x.kode_sarang === oldCode);
           if (!p) return;
-          p.kode_sarang = newCode;
-          p.jenis_penyu = document.getElementById("editJenisPenyu").value;
-          p.kapan_pendaratan = document.getElementById(
-            "editKapanPendaratan",
-          ).value;
-          p.lokasi = document.getElementById("editLokasi").value;
-          p.jumlah_telur = parseInt(
-            document.getElementById("editJumlahTelur").value,
-          );
-          p.kapan_penetasan =
-            document.getElementById("editKapanPenetasan").value;
 
-          localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
-          renderPendaratan();
-          populateAdopsiSarangSelect();
-          closeModal("modalEditPendaratan");
-          showToast(`Data ${newCode} berhasil diperbarui.`);
+          const payload = {
+            kode_sarang: newCode,
+            jenis_penyu: document.getElementById("editJenisPenyu").value,
+            kapan_pendaratan: document.getElementById("editKapanPendaratan")
+              .value,
+            lokasi: document.getElementById("editLokasi").value,
+            jumlah_telur: parseInt(
+              document.getElementById("editJumlahTelur").value,
+            ),
+            kapan_penetasan: document.getElementById("editKapanPenetasan")
+              .value,
+          };
+
+          try {
+            const res = await fetch(
+              `https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan/${encodeURIComponent(oldCode)}`,
+              {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+              },
+            );
+            const result = await res.json();
+
+            if (!result.success) {
+              alert(result.message || "Gagal memperbarui data di server.");
+              return;
+            }
+
+            Object.assign(p, payload);
+            localStorage.setItem(
+              "bts_pendaratan",
+              JSON.stringify(dataPendaratan),
+            );
+            renderPendaratan();
+            populateAdopsiSarangSelect();
+            closeModal("modalEditPendaratan");
+            showToast(`Data ${newCode} berhasil diperbarui.`);
+          } catch (error) {
+            alert("Gagal menghubungi server: " + error.message);
+          }
         });
 
       document
@@ -4375,7 +5487,7 @@
 
       document
         .getElementById("formTambahPendaratan")
-        .addEventListener("submit", (e) => {
+        .addEventListener("submit", async (e) => {
           e.preventDefault();
           if (!canManageAll()) {
             alert(
@@ -4411,21 +5523,45 @@
             nama_adopter: "",
           };
 
-          dataPendaratan.unshift(item);
-          localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
+          try {
+            const res = await fetch(
+              "https://blue-turtle-squad.marissacitra5.workers.dev/api/pendaratan",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(item),
+              },
+            );
+            const result = await res.json();
 
-          renderPendaratan();
-          populateAdopsiSarangSelect();
-          closeModal("modalTambahPendaratan");
-          e.target.reset();
-          showToast(`Data Sarang ${kode} berhasil disimpan!`);
+            if (!result.success) {
+              alert(result.message || "Gagal menyimpan data ke server.");
+              return;
+            }
+
+            dataPendaratan.unshift(item);
+            localStorage.setItem(
+              "bts_pendaratan",
+              JSON.stringify(dataPendaratan),
+            );
+
+            renderPendaratan();
+            populateAdopsiSarangSelect();
+            closeModal("modalTambahPendaratan");
+            e.target.reset();
+            showToast(`Data Sarang ${kode} berhasil disimpan!`);
+          } catch (error) {
+            alert("Gagal menghubungi server: " + error.message);
+          }
         });
 
       document
         .getElementById("btnImporSample")
         .addEventListener("click", () => {
           if (!canImportAndManagePhases()) {
-            alert("Hanya Pendata, Admin, dan Super Admin yang memiliki izin mengimpor data pendaratan.");
+            alert(
+              "Hanya Pendata, Admin, dan Super Admin yang memiliki izin mengimpor data pendaratan.",
+            );
             return;
           }
           openModal("modalImporGoogleSheet");
@@ -4448,7 +5584,10 @@
             nama_adopter: "",
           };
           dataPendaratan.unshift(newItem);
-          localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
+          localStorage.setItem(
+            "bts_pendaratan",
+            JSON.stringify(dataPendaratan),
+          );
           renderPendaratan();
           populateAdopsiSarangSelect();
           showToast(`Sarang baru ${newItem.kode_sarang} berhasil diimpor!`);
@@ -4471,10 +5610,10 @@
           });
       }
 
-      
       // --- Buka Google Form Pembayaran & Munculkan Input Upload Bukti Otomatis ---
       function bukaGoogleFormDanTampilkanUpload() {
-        const GOOGLE_FORM_PAYMENT_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-sample-bts-pembayaran-adopsi/viewform?usp=sf_link";
+        const GOOGLE_FORM_PAYMENT_URL =
+          "https://docs.google.com/forms/d/e/1FAIpQLSe-sample-bts-pembayaran-adopsi/viewform?usp=sf_link";
         try {
           window.open(GOOGLE_FORM_PAYMENT_URL, "_blank");
         } catch (err) {}
@@ -4489,17 +5628,22 @@
 
         const btnGForm = document.getElementById("btnBukaGoogleFormBayar");
         if (btnGForm) {
-          btnGForm.innerHTML = '<i data-lucide="check-circle" style="color:#10b981;"></i><span>Google Form Sudah Dibuka (Klik Lagi jika Perlu)</span>';
+          btnGForm.innerHTML =
+            '<i data-lucide="check-circle" style="color:#10b981;"></i><span>Google Form Sudah Dibuka (Klik Lagi jika Perlu)</span>';
         }
 
-        showToast("Google Form pembayaran telah dibuka! Kolom unggah bukti transfer sekarang tersedia di bawah.");
+        showToast(
+          "Google Form pembayaran telah dibuka! Kolom unggah bukti transfer sekarang tersedia di bawah.",
+        );
         if (window.lucide) lucide.createIcons();
       }
 
       // --- Proteksi Tambah Pendaratan Khusus Petugas ---
       function openModalTambahPendaratan() {
         if (!canImportAndManagePhases()) {
-          alert("Hanya Pendata, Admin, dan Super Admin yang memiliki izin menambah data pendaratan.");
+          alert(
+            "Hanya Pendata, Admin, dan Super Admin yang memiliki izin menambah data pendaratan.",
+          );
           return;
         }
         openModal("modalTambahPendaratan");
@@ -4512,7 +5656,9 @@
 
       function openAdopsiModal(spesies, defaultCode) {
         if (!currentUser) {
-          alert("Silakan Masuk atau Daftar terlebih dahulu untuk melakukan adopsi penyu.");
+          alert(
+            "Silakan Masuk atau Daftar terlebih dahulu untuk melakukan adopsi penyu.",
+          );
           openModalKategoriAkun();
           return;
         }
@@ -4529,7 +5675,8 @@
 
         const btnGForm = document.getElementById("btnBukaGoogleFormBayar");
         if (btnGForm) {
-          btnGForm.innerHTML = '<i data-lucide="external-link"></i><span>Buka Google Form Pembayaran</span>';
+          btnGForm.innerHTML =
+            '<i data-lucide="external-link"></i><span>Buka Google Form Pembayaran</span>';
         }
 
         openModal("modalAdopsiForm");
@@ -4550,7 +5697,9 @@
             document.getElementById("inpAdopsiBerapaSarang").value,
           );
 
-          const target = dataPendaratan.find((p) => p.kode_sarang === kodeSarang) || {
+          const target = dataPendaratan.find(
+            (p) => p.kode_sarang === kodeSarang,
+          ) || {
             jenis_penyu: "Penyu Hijau",
             lokasi: "mangkai selatan",
             jumlah_telur: 90,
@@ -4585,19 +5734,25 @@
 
           target.status_adopsi = "Sudah Diadopsi";
           target.nama_adopter = nama;
-          localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
+          localStorage.setItem(
+            "bts_pendaratan",
+            JSON.stringify(dataPendaratan),
+          );
 
           renderPendaratan();
           renderAdopsi();
           closeModal("modalAdopsiForm");
 
           // LANGSUNG BUKA GOOGLE FORM RESMI BTS UNTUK PEMBAYARAN
-          const GOOGLE_FORM_PAYMENT_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-sample-bts-pembayaran-adopsi/viewform?usp=sf_link";
+          const GOOGLE_FORM_PAYMENT_URL =
+            "https://docs.google.com/forms/d/e/1FAIpQLSe-sample-bts-pembayaran-adopsi/viewform?usp=sf_link";
           try {
             window.open(GOOGLE_FORM_PAYMENT_URL, "_blank");
           } catch (err) {}
 
-          showToast("Formulir adopsi diajukan! Google Form pembayaran telah dibuka di tab baru.");
+          showToast(
+            "Formulir adopsi diajukan! Google Form pembayaran telah dibuka di tab baru.",
+          );
           openTahapanDetail(kodeSarang);
         });
 
@@ -4607,7 +5762,8 @@
         container.innerHTML = "";
 
         const isSuperOrAdmin =
-          currentUser && ["admin", "super_admin", "pendata"].includes(currentUser.role);
+          currentUser &&
+          ["admin", "super_admin", "pendata"].includes(currentUser.role);
 
         const noticeP = document.getElementById("noticePetugasAdopsi");
         if (noticeP) noticeP.style.display = isSuperOrAdmin ? "block" : "none";
@@ -4683,7 +5839,7 @@
               <button class="btn btn-dark-pill" style="padding:4px 12px; font-size:0.75rem;" onclick="openTahapanDetail('${a.kode_sarang}')">
                 Pantau Tahapan
               </button>
-              ${canImportAndManagePhases() ? `<button class="btn btn-gold-fill" style="padding:4px 10px; font-size:0.75rem;" onclick="openModalUploadDokumentasi('${a.kode_sarang}')" title="Upload foto & catatan Fase 1, 2, 3"><i data-lucide="upload-cloud" style="width:14px; height:14px;"></i> Upload Fase</button>` : ''}
+              ${canImportAndManagePhases() ? `<button class="btn btn-gold-fill" style="padding:4px 10px; font-size:0.75rem;" onclick="openModalUploadDokumentasi('${a.kode_sarang}')" title="Upload foto & catatan Fase 1, 2, 3"><i data-lucide="upload-cloud" style="width:14px; height:14px;"></i> Upload Fase</button>` : ""}
             </div>
           `;
           container.appendChild(row);
@@ -4702,7 +5858,8 @@
         }
 
         const isSuperOrAdmin =
-          currentUser && ["admin", "super_admin", "pendata"].includes(currentUser.role);
+          currentUser &&
+          ["admin", "super_admin", "pendata"].includes(currentUser.role);
 
         // Validasi akses masyarakat
         if (!isSuperOrAdmin && currentUser) {
@@ -4711,7 +5868,9 @@
             a.nama_adopter.trim().toLowerCase() !==
               currentUser.nama.trim().toLowerCase()
           ) {
-            alert("Anda hanya dapat melihat tahapan dari sarang penyu yang Anda adopsi sendiri.");
+            alert(
+              "Anda hanya dapat melihat tahapan dari sarang penyu yang Anda adopsi sendiri.",
+            );
             return;
           }
         }
@@ -4734,9 +5893,12 @@
         if (adminCtrl) {
           if (isSuperOrAdmin) {
             adminCtrl.style.display = "block";
-            const rad = document.querySelector(`input[name="adminPilihTahap"][value="${tahap}"]`);
+            const rad = document.querySelector(
+              `input[name="adminPilihTahap"][value="${tahap}"]`,
+            );
             if (rad) rad.checked = true;
-            document.getElementById("adminSelectProgress").value = a.progress || 25;
+            document.getElementById("adminSelectProgress").value =
+              a.progress || 25;
           } else {
             adminCtrl.style.display = "none";
           }
@@ -4767,20 +5929,31 @@
           const f3 = doc.fase3 || {};
 
           if (f1.foto) document.getElementById("cardFase1Img").src = f1.foto;
-          if (f1.tanggal) document.getElementById("cardFase1Tgl").textContent = f1.tanggal;
-          if (f1.catatan) document.getElementById("cardFase1Ket").textContent = f1.catatan;
+          if (f1.tanggal)
+            document.getElementById("cardFase1Tgl").textContent = f1.tanggal;
+          if (f1.catatan)
+            document.getElementById("cardFase1Ket").textContent = f1.catatan;
 
           if (f2.foto) document.getElementById("cardFase2Img").src = f2.foto;
-          if (f2.suhu || f2.hari) document.getElementById("cardFase2Info").textContent = (f2.hari || "Hari ke-30") + " • Suhu " + (f2.suhu || "28-30°C");
-          if (f2.catatan) document.getElementById("cardFase2Ket").textContent = f2.catatan;
+          if (f2.suhu || f2.hari)
+            document.getElementById("cardFase2Info").textContent =
+              (f2.hari || "Hari ke-30") + " • Suhu " + (f2.suhu || "28-30°C");
+          if (f2.catatan)
+            document.getElementById("cardFase2Ket").textContent = f2.catatan;
 
           if (f3.foto) document.getElementById("cardFase3Img").src = f3.foto;
-          if (f3.tanggal || f3.tukik) document.getElementById("cardFase3Info").textContent = (f3.tanggal || "30 Agustus 2026") + " • " + (f3.tukik || "88 Ekor");
-          if (f3.catatan) document.getElementById("cardFase3Ket").textContent = f3.catatan;
+          if (f3.tanggal || f3.tukik)
+            document.getElementById("cardFase3Info").textContent =
+              (f3.tanggal || "30 Agustus 2026") +
+              " • " +
+              (f3.tukik || "88 Ekor");
+          if (f3.catatan)
+            document.getElementById("cardFase3Ket").textContent = f3.catatan;
         } else {
           docLocked.style.display = "block";
           docCards.style.display = "none";
-          document.getElementById("lockedKodeSarang").textContent = a.kode_sarang;
+          document.getElementById("lockedKodeSarang").textContent =
+            a.kode_sarang;
           document.getElementById("lockedStatusTahap").textContent =
             a.status_tahap || getTahapStatusName(tahap);
         }
@@ -4790,7 +5963,8 @@
         if (bannerPetugas) {
           bannerPetugas.style.display = isPetugas ? "block" : "none";
           const txtRole = document.getElementById("txtPetugasRole");
-          if (txtRole && currentUser) txtRole.textContent = formatRole(currentUser.role);
+          if (txtRole && currentUser)
+            txtRole.textContent = formatRole(currentUser.role);
         }
 
         document.querySelectorAll(".btnPetugasOnly").forEach((b) => {
@@ -4842,7 +6016,8 @@
 
       function previewAdminTahap(tahap) {
         const defaultProg = { 1: 25, 2: 50, 3: 75, 4: 100 };
-        document.getElementById("adminSelectProgress").value = defaultProg[tahap] || 25;
+        document.getElementById("adminSelectProgress").value =
+          defaultProg[tahap] || 25;
       }
 
       function simpanTahapAdmin() {
@@ -4850,9 +6025,12 @@
         const a = dataAdopsi.find((x) => x.kode_sarang === activeTahapanCode);
         if (!a) return;
 
-        const selRadio = document.querySelector('input[name="adminPilihTahap"]:checked');
+        const selRadio = document.querySelector(
+          'input[name="adminPilihTahap"]:checked',
+        );
         const tahapVal = selRadio ? parseInt(selRadio.value) : 1;
-        const progVal = parseInt(document.getElementById("adminSelectProgress").value) || 25;
+        const progVal =
+          parseInt(document.getElementById("adminSelectProgress").value) || 25;
 
         a.tahap = tahapVal;
         a.progress = progVal;
@@ -4861,20 +6039,28 @@
         localStorage.setItem("bts_adopsi", JSON.stringify(dataAdopsi));
         renderAdopsi();
         openTahapanDetail(activeTahapanCode);
-        showToast(`Tahapan sarang ${a.kode_sarang} berhasil diperbarui ke Tahap ${tahapVal}!`);
+        showToast(
+          `Tahapan sarang ${a.kode_sarang} berhasil diperbarui ke Tahap ${tahapVal}!`,
+        );
       }
 
       function bukaModalSertifikat() {
-        const a = dataAdopsi.find((x) => x.kode_sarang === activeTahapanCode) || (dataAdopsi.length > 0 ? dataAdopsi[0] : null);
+        const a =
+          dataAdopsi.find((x) => x.kode_sarang === activeTahapanCode) ||
+          (dataAdopsi.length > 0 ? dataAdopsi[0] : null);
         if (!a) return;
 
-        document.getElementById("certAdopterName").textContent = a.nama_adopter || (currentUser ? currentUser.nama : "Sahabat Penyu");
+        document.getElementById("certAdopterName").textContent =
+          a.nama_adopter || (currentUser ? currentUser.nama : "Sahabat Penyu");
         document.getElementById("certKodeSarang").textContent = a.kode_sarang;
         document.getElementById("certJenisPenyu").textContent = a.jenis_penyu;
         document.getElementById("certLokasi").textContent = a.lokasi;
-        document.getElementById("certJumlahTelur").textContent = `${a.jumlah_telur} Butir`;
-        document.getElementById("certTanggal").textContent = a.tanggal_adopsi || "28 Agustus 2026";
-        document.getElementById("certNoText").textContent = `Nomor: BTS/CERT/2026/${a.kode_sarang}`;
+        document.getElementById("certJumlahTelur").textContent =
+          `${a.jumlah_telur} Butir`;
+        document.getElementById("certTanggal").textContent =
+          a.tanggal_adopsi || "28 Agustus 2026";
+        document.getElementById("certNoText").textContent =
+          `Nomor: BTS/CERT/2026/${a.kode_sarang}`;
 
         openModal("modalSertifikatView");
         lucide.createIcons();
@@ -5036,12 +6222,15 @@
 
       function openBeritaForm() {
         if (!canCreateBerita()) {
-          alert("Hanya Mitra yang terdaftar, Admin, atau Super Admin yang dapat menambah berita.");
+          alert(
+            "Hanya Mitra yang terdaftar, Admin, atau Super Admin yang dapat menambah berita.",
+          );
           return;
         }
         document.getElementById("formBerita").reset();
         document.getElementById("beritaId").value = "";
-        document.getElementById("judulModalBerita").textContent = "TAMBAH BERITA";
+        document.getElementById("judulModalBerita").textContent =
+          "TAMBAH BERITA";
         openModal("modalBeritaForm");
       }
 
@@ -5050,7 +6239,9 @@
           !currentUser ||
           !["admin", "super_admin"].includes(currentUser.role)
         ) {
-          alert("Mitra hanya dapat menghapus berita miliknya, bukan mengedit berita.");
+          alert(
+            "Mitra hanya dapat menghapus berita miliknya, bukan mengedit berita.",
+          );
           return;
         }
         const list = JSON.parse(localStorage.getItem("bts_berita")) || [];
@@ -5180,12 +6371,12 @@
       }
 
       // --- Upload Dokumentasi Fase Adopsi (Pendata/Admin) ---
-      
+
       function handlePhasePhotoFile(input, textInputId, previewImgId) {
         if (!input.files || input.files.length === 0) return;
         const file = input.files[0];
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
           const dataUrl = e.target.result;
           document.getElementById(textInputId).value = dataUrl;
           const prevImg = document.getElementById(previewImgId);
@@ -5196,41 +6387,66 @@
 
       function openModalUploadDokumentasi(kode) {
         if (!canImportAndManagePhases()) {
-          alert("Hanya Pendata, Admin, dan Super Admin yang dapat mengunggah dokumentasi fase adopsi.");
+          alert(
+            "Hanya Pendata, Admin, dan Super Admin yang dapat mengunggah dokumentasi fase adopsi.",
+          );
           return;
         }
         const a = dataAdopsi.find((x) => x.kode_sarang === kode);
         if (!a) return;
 
         document.getElementById("upTargetCode").value = a.kode_sarang;
-        document.getElementById("upSarangCode").textContent = a.kode_sarang + " (" + a.jenis_penyu + ")";
-        document.getElementById("upAdopterName").textContent = a.nama_adopter || "Pengadopsi";
+        document.getElementById("upSarangCode").textContent =
+          a.kode_sarang + " (" + a.jenis_penyu + ")";
+        document.getElementById("upAdopterName").textContent =
+          a.nama_adopter || "Pengadopsi";
 
         const doc = a.dokumentasi || {};
         const f1 = doc.fase1 || {};
         const f2 = doc.fase2 || {};
         const f3 = doc.fase3 || {};
 
-        document.getElementById("upFase1Foto").value = f1.foto || "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80";
+        document.getElementById("upFase1Foto").value =
+          f1.foto ||
+          "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80";
         const prev1 = document.getElementById("previewFase1Img");
         if (prev1) prev1.src = document.getElementById("upFase1Foto").value;
         const prev2 = document.getElementById("previewFase2Img");
-        if (prev2) prev2.src = f2.foto || "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=600&q=80";
+        if (prev2)
+          prev2.src =
+            f2.foto ||
+            "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=600&q=80";
         const prev3 = document.getElementById("previewFase3Img");
-        if (prev3) prev3.src = f3.foto || "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=600&q=80";
-        document.getElementById("upFase1Tgl").value = f1.tanggal_input || "2026-08-01";
-        document.getElementById("upFase1Status").value = f1.status || "Kondisi 90 butir telur utuh & sehat";
-        document.getElementById("upFase1Ket").value = f1.catatan || "Sarang diamankan di fasilitas semi-alami Mangkai Selatan. Telur dipindahkan dengan cermat dalam waktu <2 jam.";
+        if (prev3)
+          prev3.src =
+            f3.foto ||
+            "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=600&q=80";
+        document.getElementById("upFase1Tgl").value =
+          f1.tanggal_input || "2026-08-01";
+        document.getElementById("upFase1Status").value =
+          f1.status || "Kondisi 90 butir telur utuh & sehat";
+        document.getElementById("upFase1Ket").value =
+          f1.catatan ||
+          "Sarang diamankan di fasilitas semi-alami Mangkai Selatan. Telur dipindahkan dengan cermat dalam waktu <2 jam.";
 
-        document.getElementById("upFase2Foto").value = f2.foto || "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=600&q=80";
+        document.getElementById("upFase2Foto").value =
+          f2.foto ||
+          "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=600&q=80";
         document.getElementById("upFase2Hari").value = f2.hari || "Hari ke-30";
         document.getElementById("upFase2Suhu").value = f2.suhu || "28-30°C";
-        document.getElementById("upFase2Ket").value = f2.catatan || "Masa inkubasi hari ke-30, suhu pasir terjaga stabil 28-30°C. Sarang terlindung dari predator kepiting dan biawak.";
+        document.getElementById("upFase2Ket").value =
+          f2.catatan ||
+          "Masa inkubasi hari ke-30, suhu pasir terjaga stabil 28-30°C. Sarang terlindung dari predator kepiting dan biawak.";
 
-        document.getElementById("upFase3Foto").value = f3.foto || "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=600&q=80";
-        document.getElementById("upFase3Tgl").value = f3.tanggal_input || "2026-08-30";
+        document.getElementById("upFase3Foto").value =
+          f3.foto ||
+          "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=600&q=80";
+        document.getElementById("upFase3Tgl").value =
+          f3.tanggal_input || "2026-08-30";
         document.getElementById("upFase3Tukik").value = f3.tukik || "88 Ekor";
-        document.getElementById("upFase3Ket").value = f3.catatan || "Tukik menetas sehat dan pelepasan bersama tim BTS ke habitat laut lepas Kepulauan Anambas.";
+        document.getElementById("upFase3Ket").value =
+          f3.catatan ||
+          "Tukik menetas sehat dan pelepasan bersama tim BTS ke habitat laut lepas Kepulauan Anambas.";
 
         openModal("modalUploadDokumentasi");
         if (window.lucide) lucide.createIcons();
@@ -5244,7 +6460,8 @@
         a.dokumentasi = {
           fase1: {
             foto: document.getElementById("upFase1Foto").value,
-            tanggal: document.getElementById("upFase1Tgl").value || "01 Agustus 2026",
+            tanggal:
+              document.getElementById("upFase1Tgl").value || "01 Agustus 2026",
             tanggal_input: document.getElementById("upFase1Tgl").value,
             status: document.getElementById("upFase1Status").value,
             catatan: document.getElementById("upFase1Ket").value,
@@ -5257,7 +6474,8 @@
           },
           fase3: {
             foto: document.getElementById("upFase3Foto").value,
-            tanggal: document.getElementById("upFase3Tgl").value || "30 Agustus 2026",
+            tanggal:
+              document.getElementById("upFase3Tgl").value || "30 Agustus 2026",
             tanggal_input: document.getElementById("upFase3Tgl").value,
             tukik: document.getElementById("upFase3Tukik").value,
             catatan: document.getElementById("upFase3Ket").value,
@@ -5275,7 +6493,9 @@
         closeModal("modalUploadDokumentasi");
         renderAdopsi();
         if (activeTahapanCode === kode) openTahapanDetail(kode);
-        showToast(`Dokumentasi Fase Sarang ${kode} berhasil disimpan & dirilis!`);
+        showToast(
+          `Dokumentasi Fase Sarang ${kode} berhasil disimpan & dirilis!`,
+        );
       }
 
       // --- Google Sheet & CSV Import Logic ---
@@ -5332,8 +6552,11 @@
           })
           .catch((err) => {
             // Smart Fallback jika terhalang CORS di browser lokal
-            console.warn("CORS/Network error pada fetch langsung Google Sheet, menggunakan data sinkronisasi Google Sheet BTS:", err);
-            const fallbackCSV = 
+            console.warn(
+              "CORS/Network error pada fetch langsung Google Sheet, menggunakan data sinkronisasi Google Sheet BTS:",
+              err,
+            );
+            const fallbackCSV =
               "kode_sarang,jenis_penyu,kapan_pendaratan,lokasi,jumlah_telur,kapan_penetasan\n" +
               "SRG-020,Penyu Sisik,2026-09-01,mangkai selatan,98,2026-10-01\n" +
               "SRG-021,Penyu Hijau,2026-09-02,mangkai utara,115,2026-10-02\n" +
@@ -5341,12 +6564,16 @@
               "SRG-023,Penyu Hijau,2026-09-04,mangkai utara,106,2026-10-04\n" +
               "SRG-024,Penyu Sisik,2026-09-05,mangkai selatan,94,2026-10-05";
             parseCSVText(fallbackCSV);
-            showToast("5 Sarang pendaratan berhasil ditarik dari Google Sheet BTS!");
+            showToast(
+              "5 Sarang pendaratan berhasil ditarik dari Google Sheet BTS!",
+            );
           });
       }
 
       function parseCSVText(csvText) {
-        const lines = csvText.split(/\r?\n/).filter((line) => line.trim().length > 0);
+        const lines = csvText
+          .split(/\r?\n/)
+          .filter((line) => line.trim().length > 0);
         if (lines.length < 2) {
           alert("Format file CSV kosong atau tidak valid.");
           return;
@@ -5355,13 +6582,21 @@
         parsedImportData = [];
 
         for (let i = 1; i < lines.length; i++) {
-          const cols = lines[i].split(",").map((c) => c.trim().replace(/["']/g, ""));
+          const cols = lines[i]
+            .split(",")
+            .map((c) => c.trim().replace(/["']/g, ""));
           if (cols.length < 4) continue;
 
           const kode = cols[0] || `SRG-0${dataPendaratan.length + i}`;
-          const jenis = cols[1] && cols[1].toLowerCase().includes("sisik") ? "Penyu Sisik" : "Penyu Hijau";
+          const jenis =
+            cols[1] && cols[1].toLowerCase().includes("sisik")
+              ? "Penyu Sisik"
+              : "Penyu Hijau";
           const tglDarat = cols[2] || new Date().toISOString().split("T")[0];
-          const lokasi = cols[3] && cols[3].toLowerCase().includes("utara") ? "mangkai utara" : "mangkai selatan";
+          const lokasi =
+            cols[3] && cols[3].toLowerCase().includes("utara")
+              ? "mangkai utara"
+              : "mangkai selatan";
           const telur = parseInt(cols[4]) || 90;
           const tglTetas = cols[5] || "2026-09-30";
 
@@ -5420,7 +6655,9 @@
 
         let addedCount = 0;
         parsedImportData.forEach((newItem) => {
-          const exists = dataPendaratan.some((p) => p.kode_sarang === newItem.kode_sarang);
+          const exists = dataPendaratan.some(
+            (p) => p.kode_sarang === newItem.kode_sarang,
+          );
           if (!exists) {
             dataPendaratan.unshift(newItem);
             addedCount++;
@@ -5432,20 +6669,26 @@
         populateAdopsiSarangSelect();
 
         try {
-          fetch("https://blue-turtle-squad.datalkkpn.workers.dev/api/pendaratan/bulk", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(parsedImportData),
-          }).catch(() => {});
+          fetch(
+            "https://blue-turtle-squad.datalkkpn.workers.dev/api/pendaratan/bulk",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(parsedImportData),
+            },
+          ).catch(() => {});
         } catch (e) {}
 
         closeModal("modalImporGoogleSheet");
         resetImportPreview();
-        showToast(`${addedCount} Sarang pendaratan penyu berhasil diimpor ke Database!`);
+        showToast(
+          `${addedCount} Sarang pendaratan penyu berhasil diimpor ke Database!`,
+        );
       }
 
       function unduhTemplateCSVContoh() {
-        const csvContent = "data:text/csv;charset=utf-8," +
+        const csvContent =
+          "data:text/csv;charset=utf-8," +
           "kode_sarang,jenis_penyu,kapan_pendaratan,lokasi,jumlah_telur,kapan_penetasan\n" +
           "SRG-010,Penyu Sisik,2026-08-25,mangkai selatan,95,2026-09-24\n" +
           "SRG-011,Penyu Hijau,2026-08-26,mangkai utara,110,2026-09-25\n" +
@@ -5461,47 +6704,119 @@
         link.click();
         document.body.removeChild(link);
       }
-
     </script>
-  
+
     <!-- ========================================================
        MODAL 14: UPLOAD DOKUMENTASI FASE (Khusus Petugas: Pendata/Admin/Super Admin)
        ======================================================== -->
     <div class="modal-overlay" id="modalUploadDokumentasi">
-      <div class="modal-card-dark" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+      <div
+        class="modal-card-dark"
+        style="max-width: 680px; max-height: 90vh; overflow-y: auto"
+      >
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalUploadDokumentasi')">&times;</button>
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalUploadDokumentasi')"
+          >
+            &times;
+          </button>
           <h2>UPLOAD DOKUMENTASI FASE ADOPSI</h2>
         </div>
 
-        <div style="background: rgba(255,255,255,0.06); border-radius: 14px; padding: 12px 18px; margin-bottom: 18px; display: flex; justify-content: space-between;">
+        <div
+          style="
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 12px 18px;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+          "
+        >
           <div>
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.6); display: block;">Sarang Adopsi:</span>
-            <strong id="upSarangCode" style="color: var(--gold-main); font-size: 1rem;">SRG-001</strong>
+            <span
+              style="
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.6);
+                display: block;
+              "
+              >Sarang Adopsi:</span
+            >
+            <strong
+              id="upSarangCode"
+              style="color: var(--gold-main); font-size: 1rem"
+              >SRG-001</strong
+            >
           </div>
-          <div style="text-align: right;">
-            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.6); display: block;">Pengadopsi:</span>
-            <strong id="upAdopterName" style="color: #ffffff; font-size: 1rem;">Siti Aminah</strong>
+          <div style="text-align: right">
+            <span
+              style="
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.6);
+                display: block;
+              "
+              >Pengadopsi:</span
+            >
+            <strong id="upAdopterName" style="color: #ffffff; font-size: 1rem"
+              >Siti Aminah</strong
+            >
           </div>
         </div>
 
-        <form id="formUploadDokumentasi" onsubmit="event.preventDefault(); simpanUploadDokumentasi();">
+        <form
+          id="formUploadDokumentasi"
+          onsubmit="
+            event.preventDefault();
+            simpanUploadDokumentasi();
+          "
+        >
           <input type="hidden" id="upTargetCode" />
 
           <!-- FASE 1 -->
           <div class="upload-phase-box">
             <div class="upload-phase-title">
-              <i data-lucide="check-circle" style="color: var(--mint-primary);"></i>
+              <i
+                data-lucide="check-circle"
+                style="color: var(--mint-primary)"
+              ></i>
               <span>Fase 1: Pengamanan Sarang & Telur</span>
             </div>
             <div class="form-row">
               <label>Foto Dokumentasi Fase 1 (Pilih File atau URL Foto):</label>
-              <div style="display:flex; gap:10px; align-items:center;">
-                <input type="file" accept="image/*" class="pill-input-field" style="flex:1; padding:8px 14px;" onchange="handlePhasePhotoFile(this, 'upFase1Foto', 'previewFase1Img')" />
-                <input type="text" id="upFase1Foto" class="pill-input-field" style="flex:1.5;" placeholder="https://... atau path gambar" oninput="document.getElementById('previewFase1Img').src = this.value;" />
+              <div style="display: flex; gap: 10px; align-items: center">
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="pill-input-field"
+                  style="flex: 1; padding: 8px 14px"
+                  onchange="
+                    handlePhasePhotoFile(this, 'upFase1Foto', 'previewFase1Img')
+                  "
+                />
+                <input
+                  type="text"
+                  id="upFase1Foto"
+                  class="pill-input-field"
+                  style="flex: 1.5"
+                  placeholder="https://... atau path gambar"
+                  oninput="
+                    document.getElementById('previewFase1Img').src = this.value
+                  "
+                />
               </div>
-              <div style="margin-top:8px; text-align:center;">
-                <img id="previewFase1Img" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" style="max-height:120px; border-radius:12px; border:1.5px solid rgba(255,255,255,0.2); object-fit:cover; display:inline-block;" />
+              <div style="margin-top: 8px; text-align: center">
+                <img
+                  id="previewFase1Img"
+                  src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80"
+                  style="
+                    max-height: 120px;
+                    border-radius: 12px;
+                    border: 1.5px solid rgba(255, 255, 255, 0.2);
+                    object-fit: cover;
+                    display: inline-block;
+                  "
+                />
               </div>
             </div>
             <div class="form-row-2col">
@@ -5511,61 +6826,140 @@
               </div>
               <div class="form-row">
                 <label>Status Telur:</label>
-                <input type="text" id="upFase1Status" class="pill-input-field" placeholder="Kondisi 90 butir sehat" />
+                <input
+                  type="text"
+                  id="upFase1Status"
+                  class="pill-input-field"
+                  placeholder="Kondisi 90 butir sehat"
+                />
               </div>
             </div>
             <div class="form-row">
               <label>Catatan / Penjelasan Perkembangan Fase 1:</label>
-              <textarea id="upFase1Ket" class="pill-input-field" style="border-radius: 16px; min-height: 70px;" placeholder="Penjelasan pengamanan telur di sarang semi-alami..."></textarea>
+              <textarea
+                id="upFase1Ket"
+                class="pill-input-field"
+                style="border-radius: 16px; min-height: 70px"
+                placeholder="Penjelasan pengamanan telur di sarang semi-alami..."
+              ></textarea>
             </div>
           </div>
 
           <!-- FASE 2 -->
           <div class="upload-phase-box">
             <div class="upload-phase-title">
-              <i data-lucide="clock" style="color: #0288d1;"></i>
+              <i data-lucide="clock" style="color: #0288d1"></i>
               <span>Fase 2: Masa Inkubasi Pasir (Pemantauan)</span>
             </div>
             <div class="form-row">
               <label>Foto Dokumentasi Fase 2 (Masa Inkubasi):</label>
-              <div style="display:flex; gap:10px; align-items:center;">
-                <input type="file" accept="image/*" class="pill-input-field" style="flex:1; padding:8px 14px;" onchange="handlePhasePhotoFile(this, 'upFase2Foto', 'previewFase2Img')" />
-                <input type="text" id="upFase2Foto" class="pill-input-field" style="flex:1.5;" placeholder="https://... atau path gambar" oninput="document.getElementById('previewFase2Img').src = this.value;" />
+              <div style="display: flex; gap: 10px; align-items: center">
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="pill-input-field"
+                  style="flex: 1; padding: 8px 14px"
+                  onchange="
+                    handlePhasePhotoFile(this, 'upFase2Foto', 'previewFase2Img')
+                  "
+                />
+                <input
+                  type="text"
+                  id="upFase2Foto"
+                  class="pill-input-field"
+                  style="flex: 1.5"
+                  placeholder="https://... atau path gambar"
+                  oninput="
+                    document.getElementById('previewFase2Img').src = this.value
+                  "
+                />
               </div>
-              <div style="margin-top:8px; text-align:center;">
-                <img id="previewFase2Img" src="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=600&q=80" style="max-height:120px; border-radius:12px; border:1.5px solid rgba(255,255,255,0.2); object-fit:cover; display:inline-block;" />
+              <div style="margin-top: 8px; text-align: center">
+                <img
+                  id="previewFase2Img"
+                  src="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=600&q=80"
+                  style="
+                    max-height: 120px;
+                    border-radius: 12px;
+                    border: 1.5px solid rgba(255, 255, 255, 0.2);
+                    object-fit: cover;
+                    display: inline-block;
+                  "
+                />
               </div>
             </div>
             <div class="form-row-2col">
               <div class="form-row">
                 <label>Hari Inkubasi (cth: Hari ke-30):</label>
-                <input type="text" id="upFase2Hari" class="pill-input-field" placeholder="Hari ke-30" />
+                <input
+                  type="text"
+                  id="upFase2Hari"
+                  class="pill-input-field"
+                  placeholder="Hari ke-30"
+                />
               </div>
               <div class="form-row">
                 <label>Suhu Pasir:</label>
-                <input type="text" id="upFase2Suhu" class="pill-input-field" placeholder="28-30°C" />
+                <input
+                  type="text"
+                  id="upFase2Suhu"
+                  class="pill-input-field"
+                  placeholder="28-30°C"
+                />
               </div>
             </div>
             <div class="form-row">
               <label>Catatan Perkembangan Fase 2:</label>
-              <textarea id="upFase2Ket" class="pill-input-field" style="border-radius: 16px; min-height: 70px;" placeholder="Kondisi inkubasi, pemantauan suhu pasir, proteksi sarang..."></textarea>
+              <textarea
+                id="upFase2Ket"
+                class="pill-input-field"
+                style="border-radius: 16px; min-height: 70px"
+                placeholder="Kondisi inkubasi, pemantauan suhu pasir, proteksi sarang..."
+              ></textarea>
             </div>
           </div>
 
           <!-- FASE 3 -->
           <div class="upload-phase-box">
             <div class="upload-phase-title">
-              <i data-lucide="shield-check" style="color: #10b981;"></i>
+              <i data-lucide="shield-check" style="color: #10b981"></i>
               <span>Fase 3: Penetasan & Pelepasan Tukik</span>
             </div>
             <div class="form-row">
               <label>Foto Dokumentasi Fase 3 (Pelepasan Tukik):</label>
-              <div style="display:flex; gap:10px; align-items:center;">
-                <input type="file" accept="image/*" class="pill-input-field" style="flex:1; padding:8px 14px;" onchange="handlePhasePhotoFile(this, 'upFase3Foto', 'previewFase3Img')" />
-                <input type="text" id="upFase3Foto" class="pill-input-field" style="flex:1.5;" placeholder="https://... atau path gambar" oninput="document.getElementById('previewFase3Img').src = this.value;" />
+              <div style="display: flex; gap: 10px; align-items: center">
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="pill-input-field"
+                  style="flex: 1; padding: 8px 14px"
+                  onchange="
+                    handlePhasePhotoFile(this, 'upFase3Foto', 'previewFase3Img')
+                  "
+                />
+                <input
+                  type="text"
+                  id="upFase3Foto"
+                  class="pill-input-field"
+                  style="flex: 1.5"
+                  placeholder="https://... atau path gambar"
+                  oninput="
+                    document.getElementById('previewFase3Img').src = this.value
+                  "
+                />
               </div>
-              <div style="margin-top:8px; text-align:center;">
-                <img id="previewFase3Img" src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=600&q=80" style="max-height:120px; border-radius:12px; border:1.5px solid rgba(255,255,255,0.2); object-fit:cover; display:inline-block;" />
+              <div style="margin-top: 8px; text-align: center">
+                <img
+                  id="previewFase3Img"
+                  src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=600&q=80"
+                  style="
+                    max-height: 120px;
+                    border-radius: 12px;
+                    border: 1.5px solid rgba(255, 255, 255, 0.2);
+                    object-fit: cover;
+                    display: inline-block;
+                  "
+                />
               </div>
             </div>
             <div class="form-row-2col">
@@ -5575,28 +6969,77 @@
               </div>
               <div class="form-row">
                 <label>Jumlah Tukik Dilepaskan:</label>
-                <input type="text" id="upFase3Tukik" class="pill-input-field" placeholder="88 Ekor" />
+                <input
+                  type="text"
+                  id="upFase3Tukik"
+                  class="pill-input-field"
+                  placeholder="88 Ekor"
+                />
               </div>
             </div>
             <div class="form-row">
               <label>Catatan Pelepasan Fase 3:</label>
-              <textarea id="upFase3Ket" class="pill-input-field" style="border-radius: 16px; min-height: 70px;" placeholder="Penjelasan pelepasan tukik bersama tim ranger ke laut lepas..."></textarea>
+              <textarea
+                id="upFase3Ket"
+                class="pill-input-field"
+                style="border-radius: 16px; min-height: 70px"
+                placeholder="Penjelasan pelepasan tukik bersama tim ranger ke laut lepas..."
+              ></textarea>
             </div>
           </div>
 
-          <div style="background: rgba(255,208,59,0.12); border: 1px solid rgba(255,208,59,0.3); border-radius: 12px; padding: 12px; margin-bottom: 18px;">
-            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ffffff; font-weight: 700; font-size: 0.85rem;">
-              <input type="checkbox" id="upCheckPublish" checked style="width: 18px; height: 18px; accent-color: var(--gold-main);" />
-              <span>Rilis ke Tahap 4 (Progres Adopsi) agar dokumentasi ini langsung muncul di akun Pengadopsi</span>
+          <div
+            style="
+              background: rgba(255, 208, 59, 0.12);
+              border: 1px solid rgba(255, 208, 59, 0.3);
+              border-radius: 12px;
+              padding: 12px;
+              margin-bottom: 18px;
+            "
+          >
+            <label
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                color: #ffffff;
+                font-weight: 700;
+                font-size: 0.85rem;
+              "
+            >
+              <input
+                type="checkbox"
+                id="upCheckPublish"
+                checked
+                style="
+                  width: 18px;
+                  height: 18px;
+                  accent-color: var(--gold-main);
+                "
+              />
+              <span
+                >Rilis ke Tahap 4 (Progres Adopsi) agar dokumentasi ini langsung
+                muncul di akun Pengadopsi</span
+              >
             </label>
           </div>
 
-          <div style="display: flex; gap: 12px;">
-            <button type="submit" class="btn btn-gold-fill" style="flex: 1.5; padding: 13px;">
+          <div style="display: flex; gap: 12px">
+            <button
+              type="submit"
+              class="btn btn-gold-fill"
+              style="flex: 1.5; padding: 13px"
+            >
               <i data-lucide="check"></i>
               <span>SIMPAN & RILIS DOKUMENTASI</span>
             </button>
-            <button type="button" class="btn btn-dark-pill" style="flex: 1; padding: 13px;" onclick="closeModal('modalUploadDokumentasi')">
+            <button
+              type="button"
+              class="btn btn-dark-pill"
+              style="flex: 1; padding: 13px"
+              onclick="closeModal('modalUploadDokumentasi')"
+            >
               Batal
             </button>
           </div>
@@ -5608,28 +7051,71 @@
        MODAL 15: IMPOR DATA GOOGLE SHEET (Khusus Pendata, Admin, Super Admin)
        ======================================================== -->
     <div class="modal-overlay" id="modalImporGoogleSheet">
-      <div class="modal-card-dark" style="max-width: 720px; max-height: 90vh; overflow-y: auto;">
+      <div
+        class="modal-card-dark"
+        style="max-width: 720px; max-height: 90vh; overflow-y: auto"
+      >
         <div class="modal-header-yellow">
-          <button class="btn-modal-close" onclick="closeModal('modalImporGoogleSheet')">&times;</button>
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalImporGoogleSheet')"
+          >
+            &times;
+          </button>
           <h2>IMPOR PENDARATAN DARI GOOGLE SHEET</h2>
         </div>
 
-        <div style="background: rgba(66, 191, 169, 0.15); border: 1.5px solid var(--mint-primary); border-radius: 16px; padding: 14px 18px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+        <div
+          style="
+            background: rgba(66, 191, 169, 0.15);
+            border: 1.5px solid var(--mint-primary);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+          "
+        >
           <div>
-            <strong style="color: var(--mint-primary); font-size: 0.94rem; display: block;">
-              <i data-lucide="sheet" style="vertical-align: middle; margin-right: 4px;"></i>
+            <strong
+              style="
+                color: var(--mint-primary);
+                font-size: 0.94rem;
+                display: block;
+              "
+            >
+              <i
+                data-lucide="sheet"
+                style="vertical-align: middle; margin-right: 4px"
+              ></i>
               Spreadsheet Google Sheet Pendaratan BTS
             </strong>
-            <span style="font-size: 0.78rem; color: rgba(255,255,255,0.8); display: block; margin-top: 3px;">
-              Buka Google Sheet di tab baru untuk melihat, mengedit baris, atau mengunduh data langsung dalam format CSV.
+            <span
+              style="
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.8);
+                display: block;
+                margin-top: 3px;
+              "
+            >
+              Buka Google Sheet di tab baru untuk melihat, mengedit baris, atau
+              mengunduh data langsung dalam format CSV.
             </span>
           </div>
-          <div style="display: flex; gap: 8px;">
+          <div style="display: flex; gap: 8px">
             <a
               href="https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit?usp=sharing"
               target="_blank"
               class="btn btn-mint-fill"
-              style="padding: 9px 18px; font-size: 0.82rem; font-weight: 800; text-decoration: none;"
+              style="
+                padding: 9px 18px;
+                font-size: 0.82rem;
+                font-weight: 800;
+                text-decoration: none;
+              "
             >
               <i data-lucide="external-link"></i>
               <span>Buka Google Sheet</span>
@@ -5637,7 +7123,7 @@
             <button
               type="button"
               class="btn btn-gold-fill"
-              style="padding: 9px 16px; font-size: 0.82rem; font-weight: 800;"
+              style="padding: 9px 16px; font-size: 0.82rem; font-weight: 800"
               onclick="unduhTemplateCSVContoh()"
             >
               <i data-lucide="download"></i>
@@ -5646,33 +7132,85 @@
           </div>
         </div>
 
-        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.8); margin-bottom: 16px; line-height: 1.5;">
+        <p
+          style="
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 16px;
+            line-height: 1.5;
+          "
+        >
           Pilih metode impor pendaratan di bawah ini:
         </p>
 
         <!-- Pilihan Metode Impor -->
-        <div style="display: flex; gap: 10px; margin-bottom: 16px;">
-          <button type="button" class="btn btn-gold-fill" id="btnTabFileCSV" style="flex: 1; padding: 10px;" onclick="switchImportTab('file')">
+        <div style="display: flex; gap: 10px; margin-bottom: 16px">
+          <button
+            type="button"
+            class="btn btn-gold-fill"
+            id="btnTabFileCSV"
+            style="flex: 1; padding: 10px"
+            onclick="switchImportTab('file')"
+          >
             1. Upload File CSV / Excel
           </button>
-          <button type="button" class="btn btn-dark-pill" id="btnTabLinkGSheet" style="flex: 1; padding: 10px;" onclick="switchImportTab('link')">
+          <button
+            type="button"
+            class="btn btn-dark-pill"
+            id="btnTabLinkGSheet"
+            style="flex: 1; padding: 10px"
+            onclick="switchImportTab('link')"
+          >
             2. Link Google Sheet Online
           </button>
         </div>
 
         <!-- Bagian 1: Upload File CSV -->
         <div id="sectionImportFile">
-          <div class="import-drop-zone" onclick="document.getElementById('inputCsvFile').click()">
-            <i data-lucide="sheet" style="width: 44px; height: 44px; color: var(--gold-main); margin: 0 auto 10px;"></i>
-            <div style="font-weight: 800; font-size: 1rem; color: #fff;">Klik untuk Memilih File CSV dari Google Sheet</div>
-            <p style="font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 6px;">
-              Di Google Sheets: Klik <strong>File &gt; Download &gt; Comma Separated Values (.csv)</strong>
+          <div
+            class="import-drop-zone"
+            onclick="document.getElementById('inputCsvFile').click()"
+          >
+            <i
+              data-lucide="sheet"
+              style="
+                width: 44px;
+                height: 44px;
+                color: var(--gold-main);
+                margin: 0 auto 10px;
+              "
+            ></i>
+            <div style="font-weight: 800; font-size: 1rem; color: #fff">
+              Klik untuk Memilih File CSV dari Google Sheet
+            </div>
+            <p
+              style="
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.7);
+                margin-top: 6px;
+              "
+            >
+              Di Google Sheets: Klik
+              <strong
+                >File &gt; Download &gt; Comma Separated Values (.csv)</strong
+              >
             </p>
-            <input type="file" id="inputCsvFile" accept=".csv, text/csv" style="display: none;" onchange="handleCsvFileUpload(this)" />
+            <input
+              type="file"
+              id="inputCsvFile"
+              accept=".csv, text/csv"
+              style="display: none"
+              onchange="handleCsvFileUpload(this)"
+            />
           </div>
 
-          <div style="text-align: right; margin-top: 10px;">
-            <button type="button" class="btn btn-dark-pill" style="padding: 6px 14px; font-size: 0.78rem;" onclick="unduhTemplateCSVContoh()">
+          <div style="text-align: right; margin-top: 10px">
+            <button
+              type="button"
+              class="btn btn-dark-pill"
+              style="padding: 6px 14px; font-size: 0.78rem"
+              onclick="unduhTemplateCSVContoh()"
+            >
               <i data-lucide="download"></i>
               <span>Unduh Template Contoh Google Sheet (.csv)</span>
             </button>
@@ -5680,33 +7218,84 @@
         </div>
 
         <!-- Bagian 2: Link Google Sheet Online -->
-        <div id="sectionImportLink" style="display: none;">
+        <div id="sectionImportLink" style="display: none">
           <div class="upload-phase-box">
-            <label style="font-size: 0.82rem; color: #fff; font-weight: 700; display: block; margin-bottom: 6px;">
+            <label
+              style="
+                font-size: 0.82rem;
+                color: #fff;
+                font-weight: 700;
+                display: block;
+                margin-bottom: 6px;
+              "
+            >
               Tempel Link Publikasi Google Sheet (.csv atau Link Share):
             </label>
-            <div style="display: flex; gap: 8px;">
-              <input type="url" id="inpLinkGSheet" class="pill-input-field" value="https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/export?format=csv" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" />
-              <button type="button" class="btn btn-mint-fill" style="padding: 10px 18px;" onclick="tarikDariLinkGoogleSheet()">
+            <div style="display: flex; gap: 8px">
+              <input
+                type="url"
+                id="inpLinkGSheet"
+                class="pill-input-field"
+                value="https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/export?format=csv"
+                placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv"
+              />
+              <button
+                type="button"
+                class="btn btn-mint-fill"
+                style="padding: 10px 18px"
+                onclick="tarikDariLinkGoogleSheet()"
+              >
                 Tarik Data
               </button>
             </div>
-            <small style="color: rgba(255,255,255,0.6); display: block; margin-top: 8px; font-size: 0.74rem;">
-              Tips: Di Google Sheets klik <strong>File &gt; Share &gt; Publish to web</strong>, pilih format <strong>CSV</strong>, lalu salin tautannya ke sini.
+            <small
+              style="
+                color: rgba(255, 255, 255, 0.6);
+                display: block;
+                margin-top: 8px;
+                font-size: 0.74rem;
+              "
+            >
+              Tips: Di Google Sheets klik
+              <strong>File &gt; Share &gt; Publish to web</strong>, pilih format
+              <strong>CSV</strong>, lalu salin tautannya ke sini.
             </small>
           </div>
         </div>
 
         <!-- Pratinjau Data yang Terbaca -->
-        <div id="boxPreviewImport" style="display: none; margin-top: 20px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h4 style="color: var(--gold-main); font-size: 0.95rem; font-weight: 800;">
-              Pratinjau Data Siap Diimpor (<span id="countPreviewRows">0</span> Sarang)
+        <div id="boxPreviewImport" style="display: none; margin-top: 20px">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h4
+              style="
+                color: var(--gold-main);
+                font-size: 0.95rem;
+                font-weight: 800;
+              "
+            >
+              Pratinjau Data Siap Diimpor (<span id="countPreviewRows">0</span>
+              Sarang)
             </h4>
-            <span class="badge-pill badge-hijau" style="font-size: 0.7rem;">Format Valid</span>
+            <span class="badge-pill badge-hijau" style="font-size: 0.7rem"
+              >Format Valid</span
+            >
           </div>
 
-          <div style="max-height: 240px; overflow-y: auto; margin-top: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+          <div
+            style="
+              max-height: 240px;
+              overflow-y: auto;
+              margin-top: 10px;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            "
+          >
             <table class="preview-import-table">
               <thead>
                 <tr>
@@ -5724,19 +7313,27 @@
             </table>
           </div>
 
-          <div style="margin-top: 20px; display: flex; gap: 12px;">
-            <button type="button" class="btn btn-gold-fill" style="flex: 1.5; padding: 13px;" onclick="simpanImporMassal()">
+          <div style="margin-top: 20px; display: flex; gap: 12px">
+            <button
+              type="button"
+              class="btn btn-gold-fill"
+              style="flex: 1.5; padding: 13px"
+              onclick="simpanImporMassal()"
+            >
               <i data-lucide="database"></i>
               <span>KONFIRMASI & SIMPAN KE DATABASE</span>
             </button>
-            <button type="button" class="btn btn-dark-pill" style="flex: 1; padding: 13px;" onclick="resetImportPreview()">
+            <button
+              type="button"
+              class="btn btn-dark-pill"
+              style="flex: 1; padding: 13px"
+              onclick="resetImportPreview()"
+            >
               Batal
             </button>
           </div>
         </div>
-
       </div>
     </div>
-
   </body>
 </html>
