@@ -2918,11 +2918,71 @@
     </div>
 
     <!-- ========================================================
-       MODAL 2: PILIH KATEGORI AKUN (Matching PDF Page 9)
+       MODAL 1B: MASUK ATAU DAFTAR (Pilihan Awal)
+       ======================================================== -->
+    <div class="modal-overlay" id="modalMasukDaftar">
+      <div class="modal-card-dark">
+        <div class="modal-header-yellow">
+          <button
+            class="btn-modal-close"
+            onclick="closeModal('modalMasukDaftar')"
+          >
+            &times;
+          </button>
+          <h2>Masuk atau Daftar</h2>
+        </div>
+
+        <p
+          style="
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.86rem;
+            text-align: center;
+            margin-bottom: 20px;
+          "
+        >
+          Sudah punya akun? Langsung Masuk. Belum punya akun? Daftar dulu.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <button
+            type="button"
+            class="btn btn-mint-outline"
+            style="width: 100%; padding: 13px; font-size: 0.92rem"
+            onclick="closeModal('modalMasukDaftar'); openAuthModal('login')"
+          >
+            MASUK
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark-pill"
+            style="width: 100%; padding: 13px; font-size: 0.92rem"
+            onclick="
+              closeModal('modalMasukDaftar');
+              setCategoryChoice('masyarakat');
+              openModal('modalKategoriAkun');
+            "
+          >
+            DAFTAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+       MODAL 2: PILIH KATEGORI AKUN — KHUSUS ALUR DAFTAR (Matching PDF Page 9)
        ======================================================== -->
     <div class="modal-overlay" id="modalKategoriAkun">
       <div class="modal-card-dark">
         <div class="modal-header-yellow">
+          <button
+            class="btn-modal-back"
+            onclick="
+              closeModal('modalKategoriAkun');
+              openModal('modalMasukDaftar');
+            "
+          >
+            &lt;
+          </button>
           <button
             class="btn-modal-close"
             onclick="closeModal('modalKategoriAkun')"
@@ -2936,24 +2996,25 @@
           <div
             class="role-grid-btn"
             id="btnRoleMasyarakat"
-            onclick="switchAccountRole('masyarakat')"
-            title="Masuk sebagai Masyarakat"
+            onclick="setCategoryChoice('masyarakat')"
+            title="Daftar sebagai Masyarakat"
           >
             Masyarakat
           </div>
           <div
             class="role-grid-btn"
             id="btnRoleMitra"
-            onclick="switchAccountRole('mitra')"
-            title="Masuk sebagai Mitra"
+            onclick="setCategoryChoice('mitra')"
+            title="Daftar sebagai Mitra"
           >
             Mitra
           </div>
           <div
             class="role-grid-btn"
             id="btnRoleSuperAdmin"
-            onclick="switchAccountRole('super_admin')"
-            title="Masuk sebagai Super Admin"
+            onclick="setCategoryChoice('super_admin')"
+            title="Daftar sebagai Super Admin"
+            style="display: none"
           >
             Super Admin
           </div>
@@ -2964,17 +3025,9 @@
             type="button"
             class="btn btn-mint-outline"
             style="flex: 1; padding: 13px; font-size: 0.92rem"
-            onclick="switchAccountRole(selectedCategory)"
-          >
-            MASUK
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark-pill"
-            style="flex: 1; padding: 13px; font-size: 0.92rem"
             onclick="openAuthModal('register')"
           >
-            DAFTAR
+            LANJUTKAN DAFTAR
           </button>
         </div>
 
@@ -2988,7 +3041,7 @@
             "
             onclick="openAuthModal('login')"
           >
-            Masuk dengan Email &amp; Password Lain
+            Sudah punya akun? Masuk
           </a>
         </div>
       </div>
@@ -3004,7 +3057,7 @@
             class="btn-modal-back"
             onclick="
               closeModal('modalLogin');
-              openModal('modalKategoriAkun');
+              openModal('modalMasukDaftar');
             "
           >
             &lt;
@@ -4254,7 +4307,7 @@
           <button
             class="btn btn-gold-fill"
             style="width: 100%"
-            onclick="openModalKategoriAkun()"
+            onclick="closeModal('modalProfileMenu'); openModal('modalMasukDaftar')"
           >
             <i data-lucide="refresh-cw"></i>
             <span>Ganti Akun</span>
@@ -4930,7 +4983,7 @@
 
       function openProfileMenu() {
         if (!currentUser) {
-          openModalKategoriAkun();
+          openModal("modalMasukDaftar");
           return;
         }
         renderUserProfile();
@@ -4984,6 +5037,7 @@
       }
 
       function openAuthModal(type) {
+        closeModal("modalMasukDaftar");
         closeModal("modalKategoriAkun");
         if (type === "register" && selectedCategory !== "masyarakat") {
           alert(
@@ -5699,7 +5753,7 @@
 
       document
         .getElementById("formAdopsiKirim")
-        .addEventListener("submit", (e) => {
+        .addEventListener("submit", async (e) => {
           e.preventDefault();
           const nama = document
             .getElementById("inpAdopsiNamaAkun")
@@ -5740,6 +5794,23 @@
             progress: 25,
             tanggal_adopsi: new Date().toISOString().split("T")[0],
           };
+
+          try {
+            const res = await fetch(`${API_URL}/api/adopsi`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(newAdopsi),
+            });
+            const result = await res.json();
+
+            if (!result.success) {
+              alert(result.message || "Gagal menyimpan data adopsi ke server.");
+              return;
+            }
+          } catch (error) {
+            alert("Gagal menghubungi server: " + error.message);
+            return;
+          }
 
           dataAdopsi.unshift(newAdopsi);
           localStorage.setItem("bts_adopsi", JSON.stringify(dataAdopsi));
@@ -5802,7 +5873,7 @@
               <div style="text-align:center; padding:32px 20px; color:rgba(255,255,255,0.7);">
                 <i data-lucide="lock" style="width:36px; height:36px; color:var(--gold-main); margin:0 auto 10px;"></i>
                 <p style="font-weight:700;">Silakan Masuk untuk melihat tahapan & dokumentasi adopsi Anda.</p>
-                <button class="btn btn-gold-fill" style="margin-top:12px;" onclick="openModal('modalKategoriAkun')">Masuk / Daftar</button>
+                <button class="btn btn-gold-fill" style="margin-top:12px;" onclick="openModal('modalMasukDaftar')">Masuk / Daftar</button>
               </div>`;
           } else if (currentUser.role === "masyarakat") {
             container.innerHTML = `
@@ -6032,7 +6103,7 @@
           defaultProg[tahap] || 25;
       }
 
-      function simpanTahapAdmin() {
+      async function simpanTahapAdmin() {
         if (!activeTahapanCode) return;
         const a = dataAdopsi.find((x) => x.kode_sarang === activeTahapanCode);
         if (!a) return;
@@ -6043,10 +6114,35 @@
         const tahapVal = selRadio ? parseInt(selRadio.value) : 1;
         const progVal =
           parseInt(document.getElementById("adminSelectProgress").value) || 25;
+        const statusVal = getTahapStatusName(tahapVal);
+
+        try {
+          const res = await fetch(
+            `${API_URL}/api/adopsi/${encodeURIComponent(a.kode_sarang)}`,
+            {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                tahap: tahapVal,
+                progress: progVal,
+                status_tahap: statusVal,
+              }),
+            },
+          );
+          const result = await res.json();
+
+          if (!result.success) {
+            alert(result.message || "Gagal menyimpan tahapan ke server.");
+            return;
+          }
+        } catch (error) {
+          alert("Gagal menghubungi server: " + error.message);
+          return;
+        }
 
         a.tahap = tahapVal;
         a.progress = progVal;
-        a.status_tahap = getTahapStatusName(tahapVal);
+        a.status_tahap = statusVal;
 
         localStorage.setItem("bts_adopsi", JSON.stringify(dataAdopsi));
         renderAdopsi();
