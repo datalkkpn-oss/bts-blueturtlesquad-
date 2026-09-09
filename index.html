@@ -1882,7 +1882,7 @@
         <div class="sidebar-brand-wrapper">
           <div class="brand-emblem-circle">
             <img
-              src="WhatsApp Image 2026-09-02 at 09.09.29 (1).jpeg"
+              src="logo-bts.jpg"
               alt="Blue Turtle Squad Logo"
               class="brand-logo-img"
             />
@@ -2986,7 +2986,10 @@
             type="button"
             class="btn btn-mint-outline"
             style="width: 100%; padding: 13px; font-size: 0.92rem"
-            onclick="closeModal('modalMasukDaftar'); openAuthModal('login')"
+            onclick="
+              closeModal('modalMasukDaftar');
+              openAuthModal('login');
+            "
           >
             MASUK
           </button>
@@ -4066,7 +4069,7 @@
               "
             >
               <img
-                src="WhatsApp Image 2026-09-02 at 09.09.29 (1).jpeg"
+                src="logo-bts.jpg"
                 style="
                   width: 70px;
                   height: 70px;
@@ -4369,7 +4372,10 @@
           <button
             class="btn btn-gold-fill"
             style="width: 100%"
-            onclick="closeModal('modalProfileMenu'); openModal('modalMasukDaftar')"
+            onclick="
+              closeModal('modalProfileMenu');
+              openModal('modalMasukDaftar');
+            "
           >
             <i data-lucide="refresh-cw"></i>
             <span>Ganti Akun</span>
@@ -5161,7 +5167,10 @@
             }
 
             currentUser = result.user;
-            localStorage.setItem("bts_current_user", JSON.stringify(currentUser));
+            localStorage.setItem(
+              "bts_current_user",
+              JSON.stringify(currentUser),
+            );
             closeModal("modalLogin");
             renderUserProfile();
             showToast(
@@ -5530,7 +5539,10 @@
           }
 
           dataPendaratan = dataPendaratan.filter((p) => p.kode_sarang !== kode);
-          localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
+          localStorage.setItem(
+            "bts_pendaratan",
+            JSON.stringify(dataPendaratan),
+          );
           renderPendaratan();
           populateAdopsiSarangSelect();
           showToast(`Data ${kode} berhasil dihapus.`);
@@ -5589,8 +5601,8 @@
             jumlah_telur: parseInt(
               document.getElementById("editJumlahTelur").value,
             ),
-            kapan_penetasan: document.getElementById("editKapanPenetasan")
-              .value,
+            kapan_penetasan:
+              document.getElementById("editKapanPenetasan").value,
           };
 
           try {
@@ -5672,14 +5684,11 @@
           };
 
           try {
-            const res = await fetch(
-              `${API_URL}/api/pendaratan`,
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(item),
-              },
-            );
+            const res = await fetch(`${API_URL}/api/pendaratan`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(item),
+            });
             const result = await res.json();
 
             if (!result.success) {
@@ -6859,14 +6868,11 @@
         populateAdopsiSarangSelect();
 
         try {
-          fetch(
-            `${API_URL}/api/pendaratan/bulk`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(parsedImportData),
-            },
-          ).catch(() => {});
+          fetch(`${API_URL}/api/pendaratan/bulk`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(parsedImportData),
+          }).catch(() => {});
         } catch (e) {}
 
         closeModal("modalImporGoogleSheet");
