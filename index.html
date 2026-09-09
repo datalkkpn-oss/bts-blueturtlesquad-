@@ -3134,7 +3134,7 @@
                 class="password-toggle-icon"
                 onclick="togglePasswordVisibility('loginPassword', this)"
               >
-                <i data-lucide="eye"></i>
+                <i data-lucide="eye-off"></i>
               </span>
             </div>
           </div>
@@ -3224,7 +3224,7 @@
                 class="password-toggle-icon"
                 onclick="togglePasswordVisibility('regPass', this)"
               >
-                <i data-lucide="eye"></i>
+                <i data-lucide="eye-off"></i>
               </span>
             </div>
           </div>
@@ -3243,7 +3243,7 @@
                 class="password-toggle-icon"
                 onclick="togglePasswordVisibility('regPassConfirm', this)"
               >
-                <i data-lucide="eye"></i>
+                <i data-lucide="eye-off"></i>
               </span>
             </div>
           </div>
@@ -4568,7 +4568,7 @@
                 class="password-toggle-icon"
                 onclick="togglePasswordVisibility('uPass', this)"
               >
-                <i data-lucide="eye"></i>
+                <i data-lucide="eye-off"></i>
               </span>
             </div>
           </div>
@@ -4914,8 +4914,8 @@
         const isHidden = input.type === "password";
         input.type = isHidden ? "text" : "password";
         iconWrapper.innerHTML = isHidden
-          ? '<i data-lucide="eye-off"></i>'
-          : '<i data-lucide="eye"></i>';
+          ? '<i data-lucide="eye"></i>'
+          : '<i data-lucide="eye-off"></i>';
         if (window.lucide) lucide.createIcons();
       }
 
