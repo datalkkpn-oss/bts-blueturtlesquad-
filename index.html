@@ -6852,34 +6852,62 @@
       async function simpanImporMassal() {
         if (parsedImportData.length === 0) return;
 
-        let addedCount = 0;
-        parsedImportData.forEach((newItem) => {
-          const exists = dataPendaratan.some(
-            (p) => p.kode_sarang === newItem.kode_sarang,
-          );
-          if (!exists) {
-            dataPendaratan.unshift(newItem);
-            addedCount++;
-          }
-        });
+        // Hanya kirim baris yang belum ada kode_sarang-nya
+        const itemsToSend = parsedImportData.filter(
+          (newItem) =>
+            !dataPendaratan.some((p) => p.kode_sarang === newItem.kode_sarang),
+        );
 
-        localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
-        renderPendaratan();
-        populateAdopsiSarangSelect();
+        if (itemsToSend.length === 0) {
+          alert("Semua kode sarang di file ini sudah terdaftar, tidak ada yang diimpor.");
+          return;
+        }
 
         try {
-          fetch(`${API_URL}/api/pendaratan/bulk`, {
+          const res = await fetch(`${API_URL}/api/pendaratan/bulk`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(parsedImportData),
-          }).catch(() => {});
-        } catch (e) {}
+            body: JSON.stringify(itemsToSend),
+          });
 
-        closeModal("modalImporGoogleSheet");
-        resetImportPreview();
-        showToast(
-          `${addedCount} Sarang pendaratan penyu berhasil diimpor ke Database!`,
-        );
+          let result = null;
+          try {
+            result = await res.json();
+          } catch (e) {
+            // Respons bukan JSON (mis. endpoint tidak ada / error 404/500)
+          }
+
+          if (!res.ok || (result && result.success === false)) {
+            alert(
+              "Gagal menyimpan ke database: " +
+                (result && result.message
+                  ? result.message
+                  : `Server merespons status ${res.status}. Data BELUM masuk ke database, hanya tersimpan sementara di browser ini.`),
+            );
+            return; // jangan tandai sukses kalau server menolak
+          }
+
+          // Server konfirmasi sukses -> baru update tampilan lokal
+          itemsToSend.forEach((newItem) => dataPendaratan.unshift(newItem));
+          localStorage.setItem(
+            "bts_pendaratan",
+            JSON.stringify(dataPendaratan),
+          );
+          renderPendaratan();
+          populateAdopsiSarangSelect();
+
+          closeModal("modalImporGoogleSheet");
+          resetImportPreview();
+          showToast(
+            `${itemsToSend.length} Sarang pendaratan penyu berhasil diimpor ke Database!`,
+          );
+        } catch (error) {
+          alert(
+            "Gagal menghubungi server: " +
+              error.message +
+              ". Data BELUM masuk ke database.",
+          );
+        }
       }
 
       function unduhTemplateCSVContoh() {
