@@ -5236,42 +5236,65 @@
           }
         });
 
-      // --- Interactive Map (Leaflet) ---
+      // --- Interactive Map (Leaflet + Esri/ArcGIS tiles) ---
+      // Catatan: tile OpenStreetMap (tile.openstreetmap.org) sering diblokir oleh
+      // firewall/CSP jaringan pemerintah. Sesuai arahan tim (acuan peta ArcGIS di
+      // https://sites.google.com/view/twp-anambas/peta-interaktif), basemap di bawah
+      // ini memakai layanan tile Esri/ArcGIS Online (server.arcgisonline.com), yang
+      // satu keluarga penyedia dengan peta resmi tersebut sehingga jauh lebih kecil
+      // kemungkinan ikut terblokir.
       function initMap() {
-        const anambas = [3.095, 105.588];
+        const mangkai = [3.0922, 105.5833]; // Pulau Mangkai (3°05'32"N 105°35'00"E)
         window.homeMapInstance = L.map("mapHome", {
           zoomControl: true,
           scrollWheelZoom: false,
           doubleClickZoom: false,
           touchZoom: false,
           boxZoom: false,
-        }).setView(anambas, 11);
+        }).setView(mangkai, 14);
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution: "&copy; OpenStreetMap",
-        }).addTo(window.homeMapInstance);
+        // Basemap satelit Esri World Imagery (ArcGIS Online)
+        L.tileLayer(
+          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          {
+            attribution:
+              "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics",
+            maxZoom: 18,
+          }
+        ).addTo(window.homeMapInstance);
 
+        // Label nama tempat di atas citra satelit (opsional, boleh dihapus kalau tidak perlu)
+        L.tileLayer(
+          "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+          { maxZoom: 18, opacity: 0.9 }
+        ).addTo(window.homeMapInstance);
+
+        // Titik pendaratan penyu: bagian Utara & Selatan Pulau Mangkai
+        // (nama pantai berdasar laporan monitoring penyu LKKPN Pekanbaru)
         const pins = [
           {
-            pos: [3.082, 105.585],
-            title: "Pantai Mangkai Selatan",
+            pos: [3.0838, 105.5842],
+            title: "Mangkai Selatan",
             code: "MS-001",
             info: "Penyu Sisik & Hijau (265 Telur)",
+            pantai: "Pantai Suit & Pantai Sekanji",
           },
           {
-            pos: [3.108, 105.592],
-            title: "Pantai Mangkai Utara",
+            pos: [3.1005, 105.5825],
+            title: "Mangkai Utara",
             code: "MU-207",
             info: "Penyu Hijau (215 Telur)",
+            pantai: "Pantai Empung & Teluk Kado",
           },
         ];
 
         pins.forEach((p) => {
           const marker = L.marker(p.pos).addTo(window.homeMapInstance);
           marker.bindPopup(`
-            <div style="font-family:'Plus Jakarta Sans',sans-serif; min-width:160px; color:#171a20;">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; min-width:170px; color:#171a20;">
               <strong style="color:#0288d1; font-size:0.92rem;">${p.title}</strong><br>
               <span style="font-size:0.78rem;">Kode: <b>${p.code}</b></span><br>
+              <span style="font-size:0.78rem;">Lokasi: ${p.pantai}</span><br>
               <span style="font-size:0.78rem; color:#d97706;">${p.info}</span>
             </div>
           `);
@@ -6859,7 +6882,9 @@
         );
 
         if (itemsToSend.length === 0) {
-          alert("Semua kode sarang di file ini sudah terdaftar, tidak ada yang diimpor.");
+          alert(
+            "Semua kode sarang di file ini sudah terdaftar, tidak ada yang diimpor.",
+          );
           return;
         }
 
