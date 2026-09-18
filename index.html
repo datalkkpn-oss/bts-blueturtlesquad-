@@ -914,18 +914,20 @@
         color: #171a20;
         padding: 14px 20px;
         display: grid;
-        grid-template-columns: 1fr 1.2fr 1.2fr 1fr 1.5fr 1fr;
+        grid-template-columns: 0.9fr 1.1fr 1.1fr 0.9fr 1.2fr 1.3fr 1.3fr;
         font-weight: 900;
         font-size: 0.88rem;
+        gap: 8px;
       }
 
       .tumbuh-row {
         display: grid;
-        grid-template-columns: 1fr 1.2fr 1.2fr 1fr 1.5fr 1fr;
+        grid-template-columns: 0.9fr 1.1fr 1.1fr 0.9fr 1.2fr 1.3fr 1.3fr;
         padding: 14px 20px;
         align-items: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         font-size: 0.85rem;
+        gap: 8px;
       }
 
       .prog-track {
@@ -1872,6 +1874,166 @@
           font-size: 0.82rem;
         }
       }
+
+      /* Tab Switcher Informasi & Berita */
+      .info-tab-nav {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+      }
+      .btn-info-tab {
+        background: rgba(24, 30, 42, 0.7);
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 9px 20px;
+        border-radius: var(--radius-pill);
+        font-size: 0.88rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+      }
+      .btn-info-tab:hover {
+        background: rgba(255, 208, 59, 0.12);
+        color: var(--gold-main);
+        border-color: var(--gold-main);
+      }
+      .btn-info-tab.active {
+        background: var(--gold-main);
+        color: #121620;
+        border-color: var(--gold-main);
+        box-shadow: 0 0 16px rgba(255, 208, 59, 0.4);
+      }
+
+      /* Card Berita & Informasi Modern */
+      .news-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 18px;
+        margin-top: 14px;
+      }
+      .news-item-card {
+        background: var(--card-dark);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-card);
+        padding: 20px 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 12px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+      .news-item-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255, 208, 59, 0.4);
+      }
+      .news-badge {
+        align-self: flex-start;
+        padding: 4px 14px;
+        border-radius: var(--radius-pill);
+        font-size: 0.74rem;
+        font-weight: 800;
+      }
+      .news-badge.mitra {
+        background: rgba(66, 191, 169, 0.2);
+        color: var(--mint-primary);
+        border: 1px solid var(--mint-primary);
+      }
+      .news-badge.investasi {
+        background: rgba(255, 208, 59, 0.2);
+        color: var(--gold-main);
+        border: 1px solid var(--gold-main);
+      }
+      .news-title {
+        font-size: 1.12rem;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.4;
+      }
+      .news-snippet {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.55;
+      }
+      .news-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 6px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Tabel Fase Dokumentasi GDrive */
+      .phase-table-wrap {
+        background: var(--card-dark);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        margin: 14px 0 20px;
+      }
+      .phase-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .phase-table th {
+        background: rgba(255, 208, 59, 0.15);
+        color: var(--gold-main);
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-align: left;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .phase-table td {
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.85rem;
+        color: #ffffff;
+        vertical-align: middle;
+      }
+      .phase-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* QRIS Container */
+      .qris-display-box {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 20px;
+        text-align: center;
+        color: #111827;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        margin: 14px 0;
+      }
+      .qris-display-box img {
+        max-width: 250px;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin: 0 auto 10px;
+        display: block;
+      }
+
+      /* Karakter Counter */
+      .char-counter-text {
+        font-size: 0.74rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.6);
+        text-align: right;
+        margin-top: 4px;
+      }
+      .char-counter-text.warn {
+        color: #f59e0b;
+      }
+      .char-counter-text.limit {
+        color: #ef4444;
+      }
     </style>
   </head>
   <body>
@@ -2084,7 +2246,38 @@
            PAGE 2: INFORMASI (Matching PDF Page 3)
            ======================================================== -->
         <section id="page-informasi" class="page-view">
-          <div class="info-page-wrap">
+          <div class="info-tab-nav">
+            <button
+              type="button"
+              class="btn-info-tab active"
+              id="tabNavBts"
+              onclick="switchInfoTab('bts')"
+            >
+              <i data-lucide="info"></i>
+              <span>Profil & Edukasi BTS</span>
+            </button>
+            <button
+              type="button"
+              class="btn-info-tab"
+              id="tabNavMitra"
+              onclick="switchInfoTab('mitra')"
+            >
+              <i data-lucide="users"></i>
+              <span>Berita & Kolaborasi Mitra</span>
+            </button>
+            <button
+              type="button"
+              class="btn-info-tab"
+              id="tabNavInvestasi"
+              onclick="switchInfoTab('investasi')"
+            >
+              <i data-lucide="trending-up"></i>
+              <span>Warta & Promo Investasi</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: EDUKASI & PROFIL BTS -->
+          <div class="info-page-wrap" id="tabContentInformasiBts">
             <h2 class="info-main-title">
               Kenapa Blue Turtle Squad (BTS) Dibentuk?
             </h2>
@@ -2130,6 +2323,80 @@
                 serta perlindungan penyu di Anambas berjalan lebih efektif dan
                 berkelanjutan.
               </p>
+            </div>
+          </div>
+
+          <!-- TAB 2: BERITA MITRA (tabel_berita_mitra - Card Style) -->
+          <div id="tabContentBeritaMitra" style="display: none">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 16px;
+                flex-wrap: wrap;
+                gap: 12px;
+              "
+            >
+              <div>
+                <h2 style="font-size: 1.5rem; font-weight: 900; color: #ffffff">
+                  Berita & Publikasi Mitra Konservasi
+                </h2>
+                <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); margin-top: 2px">
+                  Warta kegiatan kolaborasi dari mitra, instansi, dan squad konservasi di Kepulauan Anambas.
+                </p>
+              </div>
+              <button
+                type="button"
+                id="btnTambahBeritaMitra"
+                class="btn btn-gold-fill"
+                style="display: none; padding: 9px 20px; font-size: 0.84rem"
+                onclick="openModal('modalTambahBeritaMitra')"
+              >
+                <i data-lucide="plus-circle"></i>
+                <span>+ Tambah Berita Mitra</span>
+              </button>
+            </div>
+
+            <div class="news-card-grid" id="gridBeritaMitra">
+              <!-- Injected by JavaScript -->
+            </div>
+          </div>
+
+          <!-- TAB 3: WARTA & PROMO INVESTASI (tabel_berita_investasi - Card Style) -->
+          <div id="tabContentBeritaInvestasi" style="display: none">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 16px;
+                flex-wrap: wrap;
+                gap: 12px;
+              "
+            >
+              <div>
+                <h2 style="font-size: 1.5rem; font-weight: 900; color: #ffffff">
+                  Warta Promosi & Program Investasi Bahari
+                </h2>
+                <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); margin-top: 2px">
+                  Informasi promosi paket adopsi, donasi fasilitas konservasi, dan ekowisata bahari.
+                </p>
+              </div>
+              <button
+                type="button"
+                id="btnTambahBeritaInvestasi"
+                class="btn btn-gold-fill"
+                style="display: none; padding: 9px 20px; font-size: 0.84rem"
+                onclick="openModal('modalTambahBeritaInvestasi')"
+              >
+                <i data-lucide="plus-circle"></i>
+                <span>+ Tambah Promosi Investasi</span>
+              </button>
+            </div>
+
+            <div class="news-card-grid" id="gridBeritaInvestasi">
+              <!-- Injected by JavaScript -->
             </div>
           </div>
         </section>
@@ -2204,6 +2471,7 @@
                 <thead>
                   <tr>
                     <th>KODE SARANG</th>
+                    <th>TAMPILAN SARANG</th>
                     <th>LOKASI PENDARATAN</th>
                     <th>JENIS</th>
                     <th>KAPAN PENDARATAN</th>
@@ -2367,6 +2635,7 @@
               <div>Jenis Penyu</div>
               <div>Lokasi</div>
               <div>Jumlah Telur</div>
+              <div>Fase (GDrive)</div>
               <div>Progress</div>
               <div style="text-align: right">Aksi</div>
             </div>
@@ -2913,6 +3182,16 @@
           </div>
 
           <div class="form-row">
+            <label>Tampilan Sarang <small style="color:var(--gold-main); font-weight:700;">(Link Google Drive)</small></label>
+            <input
+              type="url"
+              id="inpTampilanSarang"
+              class="pill-input-field"
+              placeholder="https://drive.google.com/..."
+            />
+          </div>
+
+          <div class="form-row">
             <label>Lokasi</label>
             <select id="inpLokasi" class="pill-input-field" required>
               <option value="mangkai selatan">mangkai selatan</option>
@@ -3283,7 +3562,7 @@
        Light Steel-Blue Background Card with Yellow Title
        ======================================================== -->
     <div class="modal-overlay" id="modalAdopsiForm">
-      <div class="modal-card-lightblue">
+      <div class="modal-card-lightblue" style="max-width: 580px;">
         <div class="modal-header-yellow">
           <button
             class="btn-modal-back"
@@ -3305,19 +3584,32 @@
               text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
             "
           >
-            Silahkan Isi Form Adopsi Ya!
+            Formulir & Pembayaran Adopsi
           </h2>
         </div>
 
-        <form id="formAdopsiKirim">
+        <!-- STEP 1: PENGISIAN FORM ADOPSI -->
+        <div id="adopsiStep1Container">
           <div class="form-row">
-            <label>Nama Akun</label>
+            <label>Nama Akun / Adopter</label>
             <input
               type="text"
               id="inpAdopsiNamaAkun"
               class="pill-input-field"
               style="background: #6c8496"
-              placeholder="Sudah Terisi Otomatis"
+              placeholder="Nama Lengkap Adopter"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label>Email Adopter (Untuk Pengiriman Sertifikat Resmi)</label>
+            <input
+              type="email"
+              id="inpAdopsiEmail"
+              class="pill-input-field"
+              style="background: #6c8496"
+              placeholder="contoh@gmail.com"
               required
             />
           </div>
@@ -3340,7 +3632,7 @@
             <label>
               Id Sarang
               <small style="color: #2b3b47; font-weight: 600">
-                (Wajib di isi dan Otomatis Wajib Pilih dari Jumlah Sarang)
+                (Pilih ID Sarang yang Tersedia)
               </small>
             </label>
             <select
@@ -3353,157 +3645,164 @@
             </select>
           </div>
 
-          <!-- LANGKAH 1: BUTTON BUKA GOOGLE FORM -->
+          <button
+            type="button"
+            id="btnLanjutPembayaran"
+            class="btn btn-gold-fill"
+            style="
+              width: 100%;
+              padding: 13px;
+              font-weight: 900;
+              font-size: 0.95rem;
+              margin-top: 18px;
+              box-shadow: 0 4px 15px rgba(255, 208, 59, 0.4);
+            "
+            onclick="lanjutKePembayaranQris()"
+          >
+            <span>Lanjut Pembayaran →</span>
+          </button>
+        </div>
+
+        <!-- STEP 2: TAMPILAN PEMBAYARAN QRIS & GOOGLE FORM UPLOAD -->
+        <div id="adopsiStep2Container" style="display: none; animation: fadeIn 0.3s ease">
+          <button
+            type="button"
+            class="btn btn-dark-pill"
+            style="padding: 6px 14px; font-size: 0.78rem; margin-bottom: 12px"
+            onclick="kembaliKeFormAdopsi()"
+          >
+            ← Kembali ke Form Data
+          </button>
+
+          <!-- Ringkasan Adopsi -->
           <div
             style="
-              background: rgba(255, 208, 59, 0.25);
-              border: 2px solid var(--gold-main);
-              border-radius: 16px;
-              padding: 16px;
-              margin: 20px 0 16px;
+              background: rgba(18, 22, 32, 0.85);
+              border: 1.5px solid var(--gold-main);
+              border-radius: 14px;
+              padding: 12px 18px;
+              margin-bottom: 14px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <div>
+              <span style="font-size: 0.72rem; color: rgba(255, 255, 255, 0.7); display: block;">Sarang Dipilih:</span>
+              <strong id="ringkasKodeSarang" style="color: var(--gold-main); font-size: 1.05rem;">-</strong>
+              <div id="ringkasJenisLokasi" style="font-size: 0.75rem; color: #ffffff;">-</div>
+            </div>
+            <div style="text-align: right">
+              <span style="font-size: 0.72rem; color: rgba(255, 255, 255, 0.7); display: block;">Total Donasi Adopsi:</span>
+              <strong id="ringkasTotalBayar" style="color: var(--gold-main); font-size: 1.15rem;">Rp 150.000</strong>
+            </div>
+          </div>
+
+          <!-- QRIS Display Card -->
+          <div class="qris-display-box">
+            <div style="font-weight: 900; font-size: 1rem; color: #111827; letter-spacing: 0.04em;">
+              QRIS RESMI BLUE TURTLE SQUAD (BTS)
+            </div>
+            <small style="color: #4b5563; font-weight: 700; display: block; margin-bottom: 8px;">
+              Kawasan Konservasi Kepulauan Anambas
+            </small>
+            <!-- Slot Gambar QRIS: Pengguna dapat menaruh file QRIS mereka atau custom link -->
+            <img
+              id="imgQrisAdopsi"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=00020101021126580014ID.GO.KKP.BTS01189360099900000100015204599953033605802ID5918BLUE+TURTLE+SQUAD6007ANAMBAS61052971162230119BTS-ADOPSI-PENYU63041234"
+              alt="QRIS Pembayaran Blue Turtle Squad"
+            />
+            <div style="font-size: 0.78rem; font-weight: 800; color: #1f2937;">
+              NMID: ID1024389201992 &bull; Terima Semua E-Wallet & Bank Transfer
+            </div>
+          </div>
+
+          <p
+            style="
+              font-size: 0.8rem;
+              color: #171a20;
+              font-weight: 700;
+              text-align: center;
+              margin: 10px 0 14px;
+              line-height: 1.45;
+            "
+          >
+            Silakan scan QRIS di atas untuk melakukan transfer.<br />
+            Setelah transfer berhasil, simpan screenshot pembayaran lalu klik tombol di bawah:
+          </p>
+
+          <!-- Tombol Upload Bukti via Google Form -->
+          <button
+            type="button"
+            id="btnBukaGoogleFormUploadSS"
+            class="btn btn-gold-fill"
+            style="
+              width: 100%;
+              padding: 13px;
+              font-weight: 900;
+              font-size: 0.92rem;
+              box-shadow: 0 4px 15px rgba(255, 208, 59, 0.4);
+              margin-bottom: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+            "
+            onclick="bukaGoogleFormUploadSS()"
+          >
+            <i data-lucide="external-link"></i>
+            <span>Upload Screenshot Pembayaran di Google Form</span>
+          </button>
+
+          <!-- Indikator Google Form Telah Dibuka -->
+          <div
+            id="infoGFormOpenedAlert"
+            style="
+              display: none;
+              background: rgba(66, 191, 169, 0.3);
+              border: 1.5px solid var(--mint-primary);
+              border-radius: 12px;
+              padding: 10px 14px;
+              margin-bottom: 12px;
+              font-size: 0.8rem;
+              color: #064e3b;
+              font-weight: 800;
               text-align: center;
             "
           >
-            <div
-              style="
-                font-weight: 900;
-                font-size: 0.95rem;
-                color: #171a20;
-                margin-bottom: 6px;
-              "
-            >
-              Langkah 1: Pembayaran via Google Form
-            </div>
-            <p
-              style="
-                font-size: 0.8rem;
-                color: #171a20;
-                font-weight: 700;
-                margin-bottom: 12px;
-                line-height: 1.4;
-              "
-            >
-              Silakan klik tombol di bawah untuk membuka Google Form Pembayaran
-              Resmi BTS. Kolom upload bukti pembayaran akan
-              <strong>muncul otomatis</strong> setelah tombol ini diklik.
-            </p>
-            <button
-              type="button"
-              id="btnBukaGoogleFormBayar"
-              class="btn btn-gold-fill"
-              style="
-                width: 100%;
-                padding: 13px;
-                font-weight: 900;
-                font-size: 0.94rem;
-                box-shadow: 0 4px 15px rgba(255, 208, 59, 0.4);
-              "
-              onclick="bukaGoogleFormDanTampilkanUpload()"
-            >
-              <i data-lucide="external-link"></i>
-              <span>Buka Google Form Pembayaran</span>
-            </button>
+            Google Form telah dibuka di tab baru! Setelah mengunggah bukti, silakan klik tombol <strong>Kirim</strong> di bawah ini agar adopsi Anda langsung tersimpan ke sistem.
           </div>
 
-          <!-- LANGKAH 2: UPLOAD BUKTI PEMBAYARAN (MUNCUL OTOMATIS SETELAH KLIK TOMBOL GFORM) -->
-          <div
-            id="sectionUploadBuktiAdopsi"
-            style="display: none; animation: fadeIn 0.3s ease"
+          <!-- Tombol Kirim Pendaftaran Adopsi -->
+          <button
+            type="button"
+            id="btnKirimAdopsiFinal"
+            class="btn btn-mint-fill"
+            style="
+              width: 100%;
+              padding: 14px;
+              font-weight: 900;
+              font-size: 0.96rem;
+              box-shadow: 0 4px 15px rgba(66, 191, 169, 0.4);
+            "
+            onclick="kirimFormAdopsiSelesai()"
           >
-            <div
-              style="
-                background: rgba(66, 191, 169, 0.3);
-                border: 1.5px solid var(--mint-primary);
-                border-radius: 14px;
-                padding: 12px 16px;
-                margin-bottom: 14px;
-              "
-            >
-              <div
-                style="
-                  display: flex;
-                  align-items: center;
-                  gap: 8px;
-                  color: #064e3b;
-                  font-weight: 800;
-                  font-size: 0.85rem;
-                "
-              >
-                <i
-                  data-lucide="check-circle"
-                  style="
-                    color: var(--mint-primary);
-                    width: 20px;
-                    height: 20px;
-                    flex-shrink: 0;
-                  "
-                ></i>
-                <span
-                  >Google Form telah dibuka! Silakan lampirkan bukti transfer di
-                  bawah ini:</span
-                >
-              </div>
-            </div>
-
-            <div class="form-row">
-              <label>
-                Bukti Pembayaran / Struk Transfer
-                <small style="color: #2b3b47; font-weight: 700"
-                  >(PNG, JPEG, PDF, WORD)</small
-                >
-              </label>
-              <input
-                type="file"
-                id="inpAdopsiBukti"
-                class="pill-input-field"
-                style="background: #627d92; color: #fff"
-                accept="image/*,.pdf,.doc,.docx"
-              />
-            </div>
-
-            <div style="display: flex; gap: 14px; margin-top: 20px">
-              <button
-                type="submit"
-                class="btn btn-mint-fill"
-                style="
-                  flex: 1.3;
-                  padding: 13px;
-                  font-weight: 900;
-                  font-size: 0.95rem;
-                  box-shadow: 0 4px 15px rgba(66, 191, 169, 0.4);
-                "
-              >
-                <i data-lucide="check"></i>
-                <span>Ajukan Untuk Bayar</span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-dark-pill"
-                style="
-                  flex: 1;
-                  padding: 13px;
-                  font-weight: 800;
-                  font-size: 0.9rem;
-                "
-                onclick="openTahapanDetail()"
-              >
-                Pantau Tahapan
-              </button>
-            </div>
-            <small
-              style="
-                display: block;
-                text-align: center;
-                color: #171a20;
-                margin-top: 10px;
-                font-size: 0.78rem;
-                font-weight: 800;
-              "
-            >
-              Bukti pembayaran akan diverifikasi oleh Admin/Petugas pada Tahap 2
-            </small>
-          </div>
-        </form>
+            <i data-lucide="send"></i>
+            <span>Kirim Pendaftaran Adopsi</span>
+          </button>
+          <small
+            style="
+              display: block;
+              text-align: center;
+              color: #171a20;
+              margin-top: 10px;
+              font-size: 0.76rem;
+              font-weight: 800;
+            "
+          >
+            Data adopsi akan tersimpan ke database dan admin dapat langsung mengetahui siapa saja yang mengadopsi.
+          </small>
+        </div>
       </div>
     </div>
 
@@ -4672,6 +4971,16 @@
             />
           </div>
           <div class="form-row">
+            <label>Tampilan Sarang <small style="color:var(--gold-main); font-weight:700;">(Link Google Drive)</small></label>
+            <input
+              type="url"
+              id="editTampilanSarang"
+              class="pill-input-field"
+              placeholder="https://drive.google.com/..."
+            />
+          </div>
+
+          <div class="form-row">
             <label>Lokasi</label>
             <select id="editLokasi" class="pill-input-field" required>
               <option value="mangkai selatan">Mangkai Selatan</option>
@@ -5244,14 +5553,14 @@
       // satu keluarga penyedia dengan peta resmi tersebut sehingga jauh lebih kecil
       // kemungkinan ikut terblokir.
       function initMap() {
-        const mangkai = [3.0922, 105.5833]; // Pulau Mangkai (3°05'32"N 105°35'00"E)
+        const mangkai = [3.0837, 105.6024]; // titik tengah antara pantai utara & selatan
         window.homeMapInstance = L.map("mapHome", {
           zoomControl: true,
           scrollWheelZoom: false,
           doubleClickZoom: false,
           touchZoom: false,
           boxZoom: false,
-        }).setView(mangkai, 14);
+        }).setView(mangkai, 15);
 
         // Basemap satelit Esri World Imagery (ArcGIS Online)
         L.tileLayer(
@@ -5273,14 +5582,14 @@
         // (nama pantai berdasar laporan monitoring penyu LKKPN Pekanbaru)
         const pins = [
           {
-            pos: [3.0838, 105.5842],
+            pos: [3.0791409772110456, 105.6053034169987],
             title: "Mangkai Selatan",
             code: "MS-001",
             info: "Penyu Sisik & Hijau (265 Telur)",
             pantai: "Pantai Suit & Pantai Sekanji",
           },
           {
-            pos: [3.1005, 105.5825],
+            pos: [3.088248843405399, 105.59954896773961],
             title: "Mangkai Utara",
             code: "MU-207",
             info: "Penyu Hijau (215 Telur)",
