@@ -15,3 +15,9 @@ database_id = "72c5d7db-a094-479a-b8d9-3c7b8e8e9003"
 binding = "DB_WISATA"
 database_name = "wisata-bahari"
 database_id = "982c0f85-0558-42ee-9dc9-d5e2cdc9c914"
+
+# Database berita (baru)
+[[d1_databases]]
+binding = "DB_BERITA"
+database_name = "data_berita"
+database_id = "09ec1b74-e308-4682-9229-03c1f3a2cd35"
