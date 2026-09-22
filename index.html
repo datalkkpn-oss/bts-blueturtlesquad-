@@ -2488,7 +2488,7 @@
             </button>
             <button
               class="btn btn-dark-pill"
-              onclick="openTahapanDetail('SRG-001')"
+              onclick="cekStatusAdopsiSaya()"
             >
               Cek Status Adopsi
             </button>
@@ -4300,7 +4300,7 @@
                   padding: 0 24px 6px;
                 "
               >
-                Siti Aminah
+                -
               </div>
             </div>
 
@@ -4332,14 +4332,14 @@
                   <small style="color: #64748b; display: block"
                     >Kode Sarang</small
                   ><strong id="certKodeSarang" style="color: #1e293b"
-                    >SRG-001</strong
+                    >-</strong
                   >
                 </div>
                 <div>
                   <small style="color: #64748b; display: block"
                     >Jenis Penyu</small
                   ><strong id="certJenisPenyu" style="color: #0284c7"
-                    >Penyu Sisik</strong
+                    >-</strong
                   >
                 </div>
                 <div>
@@ -4952,152 +4952,10 @@
        JAVASCRIPT LOGIC & STATE MANAGEMENT (100% PRESERVED)
        ======================================================== -->
     <script>
-      // Database Seed Data matching schema_blue_turtle_squad.sql
-      const SEED_USERS = [
-        {
-          id: 1,
-          nama: "Super Admin",
-          email: "syaurahsyfwanh@gmail.com",
-          password: "ADMINMLKKPN0987645",
-          role: "super_admin",
-          created_at: "2026-08-01",
-        },
-        {
-          id: 2,
-          nama: "Budi Santoso",
-          email: "budi@anambas.go.id",
-          password: "admin123",
-          role: "admin",
-          created_at: "2026-08-10",
-        },
-        {
-          id: 3,
-          nama: "Rahmat Ranger",
-          email: "rahmat@bts.org",
-          password: "pendata123",
-          role: "pendata",
-          created_at: "2026-08-12",
-        },
-        {
-          id: 4,
-          nama: "PT Lautan Indo Prima",
-          email: "csr@lautanindo.com",
-          password: "mitra123",
-          role: "mitra",
-          created_at: "2026-08-15",
-        },
-        {
-          id: 5,
-          nama: "Siti Aminah",
-          email: "siti@gmail.com",
-          password: "user123",
-          role: "masyarakat",
-          created_at: "2026-08-18",
-        },
-      ];
-
-      const SEED_PENDARATAN = [
-        {
-          kode_sarang: "SRG-001",
-          lokasi: "mangkai selatan",
-          jenis_penyu: "Penyu Sisik",
-          kapan_pendaratan: "2026-08-01",
-          jumlah_telur: 90,
-          kapan_penetasan: "2026-08-30",
-          status_adopsi: "Sudah Diadopsi",
-          nama_adopter: "Super Admin",
-        },
-        {
-          kode_sarang: "SRG-002",
-          lokasi: "mangkai utara",
-          jenis_penyu: "Penyu Hijau",
-          kapan_pendaratan: "2026-08-05",
-          jumlah_telur: 110,
-          kapan_penetasan: "2026-09-04",
-          status_adopsi: "Sudah Diadopsi",
-          nama_adopter: "PT Lautan Indo",
-        },
-        {
-          kode_sarang: "SRG-003",
-          lokasi: "mangkai selatan",
-          jenis_penyu: "Penyu Sisik",
-          kapan_pendaratan: "2026-08-12",
-          jumlah_telur: 85,
-          kapan_penetasan: "2026-09-11",
-          status_adopsi: "Sudah Diadopsi",
-          nama_adopter: "Alif Pratama",
-        },
-        {
-          kode_sarang: "SRG-004",
-          lokasi: "mangkai utara",
-          jenis_penyu: "Penyu Hijau",
-          kapan_pendaratan: "2026-08-18",
-          jumlah_telur: 105,
-          kapan_penetasan: "2026-09-17",
-          status_adopsi: "Belum Diadopsi",
-          nama_adopter: "",
-        },
-        {
-          kode_sarang: "SRG-005",
-          lokasi: "mangkai selatan",
-          jenis_penyu: "Penyu Sisik",
-          kapan_pendaratan: "2026-08-24",
-          jumlah_telur: 90,
-          kapan_penetasan: "2026-09-23",
-          status_adopsi: "Belum Diadopsi",
-          nama_adopter: "",
-        },
-      ];
-
-      const SEED_ADOPSI = [
-        {
-          kode_sarang: "SRG-001",
-          jenis_penyu: "Penyu Sisik",
-          jumlah_telur: 90,
-          lokasi: "mangkai selatan",
-          berapa_sarang: 1,
-          nama_adopter: "Super Admin",
-          tahap: 2,
-          status_tahap: "Verifikasi Admin (Sedang Diproses)",
-          progress: 50,
-        },
-        {
-          kode_sarang: "SRG-002",
-          jenis_penyu: "Penyu Hijau",
-          jumlah_telur: 110,
-          lokasi: "mangkai utara",
-          berapa_sarang: 1,
-          nama_adopter: "PT Lautan Indo",
-          tahap: 3,
-          status_tahap: "Penyiapan Sertifikat",
-          progress: 75,
-        },
-        {
-          kode_sarang: "SRG-003",
-          jenis_penyu: "Penyu Sisik",
-          jumlah_telur: 85,
-          lokasi: "mangkai selatan",
-          berapa_sarang: 1,
-          nama_adopter: "Alif Pratama",
-          tahap: 4,
-          status_tahap: "Progres Adopsi Aktif",
-          progress: 100,
-        },
-      ];
-
-      // Initialize LocalStorage
-      // SEED_* hanya untuk referensi offline / fallback login lokal.
-      // Data pendaratan & adopsi di web mengikuti API database.
-      if (!localStorage.getItem("bts_users"))
-        localStorage.setItem("bts_users", JSON.stringify(SEED_USERS));
-
-      // Utamakan data dari API. Cache localStorage hanya cadangan offline.
-      let dataPendaratan =
-        JSON.parse(localStorage.getItem("bts_pendaratan")) || [];
-      let dataAdopsi =
-        JSON.parse(localStorage.getItem("bts_adopsi")) || [];
-
-      // Pastikan ada data adopsi untuk Siti Aminah (Masyarakat) agar bisa langsung dipantau
+      // State: SEMUA data operasional dari API database (bukan dummy lokal)
+      let dataPendaratan = [];
+      let dataAdopsi = [];
+      let dataUsersFromAPI = [];
 
       let currentUser =
         JSON.parse(localStorage.getItem("bts_current_user")) || null;
@@ -5504,24 +5362,40 @@
       }
 
       // --- Interactive Charts ---
+      let chartTimeSeriesInstance = null;
+      let chartDonutInstance = null;
+
       function initChart() {
+        // Chart dibuat kosong dulu; diisi ulang lewat refreshChartsFromDB()
+        refreshChartsFromDB();
+      }
+
+      function refreshChartsFromDB() {
+        const list = Array.isArray(dataPendaratan) ? dataPendaratan : [];
+
+        // --- Time series: jumlah telur per lokasi ---
+        const byLoc = {};
+        list.forEach((p) => {
+          const loc = (p.lokasi || "lainnya").toLowerCase();
+          byLoc[loc] = (byLoc[loc] || 0) + Number(p.jumlah_telur || 0);
+        });
+        const locLabels = Object.keys(byLoc);
+        const locData = locLabels.map((k) => byLoc[k]);
+
         const ctxBar = document.getElementById("chartTimeSeries");
         if (ctxBar) {
-          new Chart(ctxBar, {
+          if (chartTimeSeriesInstance) chartTimeSeriesInstance.destroy();
+          chartTimeSeriesInstance = new Chart(ctxBar, {
             type: "bar",
             data: {
-              labels: ["2021", "2022", "2023", "2024", "2025"],
+              labels: locLabels.length
+                ? locLabels.map((l) => l.replace(/\b\w/g, (c) => c.toUpperCase()))
+                : ["Belum ada data"],
               datasets: [
                 {
-                  label: "Mangkai Selatan",
-                  data: [35, 42, 38, 45, 52],
+                  label: "Jumlah Telur",
+                  data: locData.length ? locData : [0],
                   backgroundColor: "#ffd03b",
-                  borderRadius: 6,
-                },
-                {
-                  label: "Mangkai Utara",
-                  data: [28, 34, 40, 48, 55],
-                  backgroundColor: "#29b6f6",
                   borderRadius: 6,
                 },
               ],
@@ -5537,22 +5411,38 @@
                 y: {
                   ticks: { color: "#9aa8bc" },
                   grid: { color: "rgba(255,255,255,0.06)" },
+                  beginAtZero: true,
                 },
               },
             },
           });
         }
 
+        // --- Donut: komposisi spesies ---
+        const bySp = {};
+        list.forEach((p) => {
+          let sp = p.jenis_penyu || "Lainnya";
+          if (/sisik/i.test(sp)) sp = "Penyu Sisik";
+          else if (/hijau/i.test(sp)) sp = "Penyu Hijau";
+          bySp[sp] = (bySp[sp] || 0) + 1;
+        });
+        const spLabels = Object.keys(bySp);
+        const spData = spLabels.map((k) => bySp[k]);
+        const colors = ["#42bfa9", "#3b82f6", "#ffd03b", "#f472b6", "#a78bfa"];
+
         const ctxDonut = document.getElementById("chartDonut");
         if (ctxDonut) {
-          new Chart(ctxDonut, {
+          if (chartDonutInstance) chartDonutInstance.destroy();
+          chartDonutInstance = new Chart(ctxDonut, {
             type: "doughnut",
             data: {
-              labels: ["Anambas (40%)", "Padang (40%)", "Lainnya (20%)"],
+              labels: spLabels.length ? spLabels : ["Belum ada data"],
               datasets: [
                 {
-                  data: [40, 40, 20],
-                  backgroundColor: ["#42bfa9", "#3b82f6", "#ffd03b"],
+                  data: spData.length ? spData : [1],
+                  backgroundColor: spLabels.length
+                    ? spLabels.map((_, i) => colors[i % colors.length])
+                    : ["#334155"],
                   borderWidth: 0,
                 },
               ],
@@ -5583,8 +5473,6 @@
           ["admin", "super_admin", "pendata"].includes(currentUser.role)
         );
       }
-
-      let dataUsersFromAPI = [];
 
       function formatAngka(n) {
         return Number(n || 0).toLocaleString("id-ID");
@@ -5756,11 +5644,9 @@
 
           if (pendaratanResult.success && Array.isArray(pendaratanResult.data)) {
             dataPendaratan = pendaratanResult.data;
-            localStorage.setItem("bts_pendaratan", JSON.stringify(dataPendaratan));
           }
           if (adopsiResult.success && Array.isArray(adopsiResult.data)) {
             dataAdopsi = adopsiResult.data;
-            localStorage.setItem("bts_adopsi", JSON.stringify(dataAdopsi));
           }
           if (usersRes) {
             try {
@@ -5773,14 +5659,20 @@
 
           renderPendaratan();
           renderAdopsi();
+          renderUsers();
           populateAdopsiSarangSelect();
           updateDashboardStats();
+          if (typeof refreshChartsFromDB === "function") refreshChartsFromDB();
         } catch (error) {
-          console.warn("Gagal memuat dari API, pakai cache lokal:", error);
+          console.warn("Gagal memuat dari API:", error);
+          dataPendaratan = [];
+          dataAdopsi = [];
           renderPendaratan();
           renderAdopsi();
+          renderUsers();
           populateAdopsiSarangSelect();
           updateDashboardStats();
+          if (typeof refreshChartsFromDB === "function") refreshChartsFromDB();
         }
       }
 
@@ -5933,10 +5825,6 @@
           }
 
           dataPendaratan = dataPendaratan.filter((p) => p.kode_sarang !== kode);
-          localStorage.setItem(
-            "bts_pendaratan",
-            JSON.stringify(dataPendaratan),
-          );
           renderPendaratan();
           populateAdopsiSarangSelect();
           showToast(`Data ${kode} berhasil dihapus.`);
@@ -6016,10 +5904,6 @@
             }
 
             Object.assign(p, payload);
-            localStorage.setItem(
-              "bts_pendaratan",
-              JSON.stringify(dataPendaratan),
-            );
             renderPendaratan();
             populateAdopsiSarangSelect();
             closeModal("modalEditPendaratan");
@@ -6091,10 +5975,6 @@
             }
 
             dataPendaratan.unshift(item);
-            localStorage.setItem(
-              "bts_pendaratan",
-              JSON.stringify(dataPendaratan),
-            );
 
             renderPendaratan();
             populateAdopsiSarangSelect();
@@ -6135,10 +6015,6 @@
             nama_adopter: "",
           };
           dataPendaratan.unshift(newItem);
-          localStorage.setItem(
-            "bts_pendaratan",
-            JSON.stringify(dataPendaratan),
-          );
           renderPendaratan();
           populateAdopsiSarangSelect();
           showToast(`Sarang baru ${newItem.kode_sarang} berhasil diimpor!`);
@@ -6298,14 +6174,9 @@
           }
 
           dataAdopsi.unshift(newAdopsi);
-          localStorage.setItem("bts_adopsi", JSON.stringify(dataAdopsi));
 
           target.status_adopsi = "Sudah Diadopsi";
           target.nama_adopter = nama;
-          localStorage.setItem(
-            "bts_pendaratan",
-            JSON.stringify(dataPendaratan),
-          );
 
           renderPendaratan();
           renderAdopsi();
@@ -6415,6 +6286,25 @@
 
         if (typeof updateDashboardStats === "function") updateDashboardStats();
         lucide.createIcons();
+      }
+
+      function cekStatusAdopsiSaya() {
+        if (!currentUser) {
+          alert("Silakan masuk terlebih dahulu untuk melihat status adopsi.");
+          openModal("modalMasukDaftar");
+          return;
+        }
+        const mine = (dataAdopsi || []).filter(
+          (a) =>
+            a.nama_adopter &&
+            a.nama_adopter.trim().toLowerCase() ===
+              currentUser.nama.trim().toLowerCase(),
+        );
+        if (mine.length === 0) {
+          alert("Anda belum memiliki program adopsi aktif.");
+          return;
+        }
+        openTahapanDetail(mine[0].kode_sarang);
       }
 
       function openTahapanDetail(kode) {
@@ -6627,8 +6517,6 @@
         a.tahap = tahapVal;
         a.progress = progVal;
         a.status_tahap = statusVal;
-
-        localStorage.setItem("bts_adopsi", JSON.stringify(dataAdopsi));
         renderAdopsi();
         openTahapanDetail(activeTahapanCode);
         showToast(
@@ -6660,20 +6548,25 @@
 
       // --- Users Table (Super Admin) ---
       function renderUsers() {
-        const users =
-          JSON.parse(localStorage.getItem("bts_users")) || SEED_USERS;
+        const users = Array.isArray(dataUsersFromAPI) ? dataUsersFromAPI : [];
         const tbody = document.getElementById("tbodyUsers");
         if (!tbody) return;
         tbody.innerHTML = "";
 
+        if (users.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,0.55);">Belum ada data pengguna dari database.</td></tr>`;
+          return;
+        }
+
         users.forEach((u) => {
           const tr = document.createElement("tr");
+          const roleLabel = String(u.role || "masyarakat").replace(/_/g, " ").toUpperCase();
           tr.innerHTML = `
             <td>${u.id}</td>
-            <td><b>${u.nama}</b></td>
-            <td>${u.email}</td>
-            <td><span class="badge-pill badge-sisik">${u.role.replace("_", " ").toUpperCase()}</span></td>
-            <td>${u.created_at || "2026-08-01"}</td>
+            <td><b>${u.nama || "-"}</b></td>
+            <td>${u.email || "-"}</td>
+            <td><span class="badge-pill badge-sisik">${roleLabel}</span></td>
+            <td>${u.created_at || "-"}</td>
             <td>
               ${u.role !== "super_admin" ? `<button class="btn btn-danger" style="padding:4px 10px; font-size:0.72rem;" onclick="deleteUserRow(${u.id})">Hapus</button>` : '<span style="color:var(--gold-main); font-size:0.72rem; font-weight:800;">Utama</span>'}
             </td>
@@ -6699,8 +6592,6 @@
           return;
         }
 
-        const users =
-          JSON.parse(localStorage.getItem("bts_users")) || SEED_USERS;
         const newUser = {
           id: Date.now(),
           nama: nama,
@@ -6710,11 +6601,11 @@
           created_at: new Date().toISOString().split("T")[0],
         };
 
-        users.push(newUser);
-        localStorage.setItem("bts_users", JSON.stringify(users));
+        dataUsersFromAPI = dataUsersFromAPI || [];
+        dataUsersFromAPI.push(newUser);
         renderUsers();
         closeModal("modalTambahUser");
-        showToast(`Pengguna ${nama} berhasil dibuat!`);
+        showToast(`Pengguna ${nama} berhasil dibuat (tampilan lokal; simpan ke DB via API jika tersedia).`);
       }
 
       function deleteUserRow(id) {
@@ -6726,8 +6617,7 @@
           return;
         }
         if (currentUser.role === "admin") {
-          const usersNow =
-            JSON.parse(localStorage.getItem("bts_users")) || SEED_USERS;
+          const usersNow = dataUsersFromAPI || [];
           const target = usersNow.find((u) => u.id === id);
           if (target && target.role === "super_admin") {
             alert("Admin tidak dapat menghapus Super Admin.");
@@ -6735,10 +6625,7 @@
           }
         }
         if (confirm("Hapus pengguna ini?")) {
-          let users =
-            JSON.parse(localStorage.getItem("bts_users")) || SEED_USERS;
-          users = users.filter((u) => u.id !== id);
-          localStorage.setItem("bts_users", JSON.stringify(users));
+          dataUsersFromAPI = (dataUsersFromAPI || []).filter((u) => u.id !== id);
           renderUsers();
           showToast("Pengguna telah dihapus.");
         }
@@ -7368,8 +7255,6 @@
           a.progress = 100;
           a.status_tahap = "Progres Adopsi Aktif (Dokumentasi Lengkap)";
         }
-
-        localStorage.setItem("bts_adopsi", JSON.stringify(dataAdopsi));
         closeModal("modalUploadDokumentasi");
         renderAdopsi();
         if (activeTahapanCode === kode) openTahapanDetail(kode);
@@ -7572,10 +7457,6 @@
 
           // Server konfirmasi sukses -> baru update tampilan lokal
           itemsToSend.forEach((newItem) => dataPendaratan.unshift(newItem));
-          localStorage.setItem(
-            "bts_pendaratan",
-            JSON.stringify(dataPendaratan),
-          );
           renderPendaratan();
           populateAdopsiSarangSelect();
 
@@ -7653,7 +7534,7 @@
             <strong
               id="upSarangCode"
               style="color: var(--gold-main); font-size: 1rem"
-              >SRG-001</strong
+              >-</strong
             >
           </div>
           <div style="text-align: right">
@@ -7666,7 +7547,7 @@
               >Pengadopsi:</span
             >
             <strong id="upAdopterName" style="color: #ffffff; font-size: 1rem"
-              >Siti Aminah</strong
+              >-</strong
             >
           </div>
         </div>
