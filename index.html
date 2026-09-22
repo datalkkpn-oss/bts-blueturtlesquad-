@@ -5659,14 +5659,14 @@
       // satu keluarga penyedia dengan peta resmi tersebut sehingga jauh lebih kecil
       // kemungkinan ikut terblokir.
       function initMap() {
-        const mangkai = [3.0922, 105.5833]; // Pulau Mangkai (3°05'32"N 105°35'00"E)
+        const mangkai = [3.0837, 105.6024]; // titik tengah antara pantai utara & selatan
         window.homeMapInstance = L.map("mapHome", {
           zoomControl: true,
           scrollWheelZoom: false,
           doubleClickZoom: false,
           touchZoom: false,
           boxZoom: false,
-        }).setView(mangkai, 14);
+        }).setView(mangkai, 15);
 
         // Basemap satelit Esri World Imagery (ArcGIS Online)
         L.tileLayer(
@@ -5688,14 +5688,14 @@
         // (nama pantai berdasar laporan monitoring penyu LKKPN Pekanbaru)
         const pins = [
           {
-            pos: [3.0838, 105.5842],
+            pos: [3.0791409772110456, 105.6053034169987],
             title: "Mangkai Selatan",
             code: "MS-001",
             info: "Penyu Sisik & Hijau (265 Telur)",
             pantai: "Pantai Suit & Pantai Sekanji",
           },
           {
-            pos: [3.1005, 105.5825],
+            pos: [3.088248843405399, 105.59954896773961],
             title: "Mangkai Utara",
             code: "MU-207",
             info: "Penyu Hijau (215 Telur)",
