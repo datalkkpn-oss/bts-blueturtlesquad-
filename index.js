@@ -497,9 +497,13 @@ export default {
     }
 
     // ========================================================
-    // API ADOPSI - UPDATE FASE (Link GDrive & Catatan Perkembangan)
+    // API ADOPSI - UPDATE FASE
     // ========================================================
-    if (path.startsWith("/api/adopsi/") && path.endsWith("/fase") && request.method === "PUT") {
+    if (
+      path.startsWith("/api/adopsi/") &&
+      path.endsWith("/fase") &&
+      request.method === "PUT"
+    ) {
       try {
         const kodeSarang = decodeURIComponent(
           path.replace("/api/adopsi/", "").replace("/fase", ""),
@@ -524,9 +528,15 @@ export default {
               body.link_gdrive_fase1 || null,
               body.link_gdrive_fase2 || null,
               body.link_gdrive_fase3 || null,
-              body.dokumentasi_fase1 ? JSON.stringify(body.dokumentasi_fase1) : null,
-              body.dokumentasi_fase2 ? JSON.stringify(body.dokumentasi_fase2) : null,
-              body.dokumentasi_fase3 ? JSON.stringify(body.dokumentasi_fase3) : null,
+              body.dokumentasi_fase1
+                ? JSON.stringify(body.dokumentasi_fase1)
+                : null,
+              body.dokumentasi_fase2
+                ? JSON.stringify(body.dokumentasi_fase2)
+                : null,
+              body.dokumentasi_fase3
+                ? JSON.stringify(body.dokumentasi_fase3)
+                : null,
               body.status || "Progres Adopsi Aktif",
               kodeSarang,
             )
@@ -543,9 +553,15 @@ export default {
               body.link_gdrive_fase1 || null,
               body.link_gdrive_fase2 || null,
               body.link_gdrive_fase3 || null,
-              body.dokumentasi_fase1 ? JSON.stringify(body.dokumentasi_fase1) : null,
-              body.dokumentasi_fase2 ? JSON.stringify(body.dokumentasi_fase2) : null,
-              body.dokumentasi_fase3 ? JSON.stringify(body.dokumentasi_fase3) : null,
+              body.dokumentasi_fase1
+                ? JSON.stringify(body.dokumentasi_fase1)
+                : null,
+              body.dokumentasi_fase2
+                ? JSON.stringify(body.dokumentasi_fase2)
+                : null,
+              body.dokumentasi_fase3
+                ? JSON.stringify(body.dokumentasi_fase3)
+                : null,
               body.status || "Progres Adopsi Aktif",
             )
             .run();
@@ -568,9 +584,13 @@ export default {
     }
 
     // ========================================================
-    // API ADOPSI - UPDATE TAHAP (Admin / Super Admin)
+    // API ADOPSI - UPDATE TAHAP
     // ========================================================
-    if (path.startsWith("/api/adopsi/") && path.endsWith("/tahap") && request.method === "PUT") {
+    if (
+      path.startsWith("/api/adopsi/") &&
+      path.endsWith("/tahap") &&
+      request.method === "PUT"
+    ) {
       try {
         const kodeSarang = decodeURIComponent(
           path.replace("/api/adopsi/", "").replace("/tahap", ""),
@@ -607,16 +627,40 @@ export default {
     }
 
     // ========================================================
-    // API BERITA MITRA - GET, POST, DELETE
-    // Role: Mitra, Super Admin, Admin (Max 150 Huruf)
+    // API BERITA MITRA
+    // Path: /api/berita  DAN  /api/berita-mitra  (keduanya jalan)
+    // Database: env.DB_BERITA (data_berita)
     // ========================================================
-    if (path === "/api/berita-mitra" && request.method === "GET") {
+    const isBeritaPath =
+      path === "/api/berita" || path === "/api/berita-mitra";
+    const beritaIdMatch = path.match(/^\/api\/(berita|berita-mitra)\/(\d+)$/);
+
+    if (isBeritaPath && request.method === "GET") {
       try {
-        const result = await env.DB.prepare(
-          "SELECT * FROM tabel_berita_mitra ORDER BY tanggal DESC, id DESC",
+        if (!env.DB_BERITA) {
+          return jsonResponse(
+            {
+              success: false,
+              message: "Binding DB_BERITA belum tersedia. Cek wrangler.toml.",
+            },
+            500,
+          );
+        }
+        const result = await env.DB_BERITA.prepare(
+          `SELECT id, judul, tanggal, isi_berita, link_berita, mitra,
+                  penulis, role_penulis, owner_id, owner_name, created_at
+           FROM tabel_berita_mitra
+           ORDER BY tanggal DESC, id DESC`,
         ).all();
 
-        return jsonResponse({ success: true, data: result.results || [] });
+        // Normalisasi field agar frontend mudah baca (isi, link)
+        const data = (result.results || []).map((r) => ({
+          ...r,
+          isi: r.isi_berita,
+          link: r.link_berita,
+        }));
+
+        return jsonResponse({ success: true, data });
       } catch (error) {
         return jsonResponse(
           {
@@ -629,55 +673,92 @@ export default {
       }
     }
 
-    if (path === "/api/berita-mitra" && request.method === "POST") {
+    if (isBeritaPath && request.method === "POST") {
       try {
-        const body = await request.json();
-
-        if (!body.judul || !body.tanggal || !body.isi_berita) {
+        if (!env.DB_BERITA) {
           return jsonResponse(
-            { success: false, message: "Judul, tanggal, dan isi berita wajib diisi." },
-            400,
+            { success: false, message: "Binding DB_BERITA belum tersedia." },
+            500,
           );
         }
+        const body = await request.json();
 
-        const isiBerita = String(body.isi_berita).trim();
-        if (isiBerita.length > 150) {
+        const judul = (body.judul || "").trim();
+        const tanggal =
+          body.tanggal || new Date().toISOString().split("T")[0];
+        const isiBerita = String(
+          body.isi_berita || body.isi || "",
+        ).trim();
+        const linkBerita = body.link_berita || body.link || null;
+        const mitra = body.mitra || body.owner_name || null;
+        const penulis = body.penulis || body.owner_name || "Mitra BTS";
+        const role = body.role_penulis || body.role || "mitra";
+        const owner_id = body.owner_id || null;
+        const owner_name = body.owner_name || penulis;
+
+        if (!judul || !isiBerita) {
           return jsonResponse(
             {
               success: false,
-              message: `Isi berita melebihi batas maksimal 150 huruf (saat ini: ${isiBerita.length} huruf).`,
+              message: "Judul dan isi berita wajib diisi.",
             },
             400,
           );
         }
 
-        // Validasi Role (Hanya Mitra, Super Admin, Admin)
-        const allowedRoles = ["mitra", "kemitraan", "super_admin", "admin"];
-        const role = body.role_penulis || body.role;
-        if (role && !allowedRoles.includes(role.toLowerCase())) {
+        if (isiBerita.length > 150) {
           return jsonResponse(
-            { success: false, message: "Hanya Mitra, Admin, dan Super Admin yang dapat menambahkan Berita Mitra." },
+            {
+              success: false,
+              message: `Isi berita melebihi 150 karakter (saat ini: ${isiBerita.length}).`,
+            },
+            400,
+          );
+        }
+
+        const allowedRoles = ["mitra", "kemitraan", "super_admin", "admin"];
+        if (role && !allowedRoles.includes(String(role).toLowerCase())) {
+          return jsonResponse(
+            {
+              success: false,
+              message:
+                "Hanya Mitra, Admin, dan Super Admin yang dapat menambahkan Berita Mitra.",
+            },
             403,
           );
         }
 
-        await env.DB.prepare(
-          `INSERT INTO tabel_berita_mitra (judul, tanggal, isi_berita, link_berita, penulis, role_penulis)
-           VALUES (?, ?, ?, ?, ?, ?)`,
+        const insert = await env.DB_BERITA.prepare(
+          `INSERT INTO tabel_berita_mitra
+             (judul, tanggal, isi_berita, link_berita, mitra, penulis, role_penulis, owner_id, owner_name)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         )
           .bind(
-            body.judul.trim(),
-            body.tanggal,
+            judul,
+            tanggal,
             isiBerita,
-            body.link_berita || null,
-            body.penulis || "Mitra BTS",
-            role || "mitra",
+            linkBerita,
+            mitra,
+            penulis,
+            role,
+            owner_id,
+            owner_name,
           )
           .run();
 
         return jsonResponse({
           success: true,
           message: "Berita Mitra berhasil ditambahkan.",
+          data: {
+            id: insert.meta.last_row_id,
+            judul,
+            tanggal,
+            isi: isiBerita,
+            link: linkBerita,
+            mitra,
+            owner_id,
+            owner_name,
+          },
         });
       } catch (error) {
         return jsonResponse(
@@ -691,11 +772,47 @@ export default {
       }
     }
 
-    if (path.startsWith("/api/berita-mitra/") && request.method === "DELETE") {
+    if (beritaIdMatch && request.method === "PUT") {
       try {
-        const id = decodeURIComponent(path.replace("/api/berita-mitra/", ""));
-        await env.DB.prepare("DELETE FROM tabel_berita_mitra WHERE id = ?")
-          .bind(Number(id))
+        const id = Number(beritaIdMatch[2]);
+        const body = await request.json();
+        const judul = (body.judul || "").trim();
+        const isiBerita = String(body.isi_berita || body.isi || "").trim();
+        const linkBerita = body.link_berita || body.link || null;
+        const mitra = body.mitra || null;
+
+        await env.DB_BERITA.prepare(
+          `UPDATE tabel_berita_mitra
+           SET judul = ?, isi_berita = ?, link_berita = ?,
+               mitra = COALESCE(?, mitra)
+           WHERE id = ?`,
+        )
+          .bind(judul, isiBerita, linkBerita, mitra, id)
+          .run();
+
+        return jsonResponse({
+          success: true,
+          message: "Berita Mitra berhasil diperbarui.",
+        });
+      } catch (error) {
+        return jsonResponse(
+          {
+            success: false,
+            message: "Gagal memperbarui berita mitra.",
+            error: error.message,
+          },
+          500,
+        );
+      }
+    }
+
+    if (beritaIdMatch && request.method === "DELETE") {
+      try {
+        const id = Number(beritaIdMatch[2]);
+        await env.DB_BERITA.prepare(
+          "DELETE FROM tabel_berita_mitra WHERE id = ?",
+        )
+          .bind(id)
           .run();
 
         return jsonResponse({
@@ -715,16 +832,38 @@ export default {
     }
 
     // ========================================================
-    // API BERITA INVESTASI / PROMOSI - GET, POST, DELETE
-    // Role: Admin & Super Admin saja (Max 150 Huruf)
+    // API WARTA / BERITA INVESTASI
+    // Path: /api/warta  DAN  /api/berita-investasi
+    // Database: env.DB_BERITA (data_berita)
     // ========================================================
-    if (path === "/api/berita-investasi" && request.method === "GET") {
+    const isWartaPath =
+      path === "/api/warta" || path === "/api/berita-investasi";
+    const wartaIdMatch = path.match(
+      /^\/api\/(warta|berita-investasi)\/(\d+)$/,
+    );
+
+    if (isWartaPath && request.method === "GET") {
       try {
-        const result = await env.DB.prepare(
-          "SELECT * FROM tabel_berita_investasi ORDER BY tanggal DESC, id DESC",
+        if (!env.DB_BERITA) {
+          return jsonResponse(
+            { success: false, message: "Binding DB_BERITA belum tersedia." },
+            500,
+          );
+        }
+        const result = await env.DB_BERITA.prepare(
+          `SELECT id, judul, tanggal, isi_promosi, link_promosi,
+                  penulis, role_penulis, owner_id, owner_name, created_at
+           FROM tabel_berita_investasi
+           ORDER BY tanggal DESC, id DESC`,
         ).all();
 
-        return jsonResponse({ success: true, data: result.results || [] });
+        const data = (result.results || []).map((r) => ({
+          ...r,
+          isi: r.isi_promosi,
+          link: r.link_promosi,
+        }));
+
+        return jsonResponse({ success: true, data });
       } catch (error) {
         return jsonResponse(
           {
@@ -737,55 +876,89 @@ export default {
       }
     }
 
-    if (path === "/api/berita-investasi" && request.method === "POST") {
+    if (isWartaPath && request.method === "POST") {
       try {
-        const body = await request.json();
-
-        if (!body.judul || !body.tanggal || !body.isi_promosi) {
+        if (!env.DB_BERITA) {
           return jsonResponse(
-            { success: false, message: "Judul, tanggal, dan isi promosi wajib diisi." },
-            400,
+            { success: false, message: "Binding DB_BERITA belum tersedia." },
+            500,
           );
         }
+        const body = await request.json();
 
-        const isiPromosi = String(body.isi_promosi).trim();
-        if (isiPromosi.length > 150) {
+        const judul = (body.judul || "").trim();
+        const tanggal =
+          body.tanggal || new Date().toISOString().split("T")[0];
+        const isiPromosi = String(
+          body.isi_promosi || body.isi || "",
+        ).trim();
+        const linkPromosi = body.link_promosi || body.link || null;
+        const penulis = body.penulis || body.owner_name || "Pengelola BTS";
+        const role = body.role_penulis || body.role || "admin";
+        const owner_id = body.owner_id || null;
+        const owner_name = body.owner_name || penulis;
+
+        if (!judul || !isiPromosi) {
           return jsonResponse(
             {
               success: false,
-              message: `Isi promosi melebihi batas maksimal 150 huruf (saat ini: ${isiPromosi.length} huruf).`,
+              message: "Judul dan isi promosi wajib diisi.",
             },
             400,
           );
         }
 
-        // Validasi Role (Hanya Admin dan Super Admin)
-        const allowedRoles = ["super_admin", "admin"];
-        const role = body.role_penulis || body.role;
-        if (role && !allowedRoles.includes(role.toLowerCase())) {
+        if (isiPromosi.length > 150) {
           return jsonResponse(
-            { success: false, message: "Hanya Admin dan Super Admin yang dapat menambahkan Promosi Investasi." },
+            {
+              success: false,
+              message: `Isi promosi melebihi 150 karakter (saat ini: ${isiPromosi.length}).`,
+            },
+            400,
+          );
+        }
+
+        const allowedRoles = ["super_admin", "admin"];
+        if (role && !allowedRoles.includes(String(role).toLowerCase())) {
+          return jsonResponse(
+            {
+              success: false,
+              message:
+                "Hanya Admin dan Super Admin yang dapat menambahkan Promosi Investasi.",
+            },
             403,
           );
         }
 
-        await env.DB.prepare(
-          `INSERT INTO tabel_berita_investasi (judul, tanggal, isi_promosi, link_promosi, penulis, role_penulis)
-           VALUES (?, ?, ?, ?, ?, ?)`,
+        const insert = await env.DB_BERITA.prepare(
+          `INSERT INTO tabel_berita_investasi
+             (judul, tanggal, isi_promosi, link_promosi, penulis, role_penulis, owner_id, owner_name)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         )
           .bind(
-            body.judul.trim(),
-            body.tanggal,
+            judul,
+            tanggal,
             isiPromosi,
-            body.link_promosi || null,
-            body.penulis || "Pengelola BTS",
-            role || "admin",
+            linkPromosi,
+            penulis,
+            role,
+            owner_id,
+            owner_name,
           )
           .run();
 
         return jsonResponse({
           success: true,
           message: "Promosi Investasi berhasil ditambahkan.",
+          data: {
+            id: insert.meta.last_row_id,
+            judul,
+            tanggal,
+            isi: isiPromosi,
+            link: linkPromosi,
+            owner_id,
+            owner_name,
+          },
         });
       } catch (error) {
         return jsonResponse(
@@ -799,11 +972,45 @@ export default {
       }
     }
 
-    if (path.startsWith("/api/berita-investasi/") && request.method === "DELETE") {
+    if (wartaIdMatch && request.method === "PUT") {
       try {
-        const id = decodeURIComponent(path.replace("/api/berita-investasi/", ""));
-        await env.DB.prepare("DELETE FROM tabel_berita_investasi WHERE id = ?")
-          .bind(Number(id))
+        const id = Number(wartaIdMatch[2]);
+        const body = await request.json();
+        const judul = (body.judul || "").trim();
+        const isiPromosi = String(body.isi_promosi || body.isi || "").trim();
+        const linkPromosi = body.link_promosi || body.link || null;
+
+        await env.DB_BERITA.prepare(
+          `UPDATE tabel_berita_investasi
+           SET judul = ?, isi_promosi = ?, link_promosi = ?
+           WHERE id = ?`,
+        )
+          .bind(judul, isiPromosi, linkPromosi, id)
+          .run();
+
+        return jsonResponse({
+          success: true,
+          message: "Warta berhasil diperbarui.",
+        });
+      } catch (error) {
+        return jsonResponse(
+          {
+            success: false,
+            message: "Gagal memperbarui warta.",
+            error: error.message,
+          },
+          500,
+        );
+      }
+    }
+
+    if (wartaIdMatch && request.method === "DELETE") {
+      try {
+        const id = Number(wartaIdMatch[2]);
+        await env.DB_BERITA.prepare(
+          "DELETE FROM tabel_berita_investasi WHERE id = ?",
+        )
+          .bind(id)
           .run();
 
         return jsonResponse({
