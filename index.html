@@ -3545,7 +3545,7 @@
             >
               <img
                 id="imgQrisAdopsi"
-                src="qris.jpeg"
+                src="src/qris.jpeg"
                 alt="QRIS Pembayaran Adopsi Penyu BTS"
                 style="
                   width: 100%;
@@ -3586,6 +3586,7 @@
               target="_blank"
               rel="noopener"
               class="btn btn-gold-fill"
+              onclick="tandaiGformDibuka()"
               style="
                 display: inline-flex;
                 margin-top: 14px;
@@ -3600,15 +3601,16 @@
             </a>
           </div>
 
-          <!-- LANGKAH 2: UPLOAD BUKTI PEMBAYARAN (MUNCUL OTOMATIS SETELAH KLIK TOMBOL GFORM) -->
+          <!-- LANGKAH 2: KONFIRMASI GOOGLE FORM SUDAH DIISI (BUKTI DIUNGGAH LEWAT GFORM, BUKAN DI SINI) -->
           <div
             id="sectionUploadBuktiAdopsi"
             style="display: block; animation: fadeIn 0.3s ease"
           >
             <div
+              id="statusGformAdopsi"
               style="
-                background: rgba(66, 191, 169, 0.3);
-                border: 1.5px solid var(--mint-primary);
+                background: rgba(255, 208, 59, 0.25);
+                border: 1.5px solid var(--gold-main);
                 border-radius: 14px;
                 padding: 12px 16px;
                 margin-bottom: 14px;
@@ -3619,53 +3621,43 @@
                   display: flex;
                   align-items: center;
                   gap: 8px;
-                  color: #064e3b;
+                  color: #171a20;
                   font-weight: 800;
                   font-size: 0.85rem;
                 "
               >
                 <i
-                  data-lucide="check-circle"
+                  id="iconStatusGform"
+                  data-lucide="alert-triangle"
                   style="
-                    color: var(--mint-primary);
+                    color: #171a20;
                     width: 20px;
                     height: 20px;
                     flex-shrink: 0;
                   "
                 ></i>
-                <span
-                  >Google Form telah dibuka! Silakan lampirkan bukti transfer di
-                  bawah ini:</span
+                <span id="textStatusGform"
+                  >Isi Google Form pembayaran di atas terlebih dahulu (termasuk
+                  lampiran bukti transfer di dalamnya) sebelum bisa mengajukan
+                  pembayaran.</span
                 >
               </div>
-            </div>
-
-            <div class="form-row">
-              <label>
-                Bukti Pembayaran / Struk Transfer
-                <small style="color: #2b3b47; font-weight: 700"
-                  >(PNG, JPEG, PDF, WORD)</small
-                >
-              </label>
-              <input
-                type="file"
-                id="inpAdopsiBukti"
-                class="pill-input-field"
-                style="background: #627d92; color: #fff"
-                accept="image/*,.pdf,.doc,.docx"
-              />
             </div>
 
             <div style="display: flex; gap: 14px; margin-top: 20px">
               <button
                 type="submit"
+                id="btnAjukanBayarAdopsi"
                 class="btn btn-mint-fill"
+                disabled
                 style="
                   flex: 1.3;
                   padding: 13px;
                   font-weight: 900;
                   font-size: 0.95rem;
                   box-shadow: 0 4px 15px rgba(66, 191, 169, 0.4);
+                  opacity: 0.5;
+                  cursor: not-allowed;
                 "
               >
                 <i data-lucide="check"></i>
@@ -3695,7 +3687,8 @@
                 font-weight: 800;
               "
             >
-              Bukti pembayaran akan diverifikasi oleh Admin/Petugas pada Tahap 2
+              Bukti pembayaran yang dilampirkan di Google Form akan diverifikasi
+              oleh Admin/Petugas pada Tahap 2
             </small>
           </div>
         </form>
@@ -6129,11 +6122,57 @@
           document.getElementById("inpAdopsiIdSarang").value = defaultCode;
         }
 
-        // Kolom upload bukti pembayaran selalu tampil
+        // Kolom konfirmasi Google Form selalu tampil
         const secUpload = document.getElementById("sectionUploadBuktiAdopsi");
         if (secUpload) secUpload.style.display = "block";
 
+        // Reset status setiap kali modal adopsi dibuka: kunci lagi tombol
+        // "Ajukan Untuk Bayar" sampai user klik link Google Form
+        resetStatusGformAdopsi();
+
         openModal("modalAdopsiForm");
+        if (window.lucide) lucide.createIcons();
+      }
+
+      function resetStatusGformAdopsi() {
+        const btn = document.getElementById("btnAjukanBayarAdopsi");
+        const box = document.getElementById("statusGformAdopsi");
+        const icon = document.getElementById("iconStatusGform");
+        const text = document.getElementById("textStatusGform");
+        if (btn) {
+          btn.disabled = true;
+          btn.style.opacity = "0.5";
+          btn.style.cursor = "not-allowed";
+        }
+        if (box) {
+          box.style.background = "rgba(255, 208, 59, 0.25)";
+          box.style.borderColor = "var(--gold-main)";
+        }
+        if (icon) icon.setAttribute("data-lucide", "alert-triangle");
+        if (text)
+          text.textContent =
+            "Isi Google Form pembayaran di atas terlebih dahulu (termasuk lampiran bukti transfer di dalamnya) sebelum bisa mengajukan pembayaran.";
+        if (window.lucide) lucide.createIcons();
+      }
+
+      function tandaiGformDibuka() {
+        const btn = document.getElementById("btnAjukanBayarAdopsi");
+        const box = document.getElementById("statusGformAdopsi");
+        const icon = document.getElementById("iconStatusGform");
+        const text = document.getElementById("textStatusGform");
+        if (btn) {
+          btn.disabled = false;
+          btn.style.opacity = "1";
+          btn.style.cursor = "pointer";
+        }
+        if (box) {
+          box.style.background = "rgba(66, 191, 169, 0.3)";
+          box.style.borderColor = "var(--mint-primary)";
+        }
+        if (icon) icon.setAttribute("data-lucide", "check-circle");
+        if (text)
+          text.textContent =
+            "Google Form telah dibuka. Pastikan kamu sudah mengisi form dan melampirkan bukti transfer di dalamnya sebelum menekan \"Ajukan Untuk Bayar\".";
         if (window.lucide) lucide.createIcons();
       }
 
