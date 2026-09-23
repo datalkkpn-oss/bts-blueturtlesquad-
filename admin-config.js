@@ -15,11 +15,11 @@
 
 module.exports = [
   {
-    nama: "adminjelek",
-    email: "emailkamu23@contoh.com",
-    password: "123456",
+    nama: "super admin BTS",
+    email: "datalkkpn@gmail.com",
+    password: "baguswak",
     role: "super_admin",
-    mode: "insert", // ganti jadi "update" kalau email ini sudah pernah daftar
+    mode: "update", // ganti jadi "update" kalau email ini sudah pernah daftar
   },
 
   // Contoh nambah admin kedua, tinggal copy-paste blok di atas:
