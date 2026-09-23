@@ -3487,11 +3487,11 @@
             </select>
           </div>
 
-          <!-- LANGKAH 1: BUTTON BUKA GOOGLE FORM -->
+          <!-- LANGKAH 1: METODE PEMBAYARAN VIA QRIS -->
           <div
             style="
-              background: rgba(255, 208, 59, 0.25);
-              border: 2px solid var(--gold-main);
+              background: rgba(66, 191, 169, 0.18);
+              border: 2px solid var(--mint-primary);
               border-radius: 16px;
               padding: 16px;
               margin: 20px 0 16px;
@@ -3506,43 +3506,104 @@
                 margin-bottom: 6px;
               "
             >
-              Langkah 1: Pembayaran via Google Form
+              Langkah 1: Metode Pembayaran (QRIS)
             </div>
             <p
               style="
                 font-size: 0.8rem;
                 color: #171a20;
                 font-weight: 700;
-                margin-bottom: 12px;
+                margin-bottom: 14px;
                 line-height: 1.4;
               "
             >
-              Silakan klik tombol di bawah untuk membuka Google Form Pembayaran
-              Resmi BTS. Kolom upload bukti pembayaran akan
-              <strong>muncul otomatis</strong> setelah tombol ini diklik.
+              Scan kode QRIS di bawah ini menggunakan aplikasi
+              e-wallet/m-banking, lalu unggah bukti transfernya pada Langkah 2.
             </p>
-            <button
-              type="button"
-              id="btnBukaGoogleFormBayar"
+
+            <!--
+              ====================================================================
+              GANTI GAMBAR QRIS DI BAWAH INI DENGAN GAMBAR QRIS ASLI KAMU.
+              Cara ganti:
+              1. Siapkan file gambar QRIS kamu (misal: qris-bts.png / qris-bts.jpg)
+              2. Letakkan file tersebut di folder yang sama dengan index.html
+                 (atau di folder "images/" lalu ubah src jadi "images/qris-bts.png")
+              3. Ganti src="GANTI_DENGAN_GAMBAR_QRIS_KAMU.png" di bawah ini
+                 dengan nama file gambar QRIS kamu.
+              ====================================================================
+            -->
+            <div
+              style="
+                width: 220px;
+                max-width: 100%;
+                margin: 0 auto;
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 14px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+              "
+            >
+              <img
+                id="imgQrisAdopsi"
+                src="qris.jpeg"
+                alt="QRIS Pembayaran Adopsi Penyu BTS"
+                style="
+                  width: 100%;
+                  height: auto;
+                  display: block;
+                  border-radius: 6px;
+                "
+                onerror="this.onerror=null; this.src=''; this.alt='Gambar QRIS belum dipasang. Ganti src pada tag <img id=imgQrisAdopsi> di file HTML dengan gambar QRIS kamu.'; this.style.minHeight='180px'; this.style.background='#f1f1f1'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='#888'; this.style.fontSize='0.72rem'; this.style.fontWeight='700'; this.style.padding='10px';"
+              />
+              <div
+                style="
+                  margin-top: 10px;
+                  font-size: 0.76rem;
+                  font-weight: 800;
+                  color: #171a20;
+                "
+              >
+                Blue Turtle Squad (BTS)
+              </div>
+            </div>
+
+            <p
+              style="
+                font-size: 0.72rem;
+                color: #171a20;
+                font-weight: 600;
+                margin-top: 12px;
+                line-height: 1.4;
+              "
+            >
+              Pastikan nominal transfer sesuai jumlah sarang yang diadopsi
+              (Rp 150.000 / sarang), lalu simpan bukti transfer untuk diunggah
+              di bawah.
+            </p>
+
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfoofX5UYAlKDNrMGzcWgCooWjfUtzCwnwzqSkCnl3_PCXNPw/viewform?usp=publish-editor"
+              target="_blank"
+              rel="noopener"
               class="btn btn-gold-fill"
               style="
-                width: 100%;
-                padding: 13px;
-                font-weight: 900;
-                font-size: 0.94rem;
-                box-shadow: 0 4px 15px rgba(255, 208, 59, 0.4);
+                display: inline-flex;
+                margin-top: 14px;
+                padding: 11px 20px;
+                font-size: 0.85rem;
+                font-weight: 800;
+                text-decoration: none;
               "
-              onclick="bukaGoogleFormDanTampilkanUpload()"
             >
               <i data-lucide="external-link"></i>
-              <span>Buka Google Form Pembayaran</span>
-            </button>
+              <span>Isi Form Pembayaran (Google Form)</span>
+            </a>
           </div>
 
           <!-- LANGKAH 2: UPLOAD BUKTI PEMBAYARAN (MUNCUL OTOMATIS SETELAH KLIK TOMBOL GFORM) -->
           <div
             id="sectionUploadBuktiAdopsi"
-            style="display: none; animation: fadeIn 0.3s ease"
+            style="display: block; animation: fadeIn 0.3s ease"
           >
             <div
               style="
@@ -6037,34 +6098,6 @@
           });
       }
 
-      // --- Buka Google Form Pembayaran & Munculkan Input Upload Bukti Otomatis ---
-      function bukaGoogleFormDanTampilkanUpload() {
-        const GOOGLE_FORM_PAYMENT_URL =
-          "https://docs.google.com/forms/d/e/1FAIpQLSe-sample-bts-pembayaran-adopsi/viewform?usp=sf_link";
-        try {
-          window.open(GOOGLE_FORM_PAYMENT_URL, "_blank");
-        } catch (err) {}
-
-        const secUpload = document.getElementById("sectionUploadBuktiAdopsi");
-        if (secUpload) {
-          secUpload.style.display = "block";
-          setTimeout(() => {
-            secUpload.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          }, 150);
-        }
-
-        const btnGForm = document.getElementById("btnBukaGoogleFormBayar");
-        if (btnGForm) {
-          btnGForm.innerHTML =
-            '<i data-lucide="check-circle" style="color:#10b981;"></i><span>Google Form Sudah Dibuka (Klik Lagi jika Perlu)</span>';
-        }
-
-        showToast(
-          "Google Form pembayaran telah dibuka! Kolom unggah bukti transfer sekarang tersedia di bawah.",
-        );
-        if (window.lucide) lucide.createIcons();
-      }
-
       // --- Proteksi Tambah Pendaratan Khusus Petugas ---
       function openModalTambahPendaratan() {
         if (!canImportAndManagePhases()) {
@@ -6096,15 +6129,9 @@
           document.getElementById("inpAdopsiIdSarang").value = defaultCode;
         }
 
-        // Reset tampilan: Upload bukti disembunyikan sampai tombol Google Form diklik
+        // Kolom upload bukti pembayaran selalu tampil
         const secUpload = document.getElementById("sectionUploadBuktiAdopsi");
-        if (secUpload) secUpload.style.display = "none";
-
-        const btnGForm = document.getElementById("btnBukaGoogleFormBayar");
-        if (btnGForm) {
-          btnGForm.innerHTML =
-            '<i data-lucide="external-link"></i><span>Buka Google Form Pembayaran</span>';
-        }
+        if (secUpload) secUpload.style.display = "block";
 
         openModal("modalAdopsiForm");
         if (window.lucide) lucide.createIcons();
@@ -6182,15 +6209,8 @@
           renderAdopsi();
           closeModal("modalAdopsiForm");
 
-          // LANGSUNG BUKA GOOGLE FORM RESMI BTS UNTUK PEMBAYARAN
-          const GOOGLE_FORM_PAYMENT_URL =
-            "https://docs.google.com/forms/d/e/1FAIpQLSe-sample-bts-pembayaran-adopsi/viewform?usp=sf_link";
-          try {
-            window.open(GOOGLE_FORM_PAYMENT_URL, "_blank");
-          } catch (err) {}
-
           showToast(
-            "Formulir adopsi diajukan! Google Form pembayaran telah dibuka di tab baru.",
+            "Formulir adopsi diajukan! Bukti pembayaran akan diverifikasi oleh Admin/Petugas.",
           );
           openTahapanDetail(kodeSarang);
         });
